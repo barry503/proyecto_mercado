@@ -2,7 +2,7 @@
 /***********************************
 *version: 1                        *
 *fecha: 02-09-2022                 *
-*Dev: https:#github.com/barry503  *
+*Dev: https://github.com/barry503  *
 **********************************/
 #incluimos inicialmente la conexion ala base de datos
 require '../config/conexion.php';

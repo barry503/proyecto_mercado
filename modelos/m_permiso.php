@@ -24,7 +24,7 @@ class Permiso
  //inplementar un metodo para insertar una materia
   public function insertar($nombre)
   {
-         $sql = "INSERT INTO permiso (nombre)
+         $sql = "INSERT INTO pm_permiso (nombre)
          VALUES('$nombre')";
              return ejecutarConsulta($sql);
 
@@ -35,7 +35,7 @@ class Permiso
    //inplementar un metodo para editar registros
 public function editar($idpermiso,$nombre)
 	{
-         $sql = "UPDATE permiso SET nombre='$nombre'
+         $sql = "UPDATE pm_permiso SET nombre='$nombre'
          WHERE idpermiso='$idpermiso' ";
              return ejecutarConsulta($sql);
 
