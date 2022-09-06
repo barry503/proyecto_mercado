@@ -1,3 +1,13 @@
+<?php 
+// Activamos el almacenamiento en el buffer
+ob_start();
+session_start();  /*Con php*/
+
+// si existe un usuario
+if(isset($_SESSION["usuario"]) > 0){
+header("Location: inicio.php");
+}else{
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,3 +150,6 @@
 </body>
 
 </html>
+<?php }
+ob_end_flush(); #limpiamos el buffer
+ ?>
