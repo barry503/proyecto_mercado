@@ -9,7 +9,7 @@
 //Ip de la pc servidor de base de datos
 $host= 'localhost';
 //nombre de la base de datos
-$name_bd= 'clon_mercado';
+$name_bd= 'proyecto_mercado';
 //usuario de la base de datos 
 $usuario_db = 'root';
 //contrasena del usuario de la base de datos  
