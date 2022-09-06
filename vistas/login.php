@@ -8,18 +8,23 @@ if(isset($_SESSION["usuario"]) > 0){
 header("Location: inicio.php");
 }else{
  ?>
+ <?php
+ include '../config/pdo.php';#conexion pdo
+ include '../config/fun_info.php';#para info de la empresa 
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Responsive bootstrap landing template">
-    <meta name="author" content="Themesdesign">
+    <meta name="description" content="Responsive sistema mercado">
+    <meta name="author" content="barry 503 ">
 
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Login | Sistema Mercado</title>
+    <title>Login | <?php echo dataEmpresa("nombre"); ?></title>
 
 
     <!-- Bootstrap core CSS -->
@@ -44,8 +49,8 @@ header("Location: inicio.php");
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="p-5">
-                            <h2>Login preprocesor</h2>
-                        <h5>Bienvenido</h5>
+                            <h2>Login | <?php echo dataEmpresa("nombre"); ?></h2>
+                        <h5>Bienvenido al sistema</h5>
                         </div>
                         
                     </div>
