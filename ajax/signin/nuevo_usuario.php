@@ -36,7 +36,7 @@ $AInstitucion = dataEmpresa("abreviatura");
 		){
 
         $usuario =$_POST["usuario"];
-	    $preparando = $conexionPdo->prepare("SELECT  pm_usuario FROM usuario WHERE   usuario='$usuario'");
+	    $preparando = $conexionPdo->prepare("SELECT  usuario FROM pm_usuario WHERE   usuario='$usuario'");
 		#ejecuta la consulta...
 		$preparando->execute();/*array(':usuario' => $usuario)*/
 		$resultado =  $preparando->fetch();#la consulta $preparando devuelve true o false
@@ -380,7 +380,7 @@ h1 {
     <p class=''>
      <a href='https://#' class='btn btn-info'>Visitar citio web </a>
     </p>
-    <p class='text-white'>eduAdmin | Centro America.</p>
+    <p class='text-white'>sistema | Centro America.</p>
     <p class='text-white'><a href='#' class='text-info'>Terminos  y condiciones</a> | <a href='#'class='text-info'>Todos los derechos reservados</a> &copy;.</p>
   </div>
   

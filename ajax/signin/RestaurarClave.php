@@ -13,7 +13,7 @@ include '../../config/fun_info.php';#info de la empresa
 
            	 #preparando la consulta
            	$email = $_POST['email'];
-		$preparando = $conexionPdo->prepare("SELECT  email FROM usuario WHERE   email='$email'");
+		$preparando = $conexionPdo->prepare("SELECT  email FROM pm_usuario WHERE   email='$email'");
 		#ejecuta la consulta...
 		$preparando->execute();/*array(':email' => $email)*/
 
@@ -360,7 +360,7 @@ c0 6.62695 -5.37305 12 -12 12h-12v100c0 6.62695 -5.37305 12 -12 12h-64c-6.62695 
     <p class=''>
      <a href='#' class='btn btn-info'>Visitar citio web </a>
     </p>
-    <p class='text-white'>eduAdmin | Centro America.</p>
+    <p class='text-white'>sistema | Centro America.</p>
     <p class='text-white'><a href='#' class='text-info'>Terminos  y condiciones</a> | <a href='#'class='text-info'>Todos los derechos reservados</a> &copy;.</p>
   </div>
   
@@ -391,7 +391,7 @@ $headers .= "Cc: $mailDestinatario " . "\r\n";
 
 
 		
-		
+		/*echo $Mensaje;*/
 			
 // echo $correo;
 			?>
