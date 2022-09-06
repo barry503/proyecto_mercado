@@ -20,9 +20,9 @@ header("Location: inicio.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responsive sistema mercado">
-    <meta name="author" content="barry 503 ">
+    <meta name="author" content="barry503 Luis Turcios">
 
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="../files/logo/<?php echo dataImgUrl('logo'); ?>">
 
     <title>Login | <?php echo dataEmpresa("nombre"); ?></title>
 
@@ -48,9 +48,10 @@ header("Location: inicio.php");
             <div class="py-5 log-content ">
                 <div class="row">
                     <div class="col-lg-5">
-                        <div class="p-5">
+                        <div class="p-5 text-center">
+                            <img  src="../files/logo/<?php echo dataImgUrl('logo'); ?>" width="180px">
                             <h2>Login | <?php echo dataEmpresa("nombre"); ?></h2>
-                        <h5>Bienvenido al sistema</h5>
+                        <h5>"Bienvenido al sistema "</h5>
                         </div>
                         
                     </div>
@@ -93,7 +94,7 @@ header("Location: inicio.php");
                                         </div>
 
                                         <div class="forget-pass ">
-                                            <a href="" class="f-14 text-primary">Olvido su Contraseña ?</a>
+                                            <a href="restaurar_usuario.php" class="f-14 text-danger">Olvido su Contraseña ?</a>
                                         </div>
                                     </div>
                                    
@@ -103,6 +104,7 @@ header("Location: inicio.php");
                                         class="mdi mdi-telegram ms-2"></i></button>
                             </form>
                             <p class=" mb-0 fw-bold text-muted py-3 m-3"><a href="signin.php">Registrate Ahora !</a> </p>
+                            <a href="terminos.php" class="f-14 text-primary">Leer Terminos y condiciones</a>
                         </div>
                     </div>
                 </div>
@@ -125,6 +127,7 @@ header("Location: inicio.php");
     <!-- <script src="scripts/restaurar_usuario.js"></script> -->
 
     <script>
+        // logica para el ojo de la pass
           var valuer = 0;
 
         $('.iconoClave').on('click', function(e) {

@@ -1,3 +1,17 @@
+<?php 
+// Activamos el almacenamiento en el buffer
+ob_start();
+session_start();  /*Con php*/
+
+// si existe un usuario
+if(isset($_SESSION["usuario"]) > 0){
+header("Location: inicio.php");
+}else{
+ ?>
+ <?php
+ include '../config/pdo.php';#conexion pdo
+ include '../config/fun_info.php';#para info de la empresa 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +21,9 @@
     <meta name="description" content="Responsive bootstrap landing template">
     <meta name="author" content="Themesdesign">
 
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="../files/logo/<?php echo dataImgUrl('logo'); ?>">
 
-    <title>Crear Cuenta | Sistema Mercado</title>
+    <title>Crear Cuenta | <?php echo dataEmpresa("nombre"); ?></title>
 
 
     <!-- Bootstrap core CSS -->
@@ -87,7 +101,7 @@
                                         </div>
 
                                         <div class="forget-pass ">
-                                            <a href="" class="f-14 text-primary">Olvidaste tu contraseña?</a>
+                                            <a href="terminos.php" class="f-14 text-primary">Leer Terminos y condiciones</a>
                                         </div>
                                     </div>
                                    
@@ -97,6 +111,14 @@
                                         class="mdi mdi-telegram ms-2"></i></button>
                             </form>
                         </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="p-5 text-center">
+                            <img  src="../files/logo/<?php echo dataImgUrl('logo'); ?>" width="180px">
+                            <h2>Crear Usuario | <?php echo dataEmpresa("nombre"); ?></h2>
+                        <h5>"Gracias por unirte a nuestro equipo "</h5>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -121,3 +143,6 @@
 </body>
 
 </html>
+<?php }
+ob_end_flush(); #limpiamos el buffer
+ ?>
