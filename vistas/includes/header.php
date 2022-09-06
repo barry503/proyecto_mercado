@@ -81,31 +81,48 @@ include '../config/fun_info.php';#para info de la empresa
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
-                <nav class="navbar-sidebar">
+                <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
 
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
                                 <li>
-                                    <a href="inicio.php">Inicio</a>
+                                    <a href="inicio.php">
+                                        <i class="fas fa-home"></i>Inicio</a>
                                 </li>
                             </ul>
                         </li>
+
 
                         <li class=" has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-admin"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <i class="fas  fa-code"></i>Programadores
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
                                 <li>
-                                    <a href="inicio.php">Inicio</a>
+                                    <a href="crud_website.php">
+                                        <i class="fa fa-building"></i>editar sitio web
+                                    </a>
+                                    <a href="crud_usuario.php">
+                                        <i class="fas fa-users"></i>editar Usuarios
+                                    </a>
+                                    <a href="crud_permiso.php">
+                                        <i class="far fa-check-square"></i>editar permisos
+                                    </a>
                                 </li>
                             </ul>
                         </li>
 
-
-                        <li>
+<!--                         <li>
                             <a href="chart.html">
                                 <i class="fas fa-chart-bar"></i>Charts</a>
                         </li>
@@ -139,8 +156,8 @@ include '../config/fun_info.php';#para info de la empresa
                                     <a href="forget-pass.html">Forget Password</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="has-sub">
+                        </li> -->
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -178,7 +195,7 @@ include '../config/fun_info.php';#para info de la empresa
                                     <a href="typo.html">Typography</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
