@@ -2,7 +2,7 @@
 session_start();
 /***********************************
 *version: 1                        *
-*fecha: 02-09-2022                 *
+*fecha: 04-09-2022                 *
 *Dev: https://github.com/barry503  *
 **********************************/
 require_once "../modelos/m_usuario.php";
@@ -67,7 +67,7 @@ switch($_GET["op"]){
                 $rspta=$usuarioPM->agregarPgrado($idusuario,$_POST["permisogrado"]);
                 $rspta=$usuarioPM->agregarPmateria($idusuario,$_POST["permisomateria"]);               
                 require ("../config/pdo.php");
-         $Consqledit = $base->query("SELECT idusuario,imagen,CONCAT(nombre,' , ',apellido) as NombreCopleto
+         $Consqledit = $conexionPdo->query("SELECT idusuario,imagen,CONCAT(nombre,' , ',apellido) as NombreCopleto
           FROM usuario WHERE   idusuario='$idusuario'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
 
          foreach ($Consqledit  as $q){$infoA = $q->NombreCopleto; $poto = $q->imagen;  }#ciclo de $Consql
@@ -194,7 +194,7 @@ case 'verificar':
 
                //Determinamos los accesos del usuario
                 require ("../config/pdo.php");
-                $SQLpermisos = $base->query("SELECT idpermiso,nombre FROM pm_permiso")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer los permisos del usuario*/
+                $SQLpermisos = $conexionPdo->query("SELECT idpermiso,nombre FROM pm_permiso")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer los permisos del usuario*/
                 
                 $caracter = "_"; //servira para agregar un gion  en lugar de espacion
 
