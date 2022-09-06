@@ -2,7 +2,7 @@
 session_start();
 /***********************************
 *version: 1                        *
-*fecha: 04-09-2022                 *
+*fecha: 06-09-2022                 *
 *Dev: https://github.com/barry503  *
 **********************************/
 require_once "../modelos/m_usuario.php";
@@ -64,11 +64,10 @@ switch($_GET["op"]){
        }
          else {
                $rspta=$usuarioPM->editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$_POST["permiso"]);
-                $rspta=$usuarioPM->agregarPgrado($idusuario,$_POST["permisogrado"]);
-                $rspta=$usuarioPM->agregarPmateria($idusuario,$_POST["permisomateria"]);               
+                               
                 require ("../config/pdo.php");
          $Consqledit = $conexionPdo->query("SELECT idusuario,imagen,CONCAT(nombre,' , ',apellido) as NombreCopleto
-          FROM usuario WHERE   idusuario='$idusuario'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
+          FROM pm_usuario WHERE   idusuario='$idusuario'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
 
          foreach ($Consqledit  as $q){$infoA = $q->NombreCopleto; $poto = $q->imagen;  }#ciclo de $Consql
              echo $rspta ? "<p class='text-center'><i style='font-size: 100px;' class='fa  fa-refresh text-success'></i><br>Usuario actualizado <br><img  src='../files/usuarios/".$poto."' height='150px'><br>id:".$idusuario."<br>Nombre del usuario/a:<br>".$infoA  : "Usuario no se pudo actualizar";
@@ -102,9 +101,9 @@ switch($_GET["op"]){
 
        while($reg=$rspta->fetch_object()){
            $data[]=array(
-               "0" =>($reg->condicion)?'<button class="bnt btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>    '.
-             '<button class="bnt btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>'.$reg->idusuario :'<button class="bnt btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>    '.
-             '<button class="bnt  btn-info " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'.$reg->idusuario,
+               "0" =>($reg->condicion)?'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>    '.
+             '<button class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>'.$reg->idusuario :'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>    '.
+             '<button class="btn btn-sm m-1  btn-info " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'.$reg->idusuario,
                "1" =>$reg->usuario,
                "2" =>$reg->nombre,
                "3" =>$reg->apellido,
@@ -150,7 +149,7 @@ case 'permisos':
         $sw= in_array($reg->idpermiso,$valores)?'checked':'';
 
               echo '<li><label> <input type="checkbox" '.$sw.' name="permiso[]" value="'.$reg->idpermiso.'">'.$reg->nombre.'</label></li>';
-              echo '<hr class="bg-success">';
+              echo '<hr class="bg-dark">';
      }
 
   break;
