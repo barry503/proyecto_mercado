@@ -1,0 +1,3 @@
+Utilizare este comando para subir todos los cambios a github.com
+
+git push https://github.com/barry503/proyecto_mercado.git --force
