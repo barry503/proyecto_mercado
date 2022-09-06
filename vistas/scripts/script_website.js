@@ -196,21 +196,6 @@ Swal.fire({
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Funcion para desactivar registros
 function desactivar(id){
     Swal.fire({
