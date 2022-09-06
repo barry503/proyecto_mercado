@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2022 a las 06:00:03
+-- Tiempo de generación: 06-09-2022 a las 06:58:30
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -405,7 +405,7 @@ CREATE TABLE `pm_permiso` (
   `idpermiso` int(11) NOT NULL,
   `nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `condicion` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla estan los permisos que los usuarios pueden obtenerdentro del sistema permisos de super usuario';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla estan los permisos que los usuarios pueden obtener dentro del sistema web';
 
 -- --------------------------------------------------------
 
@@ -434,8 +434,7 @@ CREATE TABLE `pm_usuario` (
 --
 
 INSERT INTO `pm_usuario` (`idusuario`, `nombre`, `apellido`, `imagen`, `usuario`, `clave`, `email`, `telefono`, `direccion`, `fecha_creado`, `unique_id`, `condicion`, `status`) VALUES
-(1, 'root', 'roooot', 'defecto.jpg', 'root', '655e786674d9d3e77bc05ed1de37b4b6bc89f788829f9f3c679e7687b410c89b', 'root@gmail.com', 23, 'Casa #24 2/16 av.el admin', '2020-10-22 13:43:52', '1', 1, 'En linea'),
-(2, 'nombre', 'apellido', 'defecto.png', 'prueba', '655e786674d9d3e77bc05ed1de37b4b6bc89f788829f9f3c679e7687b410c89b', 'prueba1@gmail.com', 0, 'Dirección', '2022-09-05 15:55:49', '1469', 1, 'Desconectado');
+(1, 'luis', 'turcios', 'defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'l.turcios.08@gmail.com', 0, 'Dirección', '2022-09-05 22:36:36', '1383', 1, 'Desconectado');
 
 -- --------------------------------------------------------
 
@@ -447,7 +446,7 @@ CREATE TABLE `pm_usuario_permiso` (
   `idusuario_permiso` int(11) NOT NULL,
   `idusuario` int(11) NOT NULL,
   `idpermiso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla se guardan los permisos de super usuario y el permisopara el acceso a los modulos de el bachillerato salud de 1 a 3 añoaqui se relaciona el identificador del usuario con el identificador del permiso';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla se guardan los permisos de cada uno de los usuarios';
 
 -- --------------------------------------------------------
 
@@ -1002,7 +1001,7 @@ ALTER TABLE `pm_permiso`
 -- AUTO_INCREMENT de la tabla `pm_usuario`
 --
 ALTER TABLE `pm_usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_usuario_permiso`
