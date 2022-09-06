@@ -1,3 +1,15 @@
+<?php 
+// Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+
+if(!isset($_SESSION["usuario"])){
+
+  header("Location: login.php");
+}else
+{
+
+ ?>
 <?php include '../config/fun_section.php'; ?>
 <?php $nom_section= nom_section("Crud Informacion del Sitio web"); ?>
 <?php require'includes/header.php'; ?>
@@ -201,3 +213,8 @@
 <?php require'includes/footer.php'; ?>
 <script  src="scripts/script_website.js"></script>
 <script  src="scripts/script_logo.js"></script>
+
+<?php
+ } 
+ob_end_flush();
+ ?>

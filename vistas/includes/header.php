@@ -83,6 +83,7 @@ include '../config/fun_info.php';#para info de la empresa
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
@@ -92,6 +93,18 @@ include '../config/fun_info.php';#para info de la empresa
                                 </li>
                             </ul>
                         </li>
+
+                        <li class=" has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-admin"></i>Dashboard</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="inicio.php">Inicio</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                         <li>
                             <a href="chart.html">
                                 <i class="fas fa-chart-bar"></i>Charts</a>

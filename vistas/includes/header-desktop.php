@@ -98,7 +98,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" alt="U" />
+                                            <img class="IMAGEN_ACTUALIZADA" src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" alt="U" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['usuario']; ?></a>
@@ -107,7 +107,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img id="ImgSalirXD" src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" alt="U" />
+                                                        <img class="IMAGEN_ACTUALIZADA" src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" alt="U" />
                                                     </a>
                                                 </div>
                                                 <div class="content">

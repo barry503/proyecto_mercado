@@ -7,7 +7,7 @@ if(!isset($_SESSION["usuario"])){
  header("Location: login.php");
 }else
 {
-header("Location: Dperfil.php");
+header("Location: inicio.php");
 }
 
 ob_end_flush();
