@@ -121,6 +121,11 @@ include '../config/fun_info.php';#para info de la empresa
                                 </li>
                             </ul>
                         </li>
+                         
+                         <li>
+                            <a href="mercados.php">
+                                <i class="fas fa-shopping-cart"></i>Administrar Mercados</a>
+                         </li>
 
 <!--                         <li>
                             <a href="chart.html">
