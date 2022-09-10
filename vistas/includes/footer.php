@@ -48,8 +48,10 @@
     <script src="../public/libs/circle-progress/circle-progress.min.js"></script>
     <script src="../public/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../public/libs/chartjs/Chart.bundle.min.js"></script>
-    <script src="../public/libs/select2/select2.min.js">
-    </script>
+    <script src="../public/libs/select2/select2.min.js"></script>
+
+    <!-- para usar el select con datos live -->
+    <script src="../public/bootstrap-select/js/bootstrap-select.min.js"></script>    
 
 
 

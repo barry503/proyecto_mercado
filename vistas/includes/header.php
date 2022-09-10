@@ -44,6 +44,9 @@ include '../config/fun_info.php';#para info de la empresa
     <!-- dataTable CSS-->
     <link href="../public/t/datatables.min.css" rel="stylesheet" media="all">
 
+    <!-- para usar el select con datos live -->
+    <link rel="stylesheet" type="text/css" href="../public/bootstrap-select/css/bootstrap-select.min.css">
+
 </head>
 
 <body class="animsition">
@@ -102,7 +105,7 @@ include '../config/fun_info.php';#para info de la empresa
 
                         <li class=" has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas  fa-code"></i>Programadores
+                                <i class="fas  fa-code"></i>Administradores
                                 <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
