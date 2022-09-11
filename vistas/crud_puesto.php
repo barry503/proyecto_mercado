@@ -11,17 +11,15 @@ if(!isset($_SESSION["usuario"])){
 
  ?>
 <?php include '../config/fun_section.php'; ?>
-<?php $nom_section= nom_section("Crud sector"); ?>
+<?php $nom_section= nom_section("Crud Puesto"); ?>
 <?php require'includes/header.php'; ?>
 
 
 
 <?php include '../config/fun_permiso.php'; ?>
-<?php $name_permiso = retornarNamePermiso(1); ?>
+<?php $name_permiso = retornarNamePermiso(9); ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
-<?php // consulta para input select 
-$sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->fetchAll(PDO::  FETCH_OBJ);#consulta Del administrador ?>
   
 <!-- Contenedor de todo -->
 <div class="content-wrapper">
@@ -51,15 +49,10 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
 
 
 
-
-
-
-
-
 <!-- inicio card -->
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
-                 <h3 class="card-title">Sector  
+                 <h3 class="card-title">Puesto  
                   <button class="btn btn-info" id="btnagregar" onclick="mostrarform(true)" >
                     
                     <i class="fa fa-plus-circle"></i>Agregar
@@ -85,28 +78,32 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
               <!-- inicio tabla -->
           <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
               <thead >
-                 <th>id</th>
-                 <th>sector</th>
-                 <th>Alcaldia</th>
-                 <th>id</th>
-                 
-                            
+                <th>idpuesto</th>
+                <th>modulo</th>
+                <th>medida_frente</th>
+                <th>medida_fondo</th>
+                <th>medida_calificacion</th>
+                <th>estado</th>
+                <th>medida_compensa</th>
+                <th>name_institucion</th>
+                <th>name_sector</th>
+                <th>acciones</th>
               </thead>  
                     <tbody>
-                        <!-- datos de bd en el archivo url: scripts/sexo.js -->
+                        <!-- datos de bd en  js-->
                     </tbody>
-
               <tfoot >
-                 <th>id</th>
-                 <th>sector</th>
-                 <th>Alcaldia</th>
-                 <th>id</th>
-              
-               
-                            
+               <th>idpuesto</th>
+               <th>modulo</th>
+               <th>medida_frente</th>
+               <th>medida_fondo</th>
+               <th>medida_calificacion</th>
+               <th>estado</th>
+               <th>medida_compensa</th>
+               <th>name_institucion</th>
+               <th>name_sector</th>
+               <th>acciones</th>
               </tfoot>
-
-
           </table>
           <!-- / fin tabla -->
 
@@ -120,26 +117,49 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
             <!--inicio del formulario de registrar y editar -->
             <form name="formulario" id="formulario" method="POST">
     
-                
+              
+              
+              
+              
+              
+              
+              
+                              
 
      <div class="row mb-2">
             <!-- <div class="col-md-6 text-muted"> -->
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Nombre del Sector(*):</label>
+                <label>modulo(*):</label>
                      <!-- para trabajar con el id -->
-                <input type="hidden" name="idsector" id="idsector">
+                <input type="hidden" name="idpuesto" id="idpuesto">
              
-                <input type="text" class="form-control" name="nombre" id="nombre"  placeholder="Escribe el nombre del sector " required>
+                <input type="text" class="form-control" name="modulo" id="modulo"  placeholder="Escribe el modulo del Puesto " required>
              </div>
-           <!-- </div> -->
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>medida_frente(*):</label>
+                <input type="text" class="form-control" name="medida_frente" id="medida_frente"  placeholder="Escribe la medida_frente del Puesto " required>
+             </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>medida_fondo(*):</label>
+                <input type="text" class="form-control" name="medida_fondo" id="medida_fondo"  placeholder="Escribe la medida_fondo del Puesto " required>
+             </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>medida_calificacion(*):</label>
+                <input type="text" class="form-control" name="medida_calificacion" id="medida_calificacion"  placeholder="Escribe la medida_calificacion del Puesto " required>
+             </div>
+             
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>medida_compensa(*):</label>
+                <input type="text" class="form-control" name="medida_compensa" id="medida_compensa"  placeholder="Escribe la medida_compensa del Puesto " required>
+             </div>
+
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
-              <label for="idinstitucion" >Institucion ala que pertenece</label>
-              <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" ></select>
-              <!-- <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" required> -->
-              <!-- <?php #foreach ($sqlins as $i): ?>
-                <option value="<?php #echo $i->id ?>"><?php #echo $i->nombre; ?></option>
-              <?php #endforeach ?> -->
-              <!-- </select> -->
+              <label for="idsector" >sector al que pertenece</label>
+              <select name="idsector" id="idsector"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+           </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+              <label for="idinstitucion" >institucion al que pertenece</label>
+              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
            </div>
      </div>
 
@@ -194,7 +214,7 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
   
 <script> var urlistar= 'listar';</script>
 <!-- script del crud -->
-<script  src="scripts/script_sectores.js"></script>
+<script  src="scripts/script_puesto.js"></script>
 
  
 

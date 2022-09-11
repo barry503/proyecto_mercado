@@ -112,10 +112,18 @@ include '../config/fun_info.php';#para info de la empresa
                             <?php include 'includes/menu_fun.php';#metodo para validacion de secciones ?>
                             <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
                                 <li>
+
                                     <?php $menu_permiso = menu_fun(1); ?>
                                     <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
                                         <a href="crud_website.php">
                                         <i class="fa fa-building"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    
+                                    <?php $menu_permiso = menu_fun(9); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="crud_puesto.php">
+                                            <i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
                                         </a>
                                     <?php endif; ?>
                                     <?php $menu_permiso = menu_fun(2); ?>
