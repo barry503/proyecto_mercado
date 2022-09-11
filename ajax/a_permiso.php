@@ -93,6 +93,30 @@ case 'eliminar':
     break;
 
 
+     case'listarVista':
+      $respuesta=$permiso->listar();
+      // vamos a declarar un array o arreglo
+       $data= Array(); 
+
+       while($reg=$respuesta->fetch_object()){
+           $data[]=array(
+               "0" =>$reg->idpermiso,
+               "1"=>$reg->nombre,
+               "2" =>($reg->condicion)?'<span class="badge badge-success">disponible<span>': '<span class="badge badge-danger">inactivo<span>'
+              );
+
+       }
+
+       $results = array(
+         "sEcho" =>1, //informacion para el datatables
+          "iTotalRecords" =>count($data), //enviamos el total registros al datatable
+           "iTotalDisplayRecords" =>count($data), //enviamos el total registros a           visualizar
+           "aaData"=>$data);
+
+       echo json_encode($results);
+    break;
+
+
 
 
 

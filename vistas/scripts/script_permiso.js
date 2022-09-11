@@ -88,7 +88,7 @@ function listar()
             "ajax":
                     {
 
-                         url: "../ajax/a_permiso.php?op=listar",
+                         url: "../ajax/a_permiso.php?op="+urlistar,
                          type : "get",
                          dataType : "json",
                          error: function(e){

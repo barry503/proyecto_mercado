@@ -31,7 +31,7 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
         <div class="row mb-2">
           <div class="col-sm-6">
             
-                <h1 class="container-text">Crud <?php echo $nom_section; ?></h1>
+                <h1 class="container-text"><?php echo $nom_section; ?></h1>
 
           </div>
           <div class="col-sm-6">
@@ -132,13 +132,14 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
                 <input type="text" class="form-control" name="nombre" id="nombre"  placeholder="Escribe el nombre del sector " required>
              </div>
            <!-- </div> -->
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
               <label for="idinstitucion" >Institucion ala que pertenece</label>
-              <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" required>
+              <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" ></select>
+              <!-- <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" required> -->
               <!-- <?php #foreach ($sqlins as $i): ?>
                 <option value="<?php #echo $i->id ?>"><?php #echo $i->nombre; ?></option>
               <?php #endforeach ?> -->
-              </select>
+              <!-- </select> -->
            </div>
      </div>
 
@@ -190,7 +191,8 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
  
 <!-- pie de pajina -->
   <?php require'includes/footer.php'; ?>
-
+  
+<script> var urlistar= 'listar';</script>
 <!-- script del crud -->
 <script  src="scripts/script_sectores.js"></script>
 

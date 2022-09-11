@@ -11,7 +11,7 @@ if(!isset($_SESSION["usuario"])){
 
  ?>
 <?php include '../config/fun_section.php'; ?>
-<?php $nom_section= nom_section("Crud permiso"); ?>
+<?php $nom_section= nom_section("Vista permiso"); ?>
 <?php require'includes/header.php'; ?>
 
 
@@ -29,7 +29,7 @@ if(!isset($_SESSION["usuario"])){
         <div class="row mb-2">
           <div class="col-sm-6">
             
-                <h1 class="container-text">Crud permiso</h1>
+                <h1 class="container-text">Vista permiso</h1>
 
           </div>
           <div class="col-sm-6">
@@ -47,31 +47,16 @@ if(!isset($_SESSION["usuario"])){
 
 
 
-
-
-
-
-
-
-
 <!-- inicio card -->
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
-                 <h3 class="card-title">permiso  
-                  <button class="btn btn-info" id="btnagregar" onclick="mostrarform(true)" >
-                    
-                    <i class="fa fa-plus-circle"></i>Agregar
-                  
-                  </button>
-                  </h3>
+                 <h3 class="card-title">permiso</h3>
               
               </div><!-- / fin card-header-->
  
           
       <!-- inicio card-body  -->
      <div class="card-body" >
-
-
 
       
       <div class="box-tools pull-right">  
@@ -83,7 +68,6 @@ if(!isset($_SESSION["usuario"])){
               <!-- inicio tabla -->
           <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
               <thead >
-                 <th>Opciones</th>
                  <th>id</th>
                  <th>Nombre</th>
                  <th>Estado</th>
@@ -95,7 +79,6 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                 <th>Opciones</th>
                  <th>id</th>
                  <th>Nombre</th>
                  <th>Estado</th>
@@ -113,47 +96,7 @@ if(!isset($_SESSION["usuario"])){
 
 
 
-       <!-- inicio panel-body -->
-       <div class="panel-body"  id="formularioregistros">
-            <!--inicio del formulario de registrar y editar -->
-            <form name="formulario" id="formulario" method="POST">
-    
-                
 
-     <div class="row mb-2">
-            <!-- <div class="col-md-6 text-muted"> -->
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Nombre del permiso(*):</label>
-                     <!-- para trabajar con el id -->
-                <input type="hidden" name="idpermiso" id="idpermiso">
-             
-                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Escribe el nombre del permiso " required>
-
-               
-
-             </div>
-           <!-- </div> -->
-
-     </div>
-
-    
-             
-             
-             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button class="btn btn-info " type="submit" id="btnGuardar">
-                    <i class="fa fa-save"></i> Guardar
-                </button>
-
-                <button class="btn btn-danger"  onclick="cancelarform()" type="button">
-                    <i class="fa fa-arrow-circle-left"></i> Cancelar
-                </button>
-
-
-
-                </div>
-            </form>
-
-       </div><!-- fin panel-body -->
 
      </div> <!-- / card body fin -->
 
@@ -185,7 +128,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- pie de pajina -->
   <?php require'includes/footer.php'; ?>
 
-<script> var urlistar= 'listar';</script> 
+<script> var urlistar= 'listarVista';</script> 
 <!-- script del crud -->
 <script  src="scripts/script_permiso.js"></script>
 

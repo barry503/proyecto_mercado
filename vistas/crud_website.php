@@ -15,6 +15,11 @@ if(!isset($_SESSION["usuario"])){
 <?php require'includes/header.php'; ?>
 
 
+<?php include '../config/fun_permiso.php'; ?>
+<?php $name_permiso = retornarNamePermiso(1); ?>
+<?php if($_SESSION[$name_permiso]==1){ ?>
+
+
 <!-- Contenedor de todo -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -210,6 +215,15 @@ if(!isset($_SESSION["usuario"])){
 </div>
 <!-- fin  Contenedor de todo -->
 
+<?php
+ }
+else {
+ // require '';
+ header("Location: noacceso.php");
+
+}
+ ?>
+ 
 <?php require'includes/footer.php'; ?>
 <script  src="scripts/script_website.js"></script>
 <script  src="scripts/script_logo.js"></script>

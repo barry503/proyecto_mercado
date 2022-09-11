@@ -101,9 +101,7 @@ switch($_GET["op"]){
 
        while($reg=$rspta->fetch_object()){
            $data[]=array(
-               "0" =>($reg->condicion)?'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>    '.
-             '<button class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>'.$reg->idusuario :'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>    '.
-             '<button class="btn btn-sm m-1  btn-info " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'.$reg->idusuario,
+               "0" =>$reg->idusuario,
                "1" =>$reg->usuario,
                "2" =>$reg->nombre,
                "3" =>$reg->apellido,
@@ -112,7 +110,8 @@ switch($_GET["op"]){
                "6" =>$reg->email,
                "7" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
                "8" =>$reg->direccion,
-               "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label bg-green">Activo<span>': '<span title="No podra logearse al sistema" class="badge label bg-red">Desabilitado<span>'
+               "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label bg-green">Activo<span>': '<span title="No podra logearse al sistema" class="badge label bg-red">Desabilitado<span>',
+               "10" =>($reg->condicion)?'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>'.'<button class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>' : '<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>'.'<button class="btn btn-sm m-1  btn-success " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'
               );
 
        }

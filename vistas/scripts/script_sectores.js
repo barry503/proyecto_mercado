@@ -32,8 +32,9 @@ function limpiar()
 {
    $("#idsector").val("");
    $("#nombre").val("");
-   $("#idinstitucion").val("");
-   $("#idinstitucion").selectpicker('refresh');
+   // $("#idinstitucion").val("");
+   // $("#idinstitucion").selectpicker('refresh');
+   // $(".cam-po a").attr("href", "#");
 
    
 
@@ -90,7 +91,7 @@ function listar()
             "ajax":
                     {
 
-                         url: "../ajax/a_sectores.php?op=listar",
+                         url: "../ajax/a_sectores.php?op="+urlistar,
                          type : "get",
                          dataType : "json",
                          error: function(e){
@@ -157,6 +158,8 @@ $("#idsector").val(data.id);
 
 $("#idinstitucion").val(data.institucion_idsector_fk);
 $("#idinstitucion").selectpicker('refresh');
+
+$(".cam-po a").attr("href", "#");
 
 
    })

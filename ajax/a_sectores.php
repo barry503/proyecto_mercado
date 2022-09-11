@@ -75,6 +75,30 @@ case 'eliminar':
        echo json_encode($results);
     break;
 
+
+     case'listarVista':
+      $respuesta=$obj_secto->listar();
+      // vamos a declarar un array o arreglo
+       $data= Array(); 
+
+       while($reg=$respuesta->fetch_object()){
+           $data[]=array(
+               "0" =>$reg->id,
+               "1"=>$reg->nombre,
+               "2" =>$reg->name_institucion
+              );
+
+       }
+
+       $results = array(
+         "sEcho" =>1, //informacion para el datatables
+          "iTotalRecords" =>count($data), //enviamos el total registros al datatable
+           "iTotalDisplayRecords" =>count($data), //enviamos el total registros a           visualizar
+           "aaData"=>$data);
+
+       echo json_encode($results);
+    break;
+
   case "selectInstituciones":
 
     $respuesta = $obj_secto->selectInstituciones();

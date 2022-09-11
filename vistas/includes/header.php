@@ -101,36 +101,93 @@ include '../config/fun_info.php';#para info de la empresa
                                 </li>
                             </ul>
                         </li>
-
-
+                        
                         <li class=" has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas  fa-code"></i>Administradores
+                                <i class="fas  fa-code"></i>Administracion
                                 <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
+                            <?php include 'includes/menu_fun.php';#metodo para validacion de secciones ?>
                             <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
                                 <li>
-                                    <a href="crud_website.php">
-                                        <i class="fa fa-building"></i>editar sitio web
-                                    </a>
-                                    <a href="crud_usuario.php">
-                                        <i class="fas fa-users"></i>editar Usuarios
-                                    </a>
-                                    <a href="crud_permiso.php">
-                                        <i class="far fa-check-square"></i>editar permisos
-                                    </a>
+                                    <?php $menu_permiso = menu_fun(1); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="crud_website.php">
+                                        <i class="fa fa-building"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    <?php $menu_permiso = menu_fun(2); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="crud_permiso.php">
+                                        <i class="far fa-check-square"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php $menu_permiso = menu_fun(3); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="crud_usuario.php">
+                                        <i class="fas fa-users"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php $menu_permiso = menu_fun(7); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="crud_sectores.php">
+                                        <i class="fas fa-shopping-cart"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class=" has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas  fa-refresh"></i>Procesos
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
+                                <li>
+                                    <?php $menu_permiso = menu_fun(4); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="view_puesto.php">
+                                            <i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    <?php $menu_permiso = menu_fun(5); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="view_permiso.php">
+                                        <i class="far fa-check-square"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php $menu_permiso = menu_fun(6); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="view_usuario.php">
+                                        <i class="fas fa-users"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php $menu_permiso = menu_fun(8); ?>
+                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                                        <a href="view_sectores.php">
+                                        <i class="fas fa-shopping-cart"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                                        </a>
+                                    <?php endif; ?>
                                 </li>
                             </ul>
                         </li>
                          
-                         <li>
-                            <a href="mercados.php">
-                                <i class="fas fa-shopping-cart"></i>Administrar Mercados</a>
-                         </li>
 
-<!--                         <li>
+
+<!-- fa-shopping-cart
+                         <li>
                             <a href="chart.html">
                                 <i class="fas fa-chart-bar"></i>Charts</a>
                         </li>

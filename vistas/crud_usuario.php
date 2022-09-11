@@ -17,7 +17,7 @@ if(!isset($_SESSION["usuario"])){
 
 
 <?php include '../config/fun_permiso.php'; ?>
-<?php $name_permiso = retornarNamePermiso(1); ?>
+<?php $name_permiso = retornarNamePermiso(3); ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
 
@@ -83,7 +83,7 @@ if(!isset($_SESSION["usuario"])){
                 <!-- inicio tabla -->
             <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
                 <thead >
-                   <th>Opciones</th>
+                   <th>ID</th>
                    <th>Usuario</th>
                    <th>Nombre</th>
                    <th>apellido</th>
@@ -93,6 +93,7 @@ if(!isset($_SESSION["usuario"])){
                    <th>Imagen</th>
                    <th>Direccion</th>
                    <th>Estado del usuario</th>
+                   <th>Acciones</th>
                               
                 </thead>  
                       <tbody>
@@ -100,7 +101,7 @@ if(!isset($_SESSION["usuario"])){
                       </tbody>
 
                 <tfoot >
-                   <th>Opciones</th>
+                   <th>ID</th>
                    <th>Usuario</th>
                    <th title="Si esta dentro del sistema">Conexion</th>
                    <th>Nombre</th>
@@ -110,6 +111,7 @@ if(!isset($_SESSION["usuario"])){
                    <th>Imagen</th>
                    <th>Direccion</th>
                    <th>Estado del usuario</th>
+                   <th>Acciones</th>
                               
                 </tfoot>
 
