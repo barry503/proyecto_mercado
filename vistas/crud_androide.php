@@ -11,13 +11,13 @@ if(!isset($_SESSION["usuario"])){
 
  ?>
 <?php include '../config/fun_section.php'; ?>
-<?php $nom_section= nom_section("Crud Usuarios Andriod"); ?>
+<?php $nom_section= nom_section("Crud Usuarios Android"); ?>
 <?php require'includes/header.php'; ?>
 
 
 
 <?php include '../config/fun_permiso.php'; ?>
-<?php $name_permiso = retornarNamePermiso(10);#falta modificar ?>
+<?php $name_permiso = retornarNamePermiso(12);#falta modificar ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
   

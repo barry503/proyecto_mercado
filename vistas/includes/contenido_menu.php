@@ -65,6 +65,13 @@
                 <i class="fas fa fa-repeat"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
+
+            <?php $menu_permiso = menu_fun(12); ?>
+            <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                <a href="crud_androide.php">
+                <i class="fas fa  fa-mobile"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                </a>
+            <?php endif; ?>
             
         </li>
     </ul>
@@ -114,6 +121,14 @@
                 <i class="fas fa fa-repeat"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
+
+            <?php $menu_permiso = menu_fun(13); ?>
+            <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                <a href="view_androide.php">
+                <i class="fas fa  fa-mobile"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                </a>
+            <?php endif; ?>
+
         </li>
     </ul>
 </li>
