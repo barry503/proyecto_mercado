@@ -110,6 +110,37 @@ switch($_GET["op"]){
               break;
 
 
+          case'listarVista':
+                $respuesta=$puestoS->listar();
+                // vamos a declarar un array o arreglo
+                 $data= Array(); 
+
+                 while($reg=$respuesta->fetch_object()){
+                     $data[]=array(
+                         "0" =>$reg->idpuesto,
+                         "1" =>$reg->modulo,
+                         "2" =>$reg->medida_frente,
+                         "3" =>$reg->medida_fondo,
+                         "4" =>$reg->medida_calificacion,
+                         "5" =>($reg->estado)?'<span class="label badge badge-success">disponible<span>': '<span class="label badge badge-danger">inactivo<span>',
+                         "6" =>$reg->medida_compensa,
+                         "7" =>$reg->name_institucion,
+                         "8" =>$reg->name_sector,
+                         "9" =>'disabled'
+                        );
+
+                 }
+
+                 $results = array(
+                   "sEcho" =>1, //informacion para el datatables
+                    "iTotalRecords" =>count($data), //enviamos el total registros al datatable
+                     "iTotalDisplayRecords" =>count($data), //enviamos el total registros a           visualizar
+                     "aaData"=>$data);
+
+                 echo json_encode($results);
+              break;
+
+
               case "selectInstituciones":
 
                 $respuesta = $puestoS->selectInstituciones();

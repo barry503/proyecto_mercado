@@ -85,7 +85,7 @@ case 'eliminar':
                "0" =>$reg->idgiros,
                "1"=>$reg->nombre_giro,
                "2" =>$reg->name_institucion,
-               "3" =>'disabled',
+               "3" =>'disabled'
               );
 
        }

@@ -11,13 +11,13 @@ if(!isset($_SESSION["usuario"])){
 
  ?>
 <?php include '../config/fun_section.php'; ?>
-<?php $nom_section= nom_section("Vista Puesto"); ?>
+<?php $nom_section= nom_section("Vista giros"); ?>
 <?php require'includes/header.php'; ?>
 
 
 
 <?php include '../config/fun_permiso.php'; ?>
-<?php $name_permiso = retornarNamePermiso(4); ?>
+<?php $name_permiso = retornarNamePermiso(11); ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
   
@@ -49,11 +49,15 @@ if(!isset($_SESSION["usuario"])){
 
 
 
+
+
+
+
+
 <!-- inicio card -->
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
-                 <h3 class="card-title">Puesto  
-
+                 <h3 class="card-title">giros
                   </h3>
               
               </div><!-- / fin card-header-->
@@ -74,32 +78,28 @@ if(!isset($_SESSION["usuario"])){
               <!-- inicio tabla -->
           <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
               <thead >
-                <th>idpuesto</th>
-                <th>modulo</th>
-                <th>medida_frente</th>
-                <th>medida_fondo</th>
-                <th>medida_calificacion</th>
-                <th>estado</th>
-                <th>medida_compensa</th>
-                <th>name_institucion</th>
-                <th>name_sector</th>
-                <th>acciones</th>
+                 <th>id</th>
+                 <th>giros</th>
+                 <th>Alcaldia</th>
+                 <th>acciones</th>
+                 
+                            
               </thead>  
                     <tbody>
-                        <!-- datos de bd en  js-->
+                        <!-- datos de bd en el archivo url: scripts/sexo.js -->
                     </tbody>
+
               <tfoot >
-               <th>idpuesto</th>
-               <th>modulo</th>
-               <th>medida_frente</th>
-               <th>medida_fondo</th>
-               <th>medida_calificacion</th>
-               <th>estado</th>
-               <th>medida_compensa</th>
-               <th>name_institucion</th>
-               <th>name_sector</th>
-               <th>acciones</th>
+                 <th>id</th>
+                 <th>giros</th>
+                 <th>Alcaldia</th>
+                 <th>acciones</th>
+              
+               
+                            
               </tfoot>
+
+
           </table>
           <!-- / fin tabla -->
 
@@ -140,7 +140,7 @@ if(!isset($_SESSION["usuario"])){
   
 <script> var urlistar= 'listarVista';</script>
 <!-- script del crud -->
-<script  src="scripts/script_puesto.js"></script>
+<script  src="scripts/script_giros.js"></script>
 
  
 
