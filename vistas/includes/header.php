@@ -20,6 +20,7 @@ include '../config/fun_info.php';#para info de la empresa
 
     <!-- Title Page-->
     <title><?php echo $nom_section; ?> | <?php echo dataEmpresa("nombre"); ?></title>
+    <link rel="shortcut icon" href="../files/logo/<?php echo dataImgUrl("logo"); ?>">
 
     <!-- Fontfaces CSS-->
     <link href="../public/css/font-face.css" rel="stylesheet" media="all">
@@ -71,6 +72,7 @@ include '../config/fun_info.php';#para info de la empresa
                 </div>
             </div>
             <!-- clase navbar-mobile -->
+                        <?php include 'includes/menu_fun.php';#metodo para validacion de secciones ?>
             <?php include "includes/navbar-mobile.php" ?>
         </header>
         <!-- END HEADER MOBILE Android-->
@@ -86,189 +88,8 @@ include '../config/fun_info.php';#para info de la empresa
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
-
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
-                                <li>
-                                    <a href="inicio.php">
-                                        <i class="fas fa-home"></i>Inicio</a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas  fa-code"></i>Administracion
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <?php include 'includes/menu_fun.php';#metodo para validacion de secciones ?>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
-                                <li>
-
-                                    <?php $menu_permiso = menu_fun(1); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="crud_website.php">
-                                        <i class="fa fa-building"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-                                    
-                                    <?php $menu_permiso = menu_fun(9); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="crud_puesto.php">
-                                            <i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-                                    <?php $menu_permiso = menu_fun(2); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="crud_permiso.php">
-                                        <i class="far fa-check-square"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php $menu_permiso = menu_fun(3); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="crud_usuario.php">
-                                        <i class="fas fa-users"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php $menu_permiso = menu_fun(7); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="crud_sectores.php">
-                                        <i class="fas fa-shopping-cart"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-                                    
-                                </li>
-                            </ul>
-                        </li>
-
-
-                        <li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas  fa-refresh"></i>Procesos
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-
-                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
-                                <li>
-                                    <?php $menu_permiso = menu_fun(4); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="view_puesto.php">
-                                            <i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-                                    <?php $menu_permiso = menu_fun(5); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="view_permiso.php">
-                                        <i class="far fa-check-square"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php $menu_permiso = menu_fun(6); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="view_usuario.php">
-                                        <i class="fas fa-users"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php $menu_permiso = menu_fun(8); ?>
-                                    <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                                        <a href="view_sectores.php">
-                                        <i class="fas fa-shopping-cart"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
-                                        </a>
-                                    <?php endif; ?>
-                                </li>
-                            </ul>
-                        </li>
+                        <?php include "includes/contenido_menu.php";#contenido de los menus ?>
                          
-
-
-<!-- fa-shopping-cart
-                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </nav>
             </div>
