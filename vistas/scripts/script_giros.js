@@ -32,9 +32,9 @@ function limpiar()
 {
    $("#idgiros").val("");
    $("#nombre").val("");
-   // $("#idinstitucion").val("");
-   // $("#idinstitucion").selectpicker('refresh');
-   // $(".cam-po a").attr("href", "#");
+   $("#idinstitucion").val("");
+   $("#idinstitucion").selectpicker('refresh');
+   $(".cam-po a").attr("href", "#");
 
    
 
