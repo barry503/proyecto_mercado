@@ -1,10 +1,8 @@
-/****************************************************************
-Project:  proyecto_mercado                                      *
-Version:  1.0                                                   *
-Last change:  12/09/2022                                        *
-Assigned to:  https://github.com/barry503                       *
-Primary use:  Open Source                                       *
-****************************************************************/
+/***********************************
+*version: develop                  *
+*fecha: 12-09-2022                 *
+*Dev: https://github.com/barry503  *
+**********************************/
 // la variable tabla esta declarada en el footer
 // var tabla;
 

@@ -183,6 +183,7 @@ if(!isset($_SESSION["usuario"])){
           </div><!-- fin panel-body -->
 <!-- _____________________________________________________________________________________ -->
   <!-- inicio panel-body -->
+  <!-- formulario para nuevos usuarios -->
   <div class="panel-body"  id="formularioregistrosNew">
        <!--inicio del formulario de registrar y editar -->
        <form name="formulario" id="formulario2" method="POST">
