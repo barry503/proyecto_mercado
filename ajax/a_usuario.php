@@ -70,7 +70,7 @@ switch($_GET["op"]){
           FROM pm_usuario WHERE   idusuario='$idusuario'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
 
          foreach ($Consqledit  as $q){$infoA = $q->NombreCopleto; $poto = $q->imagen;  }#ciclo de $Consql
-             echo $rspta ? "<p class='text-center'><i style='font-size: 100px;' class='fa  fa-refresh text-success'></i><br>Usuario actualizado <br><img  src='../files/usuarios/".$poto."' height='150px'><br>id:".$idusuario."<br>Nombre del usuario/a:<br>".$infoA  : "Usuario no se pudo actualizar";
+             echo $rspta ? "<p class='text-center'><i style='font-size: 50px;' class='fa  fa-refresh text-success'></i><br>Usuario actualizado <br><img style='height: 200px;' src='../files/usuarios/".$poto."' ><br>id:".$idusuario."<br>Nombre del usuario/a:<br>".$infoA  : "Usuario no se pudo actualizar";
 
          }
   break;
