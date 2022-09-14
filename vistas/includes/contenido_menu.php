@@ -79,6 +79,13 @@
                 <i class="fas fa  fa-road"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
+
+            <?php $menu_permiso = menu_fun(16); ?>
+            <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                <a href="crud_rutasPuestos.php">
+                <i class="fas fa  fa-road"></i><i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                </a>
+            <?php endif; ?>
             
         </li>
     </ul>
@@ -140,6 +147,13 @@
             <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
                 <a href="view_rutas.php">
                 <i class="fas fa  fa-road"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                </a>
+            <?php endif; ?>
+
+            <?php $menu_permiso = menu_fun(17); ?>
+            <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                <a href="view_rutasPuestos.php">
+                <i class="fas fa  fa-road"></i><i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
 

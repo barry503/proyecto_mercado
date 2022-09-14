@@ -83,7 +83,7 @@ if(!isset($_SESSION["usuario"])){
                  <th>Nombre</th>
                  <th>usuario</th>
                  <th>Institucion</th>
-                 <th>acciones</th>
+                 <!-- <th>acciones</th> -->
                  
                             
               </thead>  
@@ -97,7 +97,7 @@ if(!isset($_SESSION["usuario"])){
                  <th>Nombre</th>
                  <th>usuario</th>
                  <th>Institucion</th>
-                 <th>acciones</th>
+                 <!-- <th>acciones</th> -->
               
                
                             

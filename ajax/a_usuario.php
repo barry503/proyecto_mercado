@@ -105,12 +105,12 @@ switch($_GET["op"]){
                "1" =>$reg->usuario,
                "2" =>$reg->nombre,
                "3" =>$reg->apellido,
-               "4" =>($reg->status=='Desconectado')?'<span class="badge label bg-red">Desconectado<span>': '<span class="badge label bg-green">En linea<span>',
+               "4" =>($reg->status=='Desconectado')?'<span class="badge label badge-danger">Desconectado<span>': '<span class="badge label badge-success">En linea<span>',
                "5" =>$reg->telefono,
                "6" =>$reg->email,
                "7" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
                "8" =>$reg->direccion,
-               "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label bg-green">Activo<span>': '<span title="No podra logearse al sistema" class="badge label bg-red">Desabilitado<span>',
+               "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label badge-success">Activo<span>': '<span title="No podra logearse al sistema" class="badge label badge-danger">Desabilitado<span>',
                "10" =>($reg->condicion)?'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>'.'<button class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>' : '<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>'.'<button class="btn btn-sm m-1  btn-success " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'
               );
 
@@ -124,6 +124,37 @@ switch($_GET["op"]){
 
        echo json_encode($results);
     break;
+
+    case'listarVista':
+         $rspta=$usuarioPM->listar();
+         // vamos a declarar un array o arreglo
+         $data= Array();  
+
+         while($reg=$rspta->fetch_object()){
+             $data[]=array(
+                 "0" =>$reg->idusuario,
+                 "1" =>$reg->usuario,
+                 "2" =>$reg->nombre,
+                 "3" =>$reg->apellido,
+                 "4" =>($reg->status=='Desconectado')?'<span class="badge  badge-danger">Desconectado<span>': '<span class="badge  badge-success">En linea<span>',
+                 "5" =>$reg->telefono,
+                 "6" =>$reg->email,
+                 "7" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
+                 "8" =>$reg->direccion,
+                 "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge  badge-success">Activo<span>': '<span title="No podra logearse al sistema" class="badge  badge-danger">Desabilitado<span>',
+                 "10" =>'disabled'
+                );
+
+         }
+
+         $results = array(
+           "sEcho" =>1, //informacion para el datatables
+            "iTotalRecords" =>count($data), //enviamos el total registros al datatable
+             "iTotalDisplayRecords" =>count($data), //enviamos el total registros a           visualizar
+             "aaData"=>$data);
+
+         echo json_encode($results);
+      break;
 
 
 case 'permisos':

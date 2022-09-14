@@ -11,13 +11,13 @@ if(!isset($_SESSION["usuario"])){
 
  ?>
 <?php include '../config/fun_section.php'; ?>
-<?php $nom_section= nom_section("Vista giros"); ?>
+<?php $nom_section= nom_section("Vista RutasPuestos"); ?>
 <?php require'includes/header.php'; ?>
 
 
 
 <?php include '../config/fun_permiso.php'; ?>
-<?php $name_permiso = retornarNamePermiso(11); ?>
+<?php $name_permiso = retornarNamePermiso(17); ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
   
@@ -57,7 +57,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- inicio card -->
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
-                 <h3 class="card-title">giros
+                 <h3 class="card-title">vista
                   </h3>
               
               </div><!-- / fin card-header-->
@@ -79,10 +79,9 @@ if(!isset($_SESSION["usuario"])){
           <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
               <thead >
                  <th>id</th>
-                 <th>giros</th>
-                 <th>Alcaldia</th>
-                 <!-- <th>acciones</th> -->
-                 
+                 <th>Ruta</th>
+                 <th>Puesto</th>
+                 <!-- <th>Acciones</th> -->
                             
               </thead>  
                     <tbody>
@@ -90,12 +89,10 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                 <th>id</th>
-                 <th>giros</th>
-                 <th>Alcaldia</th>
-                 <!-- <th>acciones</th> -->
-              
-               
+                <th>id</th>
+                <th>Ruta</th>
+                <th>Puesto</th>
+                <!-- <th>Acciones</th> -->
                             
               </tfoot>
 
@@ -105,8 +102,6 @@ if(!isset($_SESSION["usuario"])){
 
         </div>
        
-
-
 
      </div> <!-- / card body fin -->
 
@@ -139,8 +134,8 @@ if(!isset($_SESSION["usuario"])){
   <?php require'includes/footer.php'; ?>
   
 <script> var urlistar= 'listarVista';</script>
-<!-- script del crud -->
-<script  src="scripts/script_giros.js"></script>
+<!-- script del Vista -->
+<script  src="scripts/script_rutas_puestos.js"></script>
 
  
 

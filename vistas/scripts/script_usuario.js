@@ -108,7 +108,7 @@ function listar()
             "ajax":
                     {
 
-                         url: "../ajax/a_usuario.php?op=listar",
+                         url: "../ajax/a_usuario.php?op="+urlistar,
                          type : "get",
                          dataType : "json",
                          error: function(e){
