@@ -18,12 +18,14 @@ $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstituci
 $device_prefix=isset($_POST["device_prefix"])? limpiarCadena($_POST["device_prefix"]):"";
 $alcance=isset($_POST["alcance"])? limpiarCadena($_POST["alcance"]):""; 
 
-
-
-
-
 switch($_GET["op"]){
+
   case 'guardaryeditar':
+  if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+    #true
+    $cuenta_password = strlen($password);
+    if ($cuenta_password < 6 ) {
+      #true
        if(empty($email)){
 
              $respuesta=$objUserAndroid->nuevo($email,$nombre,$password,$idinstitucion,$device_prefix,$alcance);
@@ -35,16 +37,36 @@ switch($_GET["op"]){
              echo $respuesta ? "Usuarios A actualizado" : "Usuarios A no se pudo actualizar";
 
          }
+           }else{
+             echo "La contraseña debe tener como minimo 6 caracteres";
+           }
+
+         }else{
+           echo "El correo No es valido";
+         }
   break;
 
 
   case 'nuevo':
+  if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+    #true
+    $cuenta_password = strlen($password);
+    if ($cuenta_password >= 6 ) {
+      #true
                $respuesta=$objUserAndroid->nuevo($email,$nombre,$password,$idinstitucion,$device_prefix,$alcance);
              echo $respuesta ? "Usuarios new registrado" : "El Usuarios A no se pudo registrar";
+               }else{
+                 echo "La contraseña debe tener como minimo 6 caracteres";
+               }
+
+             }else{
+               echo "El correo no es valido";
+             }
       
   break;
 
-
+  
+ 
 
 case 'eliminar':
            $respuesta=$objUserAndroid->eliminar($email);
@@ -126,7 +148,7 @@ case 'eliminar':
     
 
 }
-
+ 
 
 
 
