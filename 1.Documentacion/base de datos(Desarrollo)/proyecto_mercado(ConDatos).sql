@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2022 a las 06:58:30
+-- Tiempo de generación: 14-09-2022 a las 22:35:52
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accesos` (
   `id` mediumint(9) NOT NULL,
-  `uuid` varchar(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `idusuario` varchar(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `evento` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fechahora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -180,6 +180,15 @@ CREATE TABLE `giros` (
   `institucion_id_fk` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `giros`
+--
+
+INSERT INTO `giros` (`id`, `nombre`, `institucion_id_fk`) VALUES
+(1, 'loremm', 2),
+(2, 'vsdf', 1),
+(3, 'giro n 11', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -206,10 +215,10 @@ CREATE TABLE `impuestos` (
 
 CREATE TABLE `instituciones` (
   `id` smallint(6) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `estado` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hora_corte` time NOT NULL,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `imagen` blob,
   `fiestas` double NOT NULL,
@@ -218,6 +227,14 @@ CREATE TABLE `instituciones` (
   `inicio_exencion` date DEFAULT NULL,
   `final_exencion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='En esta tabla se almacenan toda la informacion general de la institucion o alcaldia ';
+
+--
+-- Volcado de datos para la tabla `instituciones`
+--
+
+INSERT INTO `instituciones` (`id`, `nombre`, `direccion`, `estado`, `hora_corte`, `telefono`, `imagen`, `fiestas`, `intereses`, `imagend`, `inicio_exencion`, `final_exencion`) VALUES
+(1, 'Alcaldia de San miguel', 'El Salvador, San miguel', '1', '11:00:00', '7321-5676', NULL, 1, 1, NULL, '2022-09-01', '2022-09-01'),
+(2, 'Alcaldia de Santa ana', 'El Salvador, Santa Ana', '1', '11:00:00', '7321-0011', NULL, 1, 1, NULL, '2022-09-01', '2022-09-01');
 
 -- --------------------------------------------------------
 
@@ -407,6 +424,29 @@ CREATE TABLE `pm_permiso` (
   `condicion` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla estan los permisos que los usuarios pueden obtener dentro del sistema web';
 
+--
+-- Volcado de datos para la tabla `pm_permiso`
+--
+
+INSERT INTO `pm_permiso` (`idpermiso`, `nombre`, `condicion`) VALUES
+(1, 'administrar sitio web', 1),
+(2, 'editar permisos', 1),
+(3, 'editar usuarios', 1),
+(4, 'vista puestos', 1),
+(5, 'vista permisos', 1),
+(6, 'vista usuarios', 1),
+(7, 'editar sector', 1),
+(8, 'vista sector', 1),
+(9, 'editar puestos', 1),
+(10, 'editar giros', 1),
+(11, 'vista giros', 1),
+(12, 'editar usuarios mobile', 1),
+(13, 'vista usuarios mobile', 1),
+(14, 'editar rutas', 1),
+(15, 'vista rutas', 1),
+(16, 'editar rutasPuestos', 1),
+(17, 'vista rutasPuestos', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -426,15 +466,17 @@ CREATE TABLE `pm_usuario` (
   `fecha_creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `unique_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `condicion` tinyint(1) DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id_institucion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla se almacenan los usuarios que tienen acceso al sistema';
 
 --
 -- Volcado de datos para la tabla `pm_usuario`
 --
 
-INSERT INTO `pm_usuario` (`idusuario`, `nombre`, `apellido`, `imagen`, `usuario`, `clave`, `email`, `telefono`, `direccion`, `fecha_creado`, `unique_id`, `condicion`, `status`) VALUES
-(1, 'luis', 'turcios', 'defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'l.turcios.08@gmail.com', 0, 'Dirección', '2022-09-05 22:36:36', '1383', 1, 'Desconectado');
+INSERT INTO `pm_usuario` (`idusuario`, `nombre`, `apellido`, `imagen`, `usuario`, `clave`, `email`, `telefono`, `direccion`, `fecha_creado`, `unique_id`, `condicion`, `status`, `id_institucion`) VALUES
+(1, 'luis', 'turcios', '1662672317_defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'I.turcios.08@gmail.com', 72134567, 'El salvador, San Miguel', '2022-09-05 22:36:36', '1383', 1, 'En linea', 0),
+(2, 'Jose', 'Ramirez', '1662501700_jr.png', 'barry', '5a9cea259640cac7ec4428c3d584606845c2cb0d6c353252c6487b2cc0be6653', 'joseramirez.root@gmail.com', 72178112, 'El salvador, La libertad, Santa Tecla', '2022-09-06 01:42:53', '1762', 1, 'Desconectado', 0);
 
 -- --------------------------------------------------------
 
@@ -447,6 +489,33 @@ CREATE TABLE `pm_usuario_permiso` (
   `idusuario` int(11) NOT NULL,
   `idpermiso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla se guardan los permisos de cada uno de los usuarios';
+
+--
+-- Volcado de datos para la tabla `pm_usuario_permiso`
+--
+
+INSERT INTO `pm_usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 1, 8),
+(9, 1, 9),
+(10, 1, 10),
+(11, 1, 11),
+(12, 1, 12),
+(13, 1, 13),
+(14, 1, 14),
+(15, 1, 15),
+(16, 1, 16),
+(17, 1, 17),
+(18, 2, 14),
+(19, 2, 15),
+(20, 2, 16),
+(21, 2, 17);
 
 -- --------------------------------------------------------
 
@@ -466,6 +535,13 @@ CREATE TABLE `puestos` (
   `sector_id_fk` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `puestos`
+--
+
+INSERT INTO `puestos` (`id`, `estado`, `medida_calificacion`, `medida_compensa`, `medida_fondo`, `medida_frente`, `modulo`, `institucion_id_fk`, `sector_id_fk`) VALUES
+(2, '1', 11, 11, 11, 11, '11', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -480,6 +556,15 @@ CREATE TABLE `rutas` (
   `usuario_email_fk` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `rutas`
+--
+
+INSERT INTO `rutas` (`id`, `descripcion`, `nombre`, `institucion_id_fk`, `usuario_email_fk`) VALUES
+(1, 'calle 1 poligono #23', 'ruta de carmen', 2, 'usuario1@corre.com'),
+(2, '5 avenida norte calle #5', 'rota de las flores', 1, 'usuario2@corre.com'),
+(3, 'avenida el espino calle #5', 'ruta calle 12', 1, 'usuario3@corre.com');
+
 -- --------------------------------------------------------
 
 --
@@ -487,9 +572,19 @@ CREATE TABLE `rutas` (
 --
 
 CREATE TABLE `rutas_puestos` (
+  `id` int(11) NOT NULL,
   `ruta_id` smallint(6) NOT NULL,
   `puestos_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `rutas_puestos`
+--
+
+INSERT INTO `rutas_puestos` (`id`, `ruta_id`, `puestos_id`) VALUES
+(1, 2, 2),
+(2, 3, 2),
+(3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -583,7 +678,22 @@ CREATE TABLE `sectores` (
   `id` smallint(6) NOT NULL,
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `institucion_id_fk` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Ya se creo el crud y la vista';
+
+--
+-- Volcado de datos para la tabla `sectores`
+--
+
+INSERT INTO `sectores` (`id`, `nombre`, `institucion_id_fk`) VALUES
+(1, 'Mercado el pinulito', 2),
+(2, 'mercado central', 1),
+(3, 'mercado el paso', 2),
+(4, 'mercado la tiendona', 1),
+(5, 'mercado el angel', 2),
+(6, 'mercado miguel', 2),
+(7, 'mercado la diosa', 2),
+(8, 'mercado bueno aires', 1),
+(9, 'mercado centro', 1);
 
 -- --------------------------------------------------------
 
@@ -637,6 +747,17 @@ CREATE TABLE `usuarios` (
   `device_prefix` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `alcance` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`email`, `nombre`, `password`, `institucion_id_fk`, `device_prefix`, `alcance`) VALUES
+('usuario1@corre.com', 'usuario1', 'usuario1', 1, '0', 0),
+('usuario2@corre.com', 'usuario2', 'usuario2', 1, '0', 0),
+('usuario3@corre.com', 'usuario3', 'usuario3', 1, '0', 0),
+('usuario4@corre.com', 'usuario4', 'usuario4', 1, '0', 0),
+('usuario5@corre.com', 'usuario5', 'usuario5', 1, '0', 0);
 
 --
 -- Índices para tablas volcadas
@@ -833,6 +954,7 @@ ALTER TABLE `rutas`
 -- Indices de la tabla `rutas_puestos`
 --
 ALTER TABLE `rutas_puestos`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `FKi9bo9wx2s85u6g7214b6t6wow` (`ruta_id`),
   ADD KEY `UK_2n6ke77owp7tfou9uaansnv9` (`puestos_id`) USING BTREE;
 
@@ -911,73 +1033,73 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `accesos`
 --
 ALTER TABLE `accesos`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=742;
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
 --
 ALTER TABLE `asignaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3554;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `contribuyentes`
 --
 ALTER TABLE `contribuyentes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3600;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `divertarifas`
 --
 ALTER TABLE `divertarifas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `diverubicaciones`
 --
 ALTER TABLE `diverubicaciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `financiamientos`
 --
 ALTER TABLE `financiamientos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `giros`
 --
 ALTER TABLE `giros`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `impuestos`
 --
 ALTER TABLE `impuestos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `instituciones`
 --
 ALTER TABLE `instituciones`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `justificaciones`
 --
 ALTER TABLE `justificaciones`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=312;
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `parktarifas`
 --
 ALTER TABLE `parktarifas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `parkubicaciones`
 --
 ALTER TABLE `parkubicaciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_admiweb`
@@ -995,67 +1117,73 @@ ALTER TABLE `pm_imgweb`
 -- AUTO_INCREMENT de la tabla `pm_permiso`
 --
 ALTER TABLE `pm_permiso`
-  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_usuario`
 --
 ALTER TABLE `pm_usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_usuario_permiso`
 --
 ALTER TABLE `pm_usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `puestos`
 --
 ALTER TABLE `puestos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4167;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `rutas`
 --
 ALTER TABLE `rutas`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `rutas_puestos`
+--
+ALTER TABLE `rutas_puestos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `saniresumen`
 --
 ALTER TABLE `saniresumen`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sanitarifas`
 --
 ALTER TABLE `sanitarifas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `saniubicaciones`
 --
 ALTER TABLE `saniubicaciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores`
 --
 ALTER TABLE `sectores`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
