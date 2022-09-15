@@ -33,7 +33,7 @@ if(($tipoDImagen != "jpg" && $tipoDImagen != "png" && $tipoDImagen != "jpeg" && 
 	$img_Aactualizar="";
 }
 #Consulta sql para guardar el nombre de la img
-$sqlimg = $conexionPdo->prepare("UPDATE rt_imgweb SET $img_Aactualizar WHERE nombre_campo='historia'");
+$sqlimg = $conexionPdo->prepare("UPDATE pm_imgweb SET $img_Aactualizar WHERE nombre_campo='historia'");
 #Query para insertar los valores llamo la conexion y luego la consulta sql
 $queryExecute = $sqlimg->execute();/*mysqli_query($con,$sql);*/
 }
