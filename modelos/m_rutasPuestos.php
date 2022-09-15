@@ -34,7 +34,7 @@ class RutasPuestos
    //inplementar un metodo para editar registros
 public function editar($id,$ruta_id,$puestos_id)
 	{
-         $sql = "UPDATE rutas_puestos SET $ruta_id='$ruta_id',puestos_id='$puestos_id'
+         $sql = "UPDATE rutas_puestos SET ruta_id='$ruta_id',puestos_id='$puestos_id'
          WHERE id='$id' ";
              return ejecutarConsulta($sql);
 
@@ -46,7 +46,7 @@ public function editar($id,$ruta_id,$puestos_id)
 //inplementar un metodo para eliminar rutas
 public function eliminar($id)
 {
-  $sql = "DELETE FROM rutas_puestos WHERE id='$ruta_id'";
+  $sql = "DELETE FROM rutas_puestos WHERE id='$id'";
     return ejecutarConsulta($sql);
 
 }
@@ -57,7 +57,7 @@ public function eliminar($id)
 //inplementar un metodo para mostrar  registros a modificar
 public function mostrar($id)
 {
-	$sql= "SELECT * FROM rutas_puestos ";
+	$sql= "SELECT * FROM rutas_puestos WHERE id='$id' ";
 	return ejecutarConsultaSimpleFila($sql);
 }
 

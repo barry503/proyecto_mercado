@@ -166,10 +166,9 @@ function mostrar(idpuesto)
        mostrarform(true);
 
 
+$("#idpuesto").val(data.id);
 $("#nombre").val(data.nombre);
-$("#idpuesto").val(data.idpuesto);
 
-$("#idpuesto").val(data.idpuesto);
 $("#medida_calificacion").val(data.medida_calificacion);
 $("#medida_compensa").val(data.medida_compensa);
 $("#medida_fondo").val(data.medida_fondo);

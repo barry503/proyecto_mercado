@@ -2247,8 +2247,8 @@ section {
 
 /*evento Hover para los enlaces del menu*/
 .navbar-sidebar2 .navbar__list li > a:hover {
-    color: #343a40;
-    background: #17a2b89c;
+    color: #fff; /*negro #343a40*/
+    background: #343a40; /*azul #17a2b89c*/
 }
 
 .navbar-sidebar2 .navbar__list li a {

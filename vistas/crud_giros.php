@@ -81,8 +81,8 @@ if(!isset($_SESSION["usuario"])){
         <!-- inicio panel-body o cuerpo de tabla -->
         <div class="panel-body table-responsive" id="listadoregistros">
               <!-- inicio tabla -->
-          <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
-              <thead >
+          <table id="tbllistado" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
+              <thead class="bg-dark">
                  <th>id</th>
                  <th>giros</th>
                  <th>Alcaldia</th>
@@ -125,14 +125,14 @@ if(!isset($_SESSION["usuario"])){
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label>Nombre del giros(*):</label>
                      <!-- para trabajar con el id -->
-                <input type="hidden" name="idgiros" id="idgiros">
+                <input type="hidden" class="form-control" name="idgiros" id="idgiros">
              
                 <input type="text" class="form-control" name="nombre" id="nombre"  placeholder="Escribe el nombre del giros " required>
              </div>
            <!-- </div> -->
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
               <label for="idinstitucion" >Institucion ala que pertenece</label>
-              <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" ></select>
+              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
            </div>
      </div>
 

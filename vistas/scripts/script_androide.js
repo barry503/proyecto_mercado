@@ -11,6 +11,7 @@
      mostrarform(false);
      mostrarformNew(false);
      listar();
+     $(".cam-po a").attr("href", "#");
 
      $("#formulario").on("submit",function(e)
      {
@@ -26,13 +27,13 @@
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
                 $("#idinstitucion").html(r);
-                $("#idinstitucion").selectpicker('refresh');
+                // $("#idinstitucion").selectpicker('refresh');
                 // r.preventDefault();
             });
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
                 $("#idinstitucion1").html(r);
-                $("#idinstitucion1").selectpicker('refresh');
+                // $("#idinstitucion1").selectpicker('refresh');
                 // r.preventDefault();
             });
 
@@ -48,7 +49,8 @@ function limpiar()
    $("#device_prefix").val("");
    $("#alcance").val("");
    $("#idinstitucion").val("");
-   $("#idinstitucion").selectpicker('refresh');
+   $("#idinstitucion1").val("");
+   // $("#idinstitucion").selectpicker('refresh');
    $(".cam-po a").attr("href", "#");
 
    
@@ -63,6 +65,7 @@ function mostrarform(condi)
   {
      $("#listadoregistros").hide();
      $("#formularioregistros").show();
+     $("#formularioregistrosNew").hide();
      $("#btnGuardar").prop("disabled",false);
      $("#btnagregar").hide();
   }
@@ -224,9 +227,9 @@ $("#device_prefix").val(data.device_prefix);
 $("#alcance").val(data.alcance);
 
 $("#idinstitucion").val(data.institucion_id_fk);
-$("#idinstitucion").selectpicker('refresh');
+// $("#idinstitucion").selectpicker('refresh');
 
-$(".cam-po a").attr("href", "#");
+// $(".cam-po a").attr("href", "#");
 
 
    })

@@ -58,7 +58,7 @@ public function eliminar($idgiros)
 //inplementar un metodo para mostrar  registros a modificar
 public function mostrar($idgiros)
 {
-	$sql= "SELECT * FROM giros ";
+	$sql= "SELECT * FROM giros WHERE id='$idgiros' ";
 	return ejecutarConsultaSimpleFila($sql);
 }
 

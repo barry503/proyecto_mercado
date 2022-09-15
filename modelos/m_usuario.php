@@ -17,11 +17,11 @@ public function __construct(){
 }
 
 #inplementar un metodo para insertar registros
-public function insertar($nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$unique_id,$permisos){
+public function insertar($nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$unique_id,$idinstitucion,$permisos){
 
     $status = 'Desconectado';
-         $sql = "INSERT INTO pm_usuario (nombre,apellido,imagen,usuario,clave,email,telefono,direccion,unique_id,status)
-         VALUES('$nombre','$apellido','$imagen','$usuario','$clave','$email','$telefono','$direccion','$unique_id','$status')";
+         $sql = "INSERT INTO pm_usuario (nombre,apellido,imagen,usuario,clave,email,telefono,direccion,unique_id,id_institucion,status)
+         VALUES('$nombre','$apellido','$imagen','$usuario','$clave','$email','$telefono','$direccion','$unique_id','$idinstitucion','$status')";
              #return ejecutarConsulta($sql);
               $idusuarionew=ejecutarConsulta_retornarID($sql);
 
@@ -42,9 +42,9 @@ public function insertar($nombre,$apellido,$imagen,$usuario,$clave,$email,$telef
 
 
 #inplementar un metodo para editar registros
-public function editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$permisos)
+public function editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$idinstitucion,$permisos)
 	{
-         $sql = "UPDATE pm_usuario SET nombre='$nombre', apellido='$apellido', imagen='$imagen', usuario='$usuario', clave='$clave', email='$email', telefono='$telefono', direccion='$direccion' 
+         $sql = "UPDATE pm_usuario SET nombre='$nombre', apellido='$apellido', imagen='$imagen', usuario='$usuario', clave='$clave', email='$email', telefono='$telefono', direccion='$direccion', id_institucion='$idinstitucion' 
          WHERE idusuario='$idusuario' ";
               ejecutarConsulta($sql);
 
@@ -86,7 +86,25 @@ public function mostrar($idusuario){
 
 #inplementar un metodo para listar  registros 
 public function listar(){
-	$sql="SELECT * FROM pm_usuario";
+	$sql="SELECT
+    /*campos de tabla usuarios*/
+    u.idusuario,
+    u.nombre,
+    u.apellido,
+    u.imagen,
+    u.usuario,
+    u.email,
+    u.telefono,
+    u.direccion,
+    u.unique_id,
+    u.id_institucion,
+    u.status,
+    u.condicion,
+    i.nombre AS nombre_institucion
+FROM
+    pm_usuario u
+INNER JOIN instituciones i ON
+    i.id = u.id_institucion";
 	return ejecutarConsulta($sql);
 }
 

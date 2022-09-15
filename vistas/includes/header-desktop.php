@@ -1,4 +1,4 @@
-<header class="header-desktop">
+<header class="header-desktop bg-dark">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
@@ -101,7 +101,7 @@
                                             <img class="IMAGEN_ACTUALIZADA" src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" alt="U" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['usuario']; ?></a>
+                                            <a class="js-acc-btn text-white" href="#"><?php echo $_SESSION['usuario']; ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">

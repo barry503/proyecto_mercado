@@ -76,7 +76,7 @@ if(!isset($_SESSION["usuario"])){
         <!-- inicio panel-body o cuerpo de tabla -->
         <div class="panel-body table-responsive" id="listadoregistros">
               <!-- inicio tabla -->
-          <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
+          <table id="tbllistado" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
               <thead >
                 <th>idpuesto</th>
                 <th>modulo</th>
@@ -117,21 +117,13 @@ if(!isset($_SESSION["usuario"])){
             <!--inicio del formulario de registrar y editar -->
             <form name="formulario" id="formulario" method="POST">
     
-              
-              
-              
-              
-              
-              
-              
-                              
-
+          
      <div class="row mb-2">
             <!-- <div class="col-md-6 text-muted"> -->
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label>modulo(*):</label>
                      <!-- para trabajar con el id -->
-                <input type="hidden" name="idpuesto" id="idpuesto">
+                <input type="hidden" class="form-control " name="idpuesto" id="idpuesto" >
              
                 <input type="text" class="form-control" name="modulo" id="modulo"  placeholder="Escribe el modulo del Puesto " required>
              </div>

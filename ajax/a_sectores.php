@@ -99,16 +99,16 @@ case 'eliminar':
        echo json_encode($results);
     break;
 
-  case "selectInstituciones":
+    case "selectInstituciones":
 
-    $respuesta = $obj_secto->selectInstituciones();
-   while($reg = $respuesta->fetch_object()){
+      $respuesta = $obj_secto->selectInstituciones();
+     while($reg = $respuesta->fetch_object()){
 
-    echo '<option value="'.$reg->id.'">'.$reg->nombre.'</option>';
+      echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';
 
-   }
+     }
 
-    break;
+      break;
 
 
 

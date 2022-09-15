@@ -12,6 +12,7 @@ Primary use:  Open Source                                       *
  function inicial(){
      mostrarform(false);
      listar();
+   $(".cam-por a").attr("href", "#");
 
      $("#formulario").on("submit",function(e)
      {
@@ -21,7 +22,7 @@ Primary use:  Open Source                                       *
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
                 $("#idinstitucion").html(r);
-                $("#idinstitucion").selectpicker('refresh');
+                // $("#idinstitucion").selectpicker('refresh');
                 // r.preventDefault();
             });
 
@@ -32,10 +33,9 @@ function limpiar()
 {
    $("#idsector").val("");
    $("#nombre").val("");
-   // $("#idinstitucion").val("");
+   $("#idinstitucion").val("");
    // $("#idinstitucion").selectpicker('refresh');
-   // $(".cam-po a").attr("href", "#");
-
+   $(".cam-por a").attr("href", "#");
    
 
 }
@@ -144,7 +144,7 @@ function guardaryeditar(e)
 
 
 
-// funcion para mostrar ñlas materias
+// funcion para mostrar ñlas 
 function mostrar(idsector)
 {
    $.post("../ajax/a_sectores.php?op=mostrar",{idsector : idsector}, function(data, status)
@@ -156,10 +156,10 @@ function mostrar(idsector)
 $("#nombre").val(data.nombre);
 $("#idsector").val(data.id);
 
-$("#idinstitucion").val(data.institucion_idsector_fk);
-$("#idinstitucion").selectpicker('refresh');
+$("#idinstitucion").val(data.institucion_id_fk);
+// $("#idinstitucion").selectpicker('refresh');
 
-$(".cam-po a").attr("href", "#");
+// $(".cam-por a").attr("href", "#");
 
 
    })

@@ -22,14 +22,14 @@ Primary use:  Open Source                                       *
      $.post("../ajax/a_rutasPuestos.php?op=selectRuta", function(r){
 
                 $("#ruta_id").html(r);
-                $("#ruta_id").selectpicker('refresh');
+                // $("#ruta_id").selectpicker('refresh');
                 // r.preventDefault();
             });
 
      $.post("../ajax/a_rutasPuestos.php?op=selectPuesto", function(r){
 
                 $("#puestos_id").html(r);
-                $("#puestos_id").selectpicker('refresh');
+                // $("#puestos_id").selectpicker('refresh');
                 // r.preventDefault();
             });
 
@@ -44,11 +44,11 @@ function limpiar()
 
    $("#id").val("");
    $("#ruta_id").val("");
-   $("#ruta_id").selectpicker('refresh');
+   // $("#ruta_id").selectpicker('refresh');
    $("#puestos_id").val("");
-   $("#puestos_id").selectpicker('refresh');
+   // $("#puestos_id").selectpicker('refresh');
    
-   $(".cam-po a").attr("href", "#");
+   // $(".cam-po a").attr("href", "#");
 
 }
 
@@ -168,11 +168,11 @@ function mostrar(id)
 
 $("#id").val(data.id);
 $("#ruta_id").val(data.ruta_id);
-$("#ruta_id").selectpicker('refresh');
+// $("#ruta_id").selectpicker('refresh');
 $("#puestos_id").val(data.puestos_id);
-$("#puestos_id").selectpicker('refresh');
+// $("#puestos_id").selectpicker('refresh');
 
-$(".cam-po a").attr("href", "#");
+// $(".cam-po a").attr("href", "#");
 
 
    })

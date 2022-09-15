@@ -22,6 +22,12 @@ Primary use:  Open Source                                       *
        
      })
 
+     $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
+
+                $("#idinstitucion").html(r);
+                // $("#idinstitucion").selectpicker('refresh');
+                // r.preventDefault();
+            });
 
     $("#imagenmuestra").hide();   
 
@@ -54,7 +60,7 @@ function limpiar()
    // vaciando imagen
    $("#imagenactual").val("");
    $("#idusuario").val(""); 
-
+   $("#idinstitucion").val(""); 
 
 
 }
@@ -179,6 +185,8 @@ function mostrar(idusuario)
              $("#imagenmuestra").attr("src","../files/usuarios/"+data.imagen);
              $("#imagenactual").val(data.imagen);
             $("#idusuario").val(data.idusuario);
+
+            $("#idinstitucion").val(data.id_institucion);
            
 
    });

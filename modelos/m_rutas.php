@@ -58,7 +58,7 @@ public function eliminar($idrutas)
 //inplementar un metodo para mostrar  registros a modificar
 public function mostrar($idrutas)
 {
-	$sql= "SELECT * FROM rutas ";
+	$sql= "SELECT * FROM rutas WHERE id='$idrutas' ";
 	return ejecutarConsultaSimpleFila($sql);
 }
 

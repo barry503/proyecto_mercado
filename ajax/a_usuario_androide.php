@@ -24,7 +24,7 @@ switch($_GET["op"]){
   if(filter_var($email, FILTER_VALIDATE_EMAIL)){
     #true
     $cuenta_password = strlen($password);
-    if ($cuenta_password < 6 ) {
+    if ($cuenta_password >= 6) {
       #true
        if(empty($email)){
 
@@ -51,7 +51,7 @@ switch($_GET["op"]){
   if(filter_var($email, FILTER_VALIDATE_EMAIL)){
     #true
     $cuenta_password = strlen($password);
-    if ($cuenta_password >= 6 ) {
+    if ($cuenta_password >= 6) {
       #true
                $respuesta=$objUserAndroid->nuevo($email,$nombre,$password,$idinstitucion,$device_prefix,$alcance);
              echo $respuesta ? "Usuarios new registrado" : "El Usuarios A no se pudo registrar";

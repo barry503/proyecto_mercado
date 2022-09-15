@@ -81,7 +81,7 @@ if(!isset($_SESSION["usuario"])){
         <!-- inicio panel-body o cuerpo de tabla -->
         <div class="panel-body table-responsive" id="listadoregistros">
               <!-- inicio tabla -->
-          <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
+          <table id="tbllistado" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
               <thead >
                  <th>email</th>
                  <th>nombre</th>
@@ -154,7 +154,7 @@ if(!isset($_SESSION["usuario"])){
               <!-- </div> -->
                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
                  <label for="idinstitucion" >Institucion ala que pertenece</label>
-                 <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" ></select>
+                 <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
               </div>
         </div>
 
@@ -222,7 +222,7 @@ if(!isset($_SESSION["usuario"])){
       <!-- </div> -->
        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
          <label for="idinstitucion" >Institucion ala que pertenece</label>
-         <select name="idinstitucion" id="idinstitucion1"  class="form-control selectpicker" data-live-search="true" ></select>
+         <select name="idinstitucion" id="idinstitucion1"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
       </div>
 </div>
 

@@ -12,6 +12,7 @@ Primary use:  Open Source                                       *
  function inicial(){
      mostrarform(false);
      listar();
+     $(".cam-po a").attr("href", "#");
 
      $("#formulario").on("submit",function(e)
      {
@@ -21,7 +22,7 @@ Primary use:  Open Source                                       *
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
                 $("#idinstitucion").html(r);
-                $("#idinstitucion").selectpicker('refresh');
+                // $("#idinstitucion").selectpicker('refresh');
                 // r.preventDefault();
             });
 
@@ -33,7 +34,7 @@ function limpiar()
    $("#idgiros").val("");
    $("#nombre").val("");
    $("#idinstitucion").val("");
-   $("#idinstitucion").selectpicker('refresh');
+   // $("#idinstitucion").selectpicker('refresh');
    $(".cam-po a").attr("href", "#");
 
    
@@ -153,13 +154,12 @@ function mostrar(idgiros)
        mostrarform(true);
 
 
-$("#nombre").val(data.nombre);
 $("#idgiros").val(data.id);
+$("#nombre").val(data.nombre);
 
 $("#idinstitucion").val(data.institucion_id_fk);
-$("#idinstitucion").selectpicker('refresh');
+// $("#idinstitucion").selectpicker('refresh');
 
-$(".cam-po a").attr("href", "#");
 
 
    })

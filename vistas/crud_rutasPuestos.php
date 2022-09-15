@@ -81,7 +81,7 @@ if(!isset($_SESSION["usuario"])){
         <!-- inicio panel-body o cuerpo de tabla -->
         <div class="panel-body table-responsive" id="listadoregistros">
               <!-- inicio tabla -->
-          <table id="tbllistado" class=" table table-striped table-bordered  table-condensed table-hover" >
+          <table id="tbllistado" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
               <thead >
                  <th>id</th>
                  <th>Ruta</th>
@@ -124,12 +124,12 @@ if(!isset($_SESSION["usuario"])){
                      <!-- para trabajar con el id -->
                 <input type="hidden" name="id" id="id">
              
-                <select name="ruta_id" id="ruta_id"  class="form-control selectpicker" data-live-search="true" ></select>
+                <select name="ruta_id" id="ruta_id"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
              </div>
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
               <label for="puestos_id" >Elige el puesto</label>
-              <select name="puestos_id" id="puestos_id"  class="form-control selectpicker" data-live-search="true" ></select>
+              <select name="puestos_id" id="puestos_id"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
            </div>
      </div>
 

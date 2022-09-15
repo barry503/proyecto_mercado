@@ -58,7 +58,7 @@ public function eliminar($email)
 //inplementar un metodo para mostrar  registros a modificar
 public function mostrar($email)
 {
-	$sql= "SELECT * FROM usuarios ";
+	$sql= "SELECT * FROM usuarios WHERE  email='$email' ";
 	return ejecutarConsultaSimpleFila($sql);
 }
 

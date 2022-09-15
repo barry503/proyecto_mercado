@@ -80,7 +80,7 @@ if(!isset($_SESSION["usuario"])){
            <div class="col-md-12">
             
                  <!-- inicio tabla -->
-             <table id="tbllistadoPuestos" class=" table table-striped table-bordered  table-condensed table-hover" >
+             <table id="tbllistadoPuestos" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
                  <thead >
                    <th>idpuesto</th>
                    <th>modulo</th>
@@ -114,7 +114,7 @@ if(!isset($_SESSION["usuario"])){
            <div class="col-md-12">
 
                  <!-- inicio tabla -->
-             <!-- <table id="tbllistadoSectores" class=" table table-striped table-bordered  table-condensed table-hover" >
+             <!-- <table id="tbllistadoSectores" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
                  <thead >
                    <th>id</th>
                    <th>nombre sector</th>

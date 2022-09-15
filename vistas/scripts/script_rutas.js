@@ -21,14 +21,14 @@ Primary use:  Open Source                                       *
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
                 $("#idinstitucion").html(r);
-                $("#idinstitucion").selectpicker('refresh');
+                // $("#idinstitucion").selectpicker('refresh');
                 // r.preventDefault();
             });
 
      $.post("../ajax/a_rutas.php?op=selectAndroid", function(r){
 
                 $("#correo_usuario").html(r);
-                $("#correo_usuario").selectpicker('refresh');
+                // $("#correo_usuario").selectpicker('refresh');
                 // r.preventDefault();
             });
 
@@ -45,9 +45,9 @@ function limpiar()
    $("#descripcion").val("");
    $("#nombre").val("");
    $("#idinstitucion").val("");
-   $("#idinstitucion").selectpicker('refresh');
+   // $("#idinstitucion").selectpicker('refresh');
    $("#correo_usuario").val("");
-   $("#correo_usuario").selectpicker('refresh');
+   // $("#correo_usuario").selectpicker('refresh');
    
    $(".cam-po a").attr("href", "#");
 
@@ -170,11 +170,11 @@ $("#idrutas").val(data.id);
 $("#descripcion").val(data.descripcion);
 $("#nombre").val(data.nombre);
 $("#idinstitucion").val(data.institucion_id_fk);
-$("#idinstitucion").selectpicker('refresh');
+// $("#idinstitucion").selectpicker('refresh');
 $("#correo_usuario").val(data.usuario_email_fk);
-$("#correo_usuario").selectpicker('refresh');
+// $("#correo_usuario").selectpicker('refresh');
 
-$(".cam-po a").attr("href", "#");
+// $(".cam-po a").attr("href", "#");
 
 
    })

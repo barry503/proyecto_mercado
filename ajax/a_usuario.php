@@ -29,6 +29,9 @@ require_once "../modelos/m_usuario.php";
 
  $direccion=isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
 
+ $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
+
+
 #inicio sentencia switch en la cual se realizan op eraciones
 switch($_GET["op"]){
    case 'guardaryeditar':
@@ -59,11 +62,11 @@ switch($_GET["op"]){
         
         $random_int = random_int(1, 3000); $segundoRun = date('s');/*Un numero aleatorio se suma a un segundo*/
         $unique_id = $random_int+$segundoRun;
-             $rspta=$usuarioPM->insertar($nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$unique_id,$_POST['permiso']);
+             $rspta=$usuarioPM->insertar($nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$unique_id,$idinstitucion,$_POST['permiso']);
              echo $rspta ? "Usuario registrado" : " No se  registraron todos los datos del usuario";
        }
          else {
-               $rspta=$usuarioPM->editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$_POST["permiso"]);
+               $rspta=$usuarioPM->editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$idinstitucion,$_POST["permiso"]);
                                
                 require ("../config/pdo.php");
          $Consqledit = $conexionPdo->query("SELECT idusuario,imagen,CONCAT(nombre,' , ',apellido) as NombreCopleto
@@ -105,13 +108,14 @@ switch($_GET["op"]){
                "1" =>$reg->usuario,
                "2" =>$reg->nombre,
                "3" =>$reg->apellido,
-               "4" =>($reg->status=='Desconectado')?'<span class="badge label badge-danger">Desconectado<span>': '<span class="badge label badge-success">En linea<span>',
-               "5" =>$reg->telefono,
-               "6" =>$reg->email,
-               "7" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
-               "8" =>$reg->direccion,
-               "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label badge-success">Activo<span>': '<span title="No podra logearse al sistema" class="badge label badge-danger">Desabilitado<span>',
-               "10" =>($reg->condicion)?'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>'.'<button class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>' : '<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>'.'<button class="btn btn-sm m-1  btn-success " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'
+               "4" =>$reg->nombre_institucion,
+               "5" =>($reg->status=='Desconectado')?'<span class="badge label badge-danger">Desconectado<span>': '<span class="badge label badge-success">En linea<span>',
+               "6" =>$reg->telefono,
+               "7" =>$reg->email,
+               "8" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
+               "9" =>$reg->direccion,
+               "10" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label badge-success">Activo<span>': '<span title="No podra logearse al sistema" class="badge label badge-danger">Desabilitado<span>',
+               "11" =>($reg->condicion)?'<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fas fa-pencil-alt"></i></button>'.'<button class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idusuario.')"><i class="fas fa-times"></i></button><br>' : '<button class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-edit"></i></button>'.'<button class="btn btn-sm m-1  btn-success " onclick="activar('.$reg->idusuario.')"><i class="fas fa-check"></i></button><br>'
               );
 
        }
@@ -132,17 +136,18 @@ switch($_GET["op"]){
 
          while($reg=$rspta->fetch_object()){
              $data[]=array(
-                 "0" =>$reg->idusuario,
-                 "1" =>$reg->usuario,
-                 "2" =>$reg->nombre,
-                 "3" =>$reg->apellido,
-                 "4" =>($reg->status=='Desconectado')?'<span class="badge  badge-danger">Desconectado<span>': '<span class="badge  badge-success">En linea<span>',
-                 "5" =>$reg->telefono,
-                 "6" =>$reg->email,
-                 "7" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
-                 "8" =>$reg->direccion,
-                 "9" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge  badge-success">Activo<span>': '<span title="No podra logearse al sistema" class="badge  badge-danger">Desabilitado<span>',
-                 "10" =>'disabled'
+                "0" =>$reg->idusuario,
+                "1" =>$reg->usuario,
+                "2" =>$reg->nombre,
+                "3" =>$reg->apellido,
+                "4" =>$reg->nombre_institucion,
+                "5" =>($reg->status=='Desconectado')?'<span class="badge label badge-danger">Desconectado<span>': '<span class="badge label badge-success">En linea<span>',
+                "6" =>$reg->telefono,
+                "7" =>$reg->email,
+                "8" =>"<img src='../files/usuarios/".$reg->imagen."' height='110px' width='110px'>",
+                "9" =>$reg->direccion,
+                "10" =>($reg->condicion)?'<span title="si podra logearse al sistema" class="badge label badge-success">Activo<span>': '<span title="No podra logearse al sistema" class="badge label badge-danger">Desabilitado<span>',
+                 "11" =>'disabled'
                 );
 
          }

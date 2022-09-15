@@ -1,7 +1,7 @@
 <?php 
 /***********************************
 *version: 1                        *
-*fecha: 07-09-2022                 *
+*fecha: 15-09-2022                 *
 *Dev: https://github.com/barry503  *
 **********************************/
 require_once "../modelos/m_puesto.php";
@@ -9,11 +9,12 @@ require_once "../modelos/m_puesto.php";
 // se crea la istancia $puestoS
 $puestoS=new Puesto();
 
-// identificador de la institucion
+// identificador del puesto
+$idpuesto=isset($_POST['idpuesto'])? limpiarCadena($_POST['idpuesto']):"";
+
 $idsector=isset($_POST["idsector"])? limpiarCadena($_POST["idsector"]):"";
 $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
 // variables para puestos
-$idpuesto=isset($_POST['idpuesto'])? limpiarCadena($_POST['idpuesto']):"";
 $medida_calificacion=isset($_POST['medida_calificacion'])? limpiarCadena($_POST['medida_calificacion']):"";
 $medida_compensa=isset($_POST['medida_compensa'])? limpiarCadena($_POST['medida_compensa']):"";
 $medida_fondo=isset($_POST['medida_fondo'])? limpiarCadena($_POST['medida_fondo']):"";
@@ -31,6 +32,7 @@ switch($_GET["op"]){
           if(empty($idpuesto)){
                 $respuesta=$puestoS->insertar($medida_calificacion,$medida_compensa,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector);
                      echo $respuesta ? "puesto registrado" : "El puesto no se pudo registrar";
+            /*echo $idpuesto.' ........ '. $modulo;*/
           }
             else {
               
