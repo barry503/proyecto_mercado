@@ -94,7 +94,7 @@
 
 <li class=" has-sub">
     <a class="js-arrow" href="#">
-        <i class="fas  fa-refresh"></i>Procesos
+        <!-- <i class="fas  fa-refresh"></i> --><i class="fas  fa-eye"></i>Vistas
         <span class="arrow">
             <i class="fas fa-angle-down"></i>
         </span>
@@ -153,7 +153,7 @@
             <?php $menu_permiso = menu_fun(17); ?>
             <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
                 <a href="view_rutasPuestos.php">
-                <i class="fas fa  fa-road"></i><i class="fas fa-puzzle-piece"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                <i class="fas fa  fa-th"></i><!-- <i class="fas fa-puzzle-piece"></i> --><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
 
