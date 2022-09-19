@@ -12,10 +12,11 @@
         </li>
     </ul>
 </li>
-
+<?php if ($_SESSION['idroles']==1): ?>
+    
 <li class=" has-sub">
     <a class="js-arrow" href="#">
-        <i class="fas  fa-code"></i>Administracion
+        <i class="fas  fa-code"></i><?php echo fun_rol(1); ?>
         <span class="arrow">
             <i class="fas fa-angle-down"></i>
         </span>
@@ -39,7 +40,7 @@
             <?php endif; ?>
             <?php $menu_permiso = menu_fun(2); ?>
             <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
-                <a href="crud_permiso.php">
+                <a href="crud_roles.php">
                 <i class="far fa-check-square"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
@@ -90,7 +91,37 @@
         </li>
     </ul>
 </li>
+<?php endif ?>
 
+
+<?php if ($_SESSION['idroles']==2): ?>
+    
+<li class=" has-sub">
+    <a class="js-arrow" href="#">
+        <i class="fas  fa fa-keyboard-o"></i><?php echo fun_rol(2); ?>
+        <span class="arrow">
+            <i class="fas fa-angle-down"></i>
+        </span>
+    </a>
+
+    <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: none;">
+        <li>
+            <a href="#">
+            <i class="fa fa-circle"></i>Enlace prueba
+            </a>
+        </li>
+    </ul>
+</li>
+
+<?php endif ?>
+
+
+
+
+
+
+
+<!-- vistas----------------------------------------------------------------------------------------------------------- -->
 
 <li class=" has-sub">
     <a class="js-arrow" href="#">
@@ -160,3 +191,4 @@
         </li>
     </ul>
 </li>
+<!-- vistas----------------------------------------------------------------------------------------------------------- -->

@@ -32,10 +32,17 @@ Primary use:  Open Source                                       *
     $("#imagenmuestra").hide();   
 
 //mostramos los permisos
-$.post("../ajax/a_usuario.php?op=permisos&id=",function(r){
+/*$.post("../ajax/a_usuario.php?op=permisos&id=",function(r){
          $("#permisos").html(r);
-});  
+});*/  
 
+
+     $.post("../ajax/a_usuario.php?op=selectRoles", function(r){
+
+                $("#idroles").html(r);
+                // $("#idinstitucion").selectpicker('refresh');
+                // r.preventDefault();
+            });
 
  }
 
@@ -61,6 +68,9 @@ function limpiar()
    $("#imagenactual").val("");
    $("#idusuario").val(""); 
    $("#idinstitucion").val(""); 
+
+   $("#idroles").val(""); 
+
 
 
 }
@@ -187,12 +197,14 @@ function mostrar(idusuario)
             $("#idusuario").val(data.idusuario);
 
             $("#idinstitucion").val(data.id_institucion);
+            $("#idroles").val(data.idroles);
+            
            
 
    });
-   $.post("../ajax/a_usuario.php?op=permisos&id="+idusuario,function(r){
+   /*$.post("../ajax/a_usuario.php?op=permisos&id="+idusuario,function(r){
          $("#permisos").html(r);
-}); 
+});*/ 
 
 } 
 

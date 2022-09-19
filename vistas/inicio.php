@@ -11,7 +11,7 @@ if(!isset($_SESSION["usuario"])){
 
  ?>
 <?php include '../config/fun_section.php'; ?>
-<?php $nom_section= nom_section("Crud Informacion del Sitio web"); ?>
+<?php $nom_section= nom_section("Inicio "); ?>
 <?php require'includes/header.php'; ?>
 
 

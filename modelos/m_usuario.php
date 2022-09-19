@@ -17,13 +17,13 @@ public function __construct(){
 }
 
 #inplementar un metodo para insertar registros
-public function insertar($nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$unique_id,$idinstitucion,$permisos){
+public function insertar($nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$idroles,$idinstitucion){
 
     $status = 'Desconectado';
-         $sql = "INSERT INTO pm_usuario (nombre,apellido,imagen,usuario,clave,email,telefono,direccion,unique_id,id_institucion,status)
-         VALUES('$nombre','$apellido','$imagen','$usuario','$clave','$email','$telefono','$direccion','$unique_id','$idinstitucion','$status')";
-             #return ejecutarConsulta($sql);
-              $idusuarionew=ejecutarConsulta_retornarID($sql);
+         $sql = "INSERT INTO pm_usuario (nombre,apellido,imagen,usuario,clave,email,telefono,direccion,idroles,id_institucion,status)
+         VALUES('$nombre','$apellido','$imagen','$usuario','$clave','$email','$telefono','$direccion','$idroles','$idinstitucion','$status')";
+             return ejecutarConsulta($sql);
+ /*             $idusuarionew=ejecutarConsulta_retornarID($sql);
 
 
 
@@ -37,17 +37,17 @@ public function insertar($nombre,$apellido,$imagen,$usuario,$clave,$email,$telef
 
               	  $num_elementos=$num_elementos + 1;
               }
-              return $sw;
+              return $sw;*/
 }
 
 
 #inplementar un metodo para editar registros
-public function editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$idinstitucion,$permisos)
+public function editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clave,$email,$telefono,$direccion,$idroles,$idinstitucion)
 	{
-         $sql = "UPDATE pm_usuario SET nombre='$nombre', apellido='$apellido', imagen='$imagen', usuario='$usuario', clave='$clave', email='$email', telefono='$telefono', direccion='$direccion', id_institucion='$idinstitucion' 
+         $sql = "UPDATE pm_usuario SET nombre='$nombre', apellido='$apellido', imagen='$imagen', usuario='$usuario', clave='$clave', email='$email', telefono='$telefono', direccion='$direccion', idroles='$idroles', id_institucion='$idinstitucion' 
          WHERE idusuario='$idusuario' ";
-              ejecutarConsulta($sql);
-
+              return ejecutarConsulta($sql);
+/*
               # Eliminamos todos los permisos asignados para volverlos a registrar
               $sqldelete="DELETE FROM pm_usuario_permiso WHERE idusuario=$idusuario";
               ejecutarConsulta($sqldelete);
@@ -57,13 +57,14 @@ public function editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clave,$ema
              #ciclo si los num_elementos es menor a la cuenta de permisos
              while ($num_elementos < count($permisos)){
               $sql_savePermisos = "INSERT INTO pm_usuario_permiso(idusuario,idpermiso)
-              /*-----------------*/VALUES('$idusuario', '$permisos[$num_elementos]')";
+              VALUES('$idusuario', '$permisos[$num_elementos]')";
               #ejecutamos la consulta o devolvemos falso
               ejecutarConsulta($sql_savePermisos) or $sw=false;
                   $num_elementos=$num_elementos + 1;
               }              
     
               return $sw;
+              */
 }
 
 #inplementar un metodo para desactivar usuarios
@@ -96,23 +97,20 @@ public function listar(){
     u.email,
     u.telefono,
     u.direccion,
-    u.unique_id,
+    u.idroles,
     u.id_institucion,
     u.status,
     u.condicion,
-    i.nombre AS nombre_institucion
+    i.nombre AS nombre_institucion,
+    r.nombre AS idroles_name
 FROM
     pm_usuario u
-INNER JOIN instituciones i ON
-    i.id = u.id_institucion";
+INNER JOIN pm_roles r INNER JOIN instituciones i ON
+    i.id = u.id_institucion AND r.idroles=u.idroles";
 	return ejecutarConsulta($sql);
 }
 
-#inplementar un metodo  para listar  los permisos marcados
-public function listarmarcados($idusuario){
-  $sql="SELECT * FROM pm_usuario_permiso WHERE idusuario='$idusuario'";
-  return ejecutarConsulta($sql);
-}
+
 
 #Funcion para verificar el acceso al sistema
 public function verificar($usuario,$clave){
@@ -137,10 +135,25 @@ public function salir($Usalir){
 }
 
 #inplementar un metodo para listar  registros 
-public function listarpermiso(){
+/*public function listarpermiso(){
   $sql="SELECT * FROM pm_permiso";
   return ejecutarConsulta($sql);
+}*/
+
+#inplementar un metodo  para listar  los permisos marcados
+public function selectRoles(){
+  $sql="SELECT * FROM pm_roles";
+  return ejecutarConsulta($sql);
 }
+
+
+#inplementar un metodo  para listar  los permisos marcados
+public function listarmarcados($idroles){
+  $sql="SELECT * FROM pm_roles_permiso WHERE idroles='$idroles'";
+  return ejecutarConsulta($sql);
+}
+
+
 
 }#final de la clase
 

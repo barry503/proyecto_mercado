@@ -31,6 +31,8 @@ require_once "../modelos/m_usuario.php";
 
  $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
 
+ $idroles=isset($_POST["idroles"])? limpiarCadena($_POST["idroles"]):"";
+
 
 #inicio sentencia switch en la cual se realizan op eraciones
 switch($_GET["op"]){
@@ -60,54 +62,72 @@ switch($_GET["op"]){
 
        if(empty($idusuario)){
         
-        $random_int = random_int(1, 3000); $segundoRun = date('s');/*Un numero aleatorio se suma a un segundo*/
-        $unique_id = $random_int+$segundoRun;
-             $rspta=$usuarioPM->insertar($nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$unique_id,$idinstitucion,$_POST['permiso']);
-             echo $rspta ? "Usuario registrado" : " No se  registraron todos los datos del usuario";
+        #$random_int = random_int(1, 3000); $segundoRun = date('s');/*Un numero aleatorio se suma a un segundo*/
+        #$unique_id = $random_int+$segundoRun;
+             $respuesta=$usuarioPM->insertar($nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$idroles,$idinstitucion);
+             echo $respuesta ? "Usuario registrado" : " No se  registraron todos los datos del usuario";
        }
          else {
-               $rspta=$usuarioPM->editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$idinstitucion,$_POST["permiso"]);
+               $respuesta=$usuarioPM->editar($idusuario,$nombre,$apellido,$imagen,$usuario,$clavehash,$email,$telefono,$direccion,$idroles,$idinstitucion);
                                
                 require ("../config/pdo.php");
          $Consqledit = $conexionPdo->query("SELECT idusuario,imagen,CONCAT(nombre,' , ',apellido) as NombreCopleto
           FROM pm_usuario WHERE   idusuario='$idusuario'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
 
          foreach ($Consqledit  as $q){$infoA = $q->NombreCopleto; $poto = $q->imagen;  }#ciclo de $Consql
-             echo $rspta ? "<p class='text-center'><i style='font-size: 50px;' class='fa  fa-refresh text-success'></i><br>Usuario actualizado <br><img style='height: 200px;' src='../files/usuarios/".$poto."' ><br>id:".$idusuario."<br>Nombre del usuario/a:<br>".$infoA  : "Usuario no se pudo actualizar";
+             echo $respuesta ? "<p class='text-center'><i style='font-size: 50px;' class='fa  fa-refresh text-success'></i><br>Usuario actualizado <br><img style='height: 200px;' src='../files/usuarios/".$poto."' ><br>id:".$idusuario."<br>Nombre del usuario/a:<br>".$infoA  : "Usuario no se pudo actualizar";
 
          }
+         
   break;
 
   case 'desactivar':
-           $rspta=$usuarioPM->desactivar($idusuario);
-             echo $rspta ? "Usuario Desactivado" : "Usuario no se pudo desactivar";
+           $respuesta=$usuarioPM->desactivar($idusuario);
+             echo $respuesta ? "Usuario Desactivado" : "Usuario no se pudo desactivar";
 
   break;
 
   case 'activar':
 
-       $rspta=$usuarioPM->activar($idusuario);
-             echo $rspta ? "Usuario activado" : "Usuario no se pudo activar";
+       $respuesta=$usuarioPM->activar($idusuario);
+             echo $respuesta ? "Usuario activado" : "Usuario no se pudo activar";
 
   break;
 
   case'mostrar':
-              $rspta=$usuarioPM->mostrar($idusuario);
+              $respuesta=$usuarioPM->mostrar($idusuario);
               //codificar el resultado json
-             echo json_encode($rspta); 
+             echo json_encode($respuesta); 
   break;
 
+
+
+
+
+    case "selectRoles":
+
+      $respuesta = $usuarioPM->selectRoles();
+     while($reg = $respuesta->fetch_object()){
+
+      echo '<option value="' . $reg->idroles .'">'. $reg->nombre.'</option>';
+
+     }
+
+      break;
+
+
+
   case'listar':
-       $rspta=$usuarioPM->listar();
+       $respuesta=$usuarioPM->listar();
        // vamos a declarar un array o arreglo
        $data= Array();  
 
-       while($reg=$rspta->fetch_object()){
+       while($reg=$respuesta->fetch_object()){
            $data[]=array(
                "0" =>$reg->idusuario,
                "1" =>$reg->usuario,
-               "2" =>$reg->nombre,
-               "3" =>$reg->apellido,
+               "2" =>$reg->idroles_name,
+               "3" =>$reg->nombre.','.$reg->apellido,
                "4" =>$reg->nombre_institucion,
                "5" =>($reg->status=='Desconectado')?'<span class="badge label badge-danger">Desconectado<span>': '<span class="badge label badge-success">En linea<span>',
                "6" =>$reg->telefono,
@@ -130,16 +150,16 @@ switch($_GET["op"]){
     break;
 
     case'listarVista':
-         $rspta=$usuarioPM->listar();
+         $respuesta=$usuarioPM->listar();
          // vamos a declarar un array o arreglo
          $data= Array();  
 
-         while($reg=$rspta->fetch_object()){
+         while($reg=$respuesta->fetch_object()){
              $data[]=array(
                 "0" =>$reg->idusuario,
                 "1" =>$reg->usuario,
-                "2" =>$reg->nombre,
-                "3" =>$reg->apellido,
+                "2" =>$reg->idroles_name,
+                "3" =>$reg->nombre.','.$reg->apellido,
                 "4" =>$reg->nombre_institucion,
                 "5" =>($reg->status=='Desconectado')?'<span class="badge label badge-danger">Desconectado<span>': '<span class="badge label badge-success">En linea<span>',
                 "6" =>$reg->telefono,
@@ -162,9 +182,9 @@ switch($_GET["op"]){
       break;
 
 
-case 'permisos':
+/*case 'permisos':
  //obtenemos todos los permisos de la tabla permisos
-     $rspta = $usuarioPM->listarpermiso();
+     $respuesta = $usuarioPM->listarpermiso();
 
      // Obtener los permisos asignados al usuario
      $id=$_GET['id'];
@@ -179,7 +199,7 @@ case 'permisos':
         array_push($valores, $per->idpermiso);
      }
  //Mostramos la lista de permisos en la vista y si estan o no marcados
-     while($reg = $rspta->fetch_object())
+     while($reg = $respuesta->fetch_object())
      {
         $sw= in_array($reg->idpermiso,$valores)?'checked':'';
 
@@ -187,7 +207,7 @@ case 'permisos':
               echo '<hr class="bg-dark">';
      }
 
-  break;
+  break;*/
 
 
 case 'verificar':
@@ -196,12 +216,12 @@ case 'verificar':
   $usuarioI=limpiarCadena($_POST['logina']);
   $clavea=limpiarCadena($_POST['clavea']);
     #metodo para estado del usuario
-    $rspta1=$usuarioPM->Inicio($usuarioI);
+    $respuesta1=$usuarioPM->Inicio($usuarioI);
     //Hash SHA256 en la contraseña
       $clavehash=hash("SHA256",$clavea);
       #metodo para verificar los datos 
-     $rspta=$usuarioPM->verificar($logina, $clavehash);
-     $fetch=$rspta->fetch_object();
+     $respuesta=$usuarioPM->verificar($logina, $clavehash);
+     $fetch=$respuesta->fetch_object();
              if(isset($fetch))
              {
                //Declaramos las variables de session
@@ -213,11 +233,11 @@ case 'verificar':
                $_SESSION['telefono']=$fetch->telefono;
                 $_SESSION['direccion']=$fetch->direccion;
                 $_SESSION['clave']=$fetch->clave;
-                $_SESSION['unique_id']=$fetch->unique_id;
+                $_SESSION['idroles']=$fetch->idroles;#identificador del rol
                $_SESSION['usuario']=$fetch->usuario; //login=usuario
 
                //ontener todos los permisos del usuario
-               $marcadosPermiso = $usuarioPM->listarmarcados($fetch->idusuario);
+               $marcadosPermiso = $usuarioPM->listarmarcados($fetch->idroles);
                //Declaramos el array para almacenar todos los permisos marcados
                $valoresP=array();#arreglos para marcadosPermiso
               
@@ -254,10 +274,10 @@ case 'salir':
 
  $Usalir = $_SESSION['idusuario'];
  // usuario0salir
- $rspta=$usuarioPM->salir($Usalir);
- /*$rspta=$usuarioPM->salir($Usalir);*/
+ $respuesta=$usuarioPM->salir($Usalir);
+ /*$respuesta=$usuarioPM->salir($Usalir);*/
     //codificar el resultado json
-    /*echo json_encode($rspta);*/ 
+    /*echo json_encode($respuesta);*/ 
   // limpiamos las variables de session
  session_unset();
  // Destruimos la session
@@ -266,6 +286,10 @@ case 'salir':
  // header("Location: ../index.php");
 break; 
 
+
+
+
+   
 
 } #final sentencia switch
 

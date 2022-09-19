@@ -85,8 +85,8 @@ if(!isset($_SESSION["usuario"])){
                 <thead >
                    <th>ID</th>
                    <th>Usuario</th>
-                   <th>Nombre</th>
-                   <th>apellido</th>
+                   <th>Rol</th>
+                   <th>Nombre y apellido</th>
                    <th>Institucion</th>
                    <th title="Si esta dentro del sistema">Conexion</th>
                    <th>Telefono</th>
@@ -105,8 +105,8 @@ if(!isset($_SESSION["usuario"])){
                    <th>ID</th>
                    <th>Usuario</th>
                    <th title="Si esta dentro del sistema">Conexion</th>
-                   <th>Nombre</th>
-                   <th>apellido</th>
+                   <th>Rol</th>
+                   <th>Nombre y apellido</th>
                    <th>Institucion</th>
                    <th>Telefono</th>
                    <th>Email</th>
@@ -242,42 +242,13 @@ if(!isset($_SESSION["usuario"])){
           </div>
   </div>
 
-
-
-  <div class="card  collapsed-card">
-                <div class="card-header bg-dark text-center ">
-                  <h3 class="card-title text-white">Permisos para el  usuario </h3>
-
-                  <!-- <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
-                    </button>
-                  </div> -->
-                  <!-- /.card-tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body" style="//display: none;">
-
-
-                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                  <label>permisos(*):</label>
-                  
-                  <ul style="//list-style: none;" id="permisos">
-                    
-                  </ul>
-               </div>
-
-                </div>
-                <!-- /.card-body -->
-              </div>
-                  
-
-
-
-
-
-
   <div class="row mb-2">
-     
+
+   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+     <label for="idroles" >Rol del usuario</label>
+     <select name="idroles" id="idroles"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+  </div>
+   
 
   </div>       
                

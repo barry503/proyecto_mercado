@@ -80,8 +80,8 @@ if(!isset($_SESSION["usuario"])){
                 <thead >
                    <th>ID</th>
                    <th>Usuario</th>
-                   <th>Nombre</th>
-                   <th>apellido</th>
+                   <th>Rol</th>
+                   <th>Nombre y apellido</th>
                    <th>Institucion</th>
                    <th title="Si esta dentro del sistema">Conexion</th>
                    <th>Telefono</th>
@@ -100,8 +100,8 @@ if(!isset($_SESSION["usuario"])){
                    <th>ID</th>
                    <th>Usuario</th>
                    <th title="Si esta dentro del sistema">Conexion</th>
-                   <th>Nombre</th>
-                   <th>apellido</th>
+                   <th>Rol</th>
+                   <th>Nombre y apellido</th>
                    <th>Institucion</th>
                    <th>Telefono</th>
                    <th>Email</th>
