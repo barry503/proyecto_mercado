@@ -43,7 +43,7 @@ header("Location: inicio.php");
 
 <body>
 
-    <section class="sign-in section" style="background: url(../files/images-login/signin.png) center;">
+    <section class="sign-in section" style="background: url(../files/logo/<?php echo dataImgUrl('background'); ?>) center;">
         <div class="container">
             <div class="py-5 log-content ">
                 <div class="row ">
