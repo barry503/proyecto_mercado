@@ -54,19 +54,23 @@ public function editar($idroles,$nombre,$permisos)
          $sql = "UPDATE pm_roles SET nombre='$nombre'
          WHERE idroles='$idroles' ";
              // return ejecutarConsulta($sql);
-         $idrolnew=ejecutarConsulta_retornarID($sql);
+          ejecutarConsulta($sql);
 
-         $num_elementos=0;
-         $sw=true;
+          // Eliminamos todos los permisos asignados para volverlos a registrar
+          $sqldelete="DELETE FROM pm_roles_permiso WHERE idroles=$idroles";
+          ejecutarConsulta($sqldelete);
+          $num_elementos=0;#variable para contal los elementos
+          $sw=true;#valor a retornar
 
-         while ($num_elementos < count($permisos))
-         {
-             $sql_detalle = "INSERT INTO pm_roles_permiso(idroles,idpermiso) VALUES('$idrolnew', '$permisos[$num_elementos]')";
-             ejecutarConsulta($sql_detalle) or $sw=false;
-
-             $num_elementos=$num_elementos + 1;
-         }
-         return $sw;
+         #ciclo si los num_elementos es menor a la cuenta de permisos
+         while ($num_elementos < count($permisos)){
+          $sql_savePermisos = "INSERT INTO pm_roles_permiso(idroles,idpermiso) VALUES('$idroles', '$permisos[$num_elementos]')";
+          #ejecutamos la consulta o devolvemos falso
+          ejecutarConsulta($sql_savePermisos) or $sw=false;
+              $num_elementos=$num_elementos + 1;
+          }              
+         
+          return $sw;
 
 	}
 
