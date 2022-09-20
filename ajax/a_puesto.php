@@ -165,7 +165,25 @@ switch($_GET["op"]){
 
                  }
 
-                  break;    
+                  break;
+
+                  case 'guardarVarios':
+
+                  $prefijo_modulo = $_POST['prefijo_modulo'];
+                  $rango_inicial = $_POST['rango_inicial'];
+                  $rango_final = $_POST['rango_final'];
+
+                  foreach( range($rango_inicial, $rango_final) as $numero ) {
+                       // echo "<li>Número: ". $numero ."</li>";
+
+                       $modulo= $prefijo_modulo.$numero;
+
+                    $respuesta=$puestoS->saveVariosP($medida_calificacion,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector);
+                  }
+                    
+            
+                  echo $respuesta ? "se registraron los puestos desde:".$rango_inicial." hasta:".$rango_final."<br>" : "No se pueden registrar";
+                  break;                  
 
 
 }

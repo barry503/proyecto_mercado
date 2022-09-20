@@ -45,6 +45,18 @@ public function selectSector(){
              return ejecutarConsulta($sql);
   }  
 
+
+
+  public function saveVariosP($medida_calificacion,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector)
+  {
+    $medida_compensa = '0';
+         $sql = "INSERT INTO puestos (medida_calificacion,medida_compensa,medida_fondo,medida_frente,modulo,institucion_id_fk,sector_id_fk)
+         VALUES('$medida_calificacion','$medida_compensa','$medida_fondo','$medida_frente','$modulo','$idinstitucion','$idsector')";
+             return ejecutarConsulta($sql);
+  }  
+
+
+
 //inplementar un metodo para editar
   public function editar($idpuesto,$medida_calificacion,$medida_compensa,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector)
   {

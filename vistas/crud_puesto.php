@@ -53,11 +53,14 @@ if(!isset($_SESSION["usuario"])){
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
                  <h3 class="card-title">Puesto  
-                  <button class="btn btn-info" id="btnagregar" onclick="mostrarform(true)" >
-                    
+                  <button class="btn btn-dark" id="btnagregar" onclick="mostrarform(true)" >
                     <i class="fa fa-plus-circle"></i>Agregar
-                  
                   </button>
+                  </h3>
+                  <h3 class="text-right">
+                    <button class="btn btn-warning" id="btnagregar_muchos" onclick="mostrarformMas(true)" >
+                      <i class="fa fa-th"></i> Agregar varios con las mismas medidas
+                    </button>
                   </h3>
               
               </div><!-- / fin card-header-->
@@ -174,6 +177,96 @@ if(!isset($_SESSION["usuario"])){
 
        </div><!-- fin panel-body -->
 
+
+
+
+
+
+    <!-- formulario ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+      <!-- inicio div  -->
+      <div   id="formulariomuchos">
+           <!--inicio del formulario de registrar y editar -->
+           <form name="formularioMas" id="formularioMas" method="POST">
+    
+         
+    <div class="row mb-2 py-3">
+      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="input-group">
+              <div class="input-group-addon">
+                  <i class="fa fa-asterisk"></i>prefijo:
+              </div>
+              <input type="text" id="prefijo_modulo" name="prefijo_modulo" placeholder="ejemplo: PM-" class="form-control">
+          </div>
+      </div>
+
+      <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <div class="input-group">
+              <div class="input-group-addon">
+                  <i class="fa fa-asterisk"></i>rango inicial:
+              </div>
+              <input type="text" id="rango_inicial" name="rango_inicial" placeholder="1" class="form-control">
+          </div>
+      </div>
+      <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <div class="input-group">
+              <div class="input-group-addon">
+                  <i class="fa fa-asterisk"></i>rango final:
+              </div>
+              <input type="text" id="rango_final" name="rango_final" placeholder="10" class="form-control">
+          </div>
+      </div>
+
+      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <input type="text" class="form-control text-center bg-warning" name="vista_previa" id="vista_previa"  placeholder="vista Previa" disabled>
+      </div>
+           <h3 class="py-5">Por favor ingresa todas las caracteristicas que tendran los puestos</h3>
+
+             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+               <label>medida_frente(*):</label>
+               <input type="text" class="form-control" name="medida_frente" id="medida_frenteM"  placeholder="Escribe la medida_frente del Puesto " required>
+            </div>
+             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+               <label>medida_fondo(*):</label>
+               <input type="text" class="form-control" name="medida_fondo" id="medida_fondoM"  placeholder="Escribe la medida_fondo del Puesto " required>
+            </div>
+             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+               <label>medida_calificacion(*):</label>
+               <input type="text" class="form-control" name="medida_calificacion" id="medida_calificacionM"  placeholder="Escribe la medida_calificacion del Puesto " required>
+            </div>
+            
+           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+             <label for="idsector" >sector al que pertenece</label>
+             <select name="idsector" id="idsector2"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+          </div>
+           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+             <label for="idinstitucion" >institucion al que pertenece</label>
+             <select name="idinstitucion" id="idinstitucion2"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+          </div>
+    </div>
+
+    
+
+            
+            
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               <button class="btn btn-warning " type="submit" id="btnGuardarM">
+                   <i class="fa fa-save"></i> Guardar
+               </button>
+
+               <button class="btn btn-danger"  onclick="cancelarform()" type="button">
+                   <i class="fa fa-arrow-circle-left"></i> Cancelar
+               </button>
+
+
+
+               </div>
+           </form>
+
+      </div><!-- fin div -->
+    <!-- formulario ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
      </div> <!-- / card body fin -->
 
 
@@ -208,7 +301,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- script del crud -->
 <script  src="scripts/script_puesto.js"></script>
 
- 
+<script src="scripts/funciones_inputs.js"></script>
 
 <?php
  } 

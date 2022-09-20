@@ -11,14 +11,17 @@ Primary use:  Open Source                                       *
 //Funcion que se ejecuta al inicio
  function inicial(){
      mostrarform(false);
+     mostrarformMas(false);
      listar();
      //Cargamos los items al select de institucion
          $.post("../ajax/a_puesto.php?op=selectInstituciones", function(r){
                     $("#idinstitucion").html(r);
+                    $("#idinstitucion2").html(r);
                     // $("#idinstitucion").selectpicker('refresh');
          });
          $.post("../ajax/a_puesto.php?op=selectSector", function(r){
                     $("#idsector").html(r);
+                    $("#idsector2").html(r);
                     // $("#idsector").selectpicker('refresh');
          });
 
@@ -46,7 +49,16 @@ function limpiar()
    $("#idinstitucion").val("");
    $("#idsector").val("");
 
-   $(".cam-po a").attr("href", "#");
+
+
+
+   $("#prefijo_modulo").val("");
+   $("#rango_inicial").val("");
+   $("#rango_final").val("");
+   $("#vista_previa").val("");
+   $("#medida_frenteM").val("");
+   $("#medida_fondoM").val("");
+   $("#medida_calificacionM").val("");
    
 
 }
@@ -74,12 +86,32 @@ function mostrarform(condi)
 
 }
 
+function mostrarformMas(flag)
+{
+  limpiar();
+  if (flag)
+  {
+
+    $("#listadoregistros").hide();//esconder lista
+     $("#btnagregar_muchos").hide();//esconder boton
+     $("#formulariomuchos").show();//mostar form
+     $("#btnGuardarM").prop("disabled",false);
+     }
+  else 
+  {
+    $("#listadoregistros").show(); //mostar lista
+     $("#formulariomuchos").hide(); //esconder form
+     $("#btnagregar_muchos").show(); //mostrar boton
+  }
+
+}
 
 //Funcion cancelarform
 function cancelarform()
 {
     limpiar();
     mostrarform(false);
+    mostrarformMas(false);
 }
 
 
