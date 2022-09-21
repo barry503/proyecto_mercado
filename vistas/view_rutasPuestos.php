@@ -133,7 +133,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- pie de pajina -->
   <?php require'includes/footer.php'; ?>
   
-<script> var urlistar= 'listarVista';</script>
+<script> let urlistar= 'listarVista';</script>
 <!-- script del Vista -->
 <script  src="scripts/script_rutas_puestos.js"></script>
 

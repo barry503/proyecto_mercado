@@ -192,7 +192,7 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
 <!-- pie de pajina -->
   <?php require'includes/footer.php'; ?>
   
-<script> var urlistar= 'listar';</script>
+<script> let urlistar= 'listar';</script>
 <!-- script del crud -->
 <script  src="scripts/script_sectores.js"></script>
 

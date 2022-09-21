@@ -297,7 +297,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- pie de pajina -->
   <?php require'includes/footer.php'; ?>
   
-<script> var urlistar= 'listar';</script>
+<script> let urlistar= 'listar';</script>
 <!-- script del crud -->
 <script  src="scripts/script_puesto.js"></script>
 

@@ -17,7 +17,7 @@ if(!isset($_SESSION["usuario"])){
 
 
 <?php include '../config/fun_permiso.php'; ?>
-<?php $name_permiso = retornarNamePermiso(10); ?>
+<?php $name_permiso = retornarNamePermiso(18); ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
   
@@ -226,7 +226,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- pie de pajina -->
   <?php require'includes/footer.php'; ?>
   
-<script> var urlistar= 'listar';</script>
+<script> let urlistar= 'listar';</script>
 <!-- script del crud -->
 <script  src="scripts/script_tarifa.js"></script>
 
