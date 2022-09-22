@@ -140,20 +140,20 @@ if(!isset($_SESSION["usuario"])){
              <label for="codigo_presup">codigo_presup</label>
                     <!-- para trabajar con el id -->
                <input type="hidden" class="form-control" name="id" id="id">
-               <input type="text" name="codigo_presup" id="codigo_presup" class="form-control">
+               <input type="text" name="codigo_presup" id="codigo_presup" class="form-control"  required>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="descripcion">descripcion</label>
-               <input type="text" name="descripcion" id="descripcion" class="form-control">
+               <input type="text" name="descripcion" id="descripcion" class="form-control" required>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="precio_unitario">precio_unitario</label>
-               <input type="text" name="precio_unitario" id="precio_unitario" class="form-control">
+               <input type="text" name="precio_unitario" id="precio_unitario" class="form-control" required>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicafiestas">aplicafiestas</label>
                <!-- <input type="text" name="aplicafiestas" id="aplicafiestas" class="form-control"> -->
-               <select name="aplicafiestas" id="aplicafiestas" class="form-control">
+               <select name="aplicafiestas" id="aplicafiestas" class="form-control" required>
                  <option value="0">NO</option>
                  <option value="1">SI</option>
                </select>
@@ -161,7 +161,7 @@ if(!isset($_SESSION["usuario"])){
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicamulta">aplicamulta</label>
                <!-- <input type="text" name="aplicamulta" id="aplicamulta" class="form-control"> -->
-               <select name="aplicamulta" id="aplicamulta" class="form-control">
+               <select name="aplicamulta" id="aplicamulta" class="form-control" required>
                  <option value="0">NO</option>
                  <option value="1">SI</option>
                </select>
@@ -169,23 +169,23 @@ if(!isset($_SESSION["usuario"])){
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicaintereses">aplicaintereses</label>
                <!-- <input type="text" > -->
-               <select name="aplicaintereses" id="aplicaintereses" class="form-control">
+               <select name="aplicaintereses" id="aplicaintereses" class="form-control" required>
                  <option value="0">NO</option>
                  <option value="1">SI</option>
                </select>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="referencia">referencia</label>
-               <input type="text" name="referencia" id="referencia" class="form-control">
+               <input type="text" name="referencia" id="referencia" class="form-control" required>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="vigencia">vigencia</label>
-               <input type="date" name="vigencia" id="vigencia" class="form-control">
+               <input type="date" name="vigencia" id="vigencia" class="form-control" required>
            </div>
 
             <div class="form-group col-md-6 col-xs-12">
               <label for="idinstitucion" >Institucion ala que pertenece</label>
-              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true"  required><!-- selectpicker --></select>
            </div>
      </div>
 
