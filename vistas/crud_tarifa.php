@@ -152,11 +152,19 @@ if(!isset($_SESSION["usuario"])){
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicafiestas">aplicafiestas</label>
-               <input type="text" name="aplicafiestas" id="aplicafiestas" class="form-control">
+               <!-- <input type="text" name="aplicafiestas" id="aplicafiestas" class="form-control"> -->
+               <select name="aplicafiestas" id="aplicafiestas" class="form-control">
+                 <option value="0">NO</option>
+                 <option value="1">SI</option>
+               </select>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicamulta">aplicamulta</label>
-               <input type="text" name="aplicamulta" id="aplicamulta" class="form-control">
+               <!-- <input type="text" name="aplicamulta" id="aplicamulta" class="form-control"> -->
+               <select name="aplicamulta" id="aplicamulta" class="form-control">
+                 <option value="0">NO</option>
+                 <option value="1">SI</option>
+               </select>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicaintereses">aplicaintereses</label>
