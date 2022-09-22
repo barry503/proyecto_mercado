@@ -57,8 +57,8 @@ if(!isset($_SESSION["usuario"])){
 <!-- inicio card -->
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
-                 <h3 class="card-title">giros  
-                  <button class="btn btn-info" id="btnagregar" onclick="mostrarform(true)" >
+                 <h3 class="card-title">  
+                  <button class="btn btn-dark" id="btnagregar" onclick="mostrarform(true)" >
                     
                     <i class="fa fa-plus-circle"></i>Agregar
                   
