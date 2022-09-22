@@ -194,6 +194,7 @@
                 <i class="fas fa  fa-th"></i><!-- <i class="fas fa-puzzle-piece"></i> --><?php echo strtr ($menu_permiso, "_", " "); ?>
                 </a>
             <?php endif; ?>
+                
             <?php $menu_permiso = menu_fun(19); ?>
             <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
                 <a href="view_tarifa.php">
