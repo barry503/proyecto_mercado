@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2022 a las 06:09:59
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 22-09-2022 a las 04:15:43
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,7 +32,7 @@ CREATE TABLE `accesos` (
   `id` mediumint(9) NOT NULL,
   `idusuario` varchar(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `evento` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fechahora` timestamp NOT NULL DEFAULT current_timestamp()
+  `fechahora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -52,8 +53,8 @@ CREATE TABLE `asignaciones` (
   `observaciones` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `giro_id_fk` smallint(6) NOT NULL,
   `puesto_egreso_fk` int(11) DEFAULT NULL,
-  `licencia` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `codigo_licencia` int(10) UNSIGNED NOT NULL DEFAULT 0
+  `licencia` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `codigo_licencia` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -69,7 +70,7 @@ CREATE TABLE `contribuyentes` (
   `apellidos` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `codigo_cta` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `direccion` varchar(125) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_creacion` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `nombres` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `telefono_principal` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefono_secundario` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -88,12 +89,12 @@ CREATE TABLE `divermovimientos` (
   `fecha_hora_anula` datetime(6) DEFAULT NULL,
   `fecha_horapago` datetime(6) NOT NULL,
   `observaciones` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `codigo_presup` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `codigo_presup` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `precio_unitario` double UNSIGNED NOT NULL,
-  `precio_fiestas` double UNSIGNED NOT NULL DEFAULT 0,
+  `precio_fiestas` double UNSIGNED NOT NULL DEFAULT '0',
   `ubicacion_id_fk` int(10) UNSIGNED NOT NULL,
   `usuario_email_fk` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_horainsert` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_horainsert` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `serie_inicial` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `serie_final` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -109,11 +110,11 @@ CREATE TABLE `divertarifas` (
   `codigo_presup` int(10) UNSIGNED NOT NULL,
   `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio_unitario` double UNSIGNED NOT NULL,
-  `precio_fiestas` double UNSIGNED NOT NULL DEFAULT 0,
+  `precio_fiestas` double UNSIGNED NOT NULL DEFAULT '0',
   `referencia` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vigencia` date NOT NULL,
   `institucion_id_fk` smallint(6) NOT NULL,
-  `vigente` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `vigente` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `ubicacion_id_fk` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -219,10 +220,10 @@ CREATE TABLE `instituciones` (
   `estado` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hora_corte` time NOT NULL,
   `telefono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `imagen` blob DEFAULT NULL,
+  `imagen` blob,
   `fiestas` double NOT NULL,
   `intereses` double NOT NULL,
-  `imagend` blob DEFAULT NULL,
+  `imagend` blob,
   `inicio_exencion` date DEFAULT NULL,
   `final_exencion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='En esta tabla se almacenan toda la informacion general de la institucion o alcaldia ';
@@ -249,7 +250,7 @@ CREATE TABLE `justificaciones` (
   `valor_antes` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL DEFAULT '',
   `valor_nuevo` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL DEFAULT '',
   `justificacion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL DEFAULT '',
-  `fechahora` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fechahora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `uuid` varchar(12) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -275,7 +276,7 @@ CREATE TABLE `movimientos` (
   `multa` double NOT NULL,
   `asignacion_id_fk` int(11) DEFAULT NULL,
   `usuario_email_fk` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_horainsert` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_horainsert` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `serie_inicial` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `serie_final` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `saldo_anterior` double DEFAULT NULL,
@@ -304,7 +305,7 @@ CREATE TABLE `parkmovimientos` (
   `pago_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha_horaentra` datetime(6) NOT NULL,
   `fecha_horasale` datetime(6) DEFAULT NULL,
-  `codigo_presup` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `codigo_presup` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `precio_unitario` double NOT NULL,
   `tiempo_minutos` int(10) UNSIGNED DEFAULT NULL,
   `monto_total` double NOT NULL,
@@ -314,7 +315,7 @@ CREATE TABLE `parkmovimientos` (
   `observaciones` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ubicacion_id_fk` int(10) UNSIGNED NOT NULL,
   `usuario_email_fk` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_horainsert` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_horainsert` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_hora_anula` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -333,7 +334,7 @@ CREATE TABLE `parktarifas` (
   `referencia` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vigencia` date NOT NULL,
   `institucion_id_fk` smallint(6) NOT NULL,
-  `vigente` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `vigente` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `ubicacion_id_fk` int(10) UNSIGNED NOT NULL,
   `iconfile` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -377,7 +378,7 @@ CREATE TABLE `pm_admiweb` (
   `public_data` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Todos los datos publicos que se visualizaran en el website',
   `des_section` varchar(400) COLLATE utf8_unicode_ci NOT NULL COMMENT 'descripcion de la seccion',
   `estado` tinyint(1) NOT NULL COMMENT 'el estado reflejara si la seccion se encuentra activada o desactivada',
-  `date_create` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'fecha de creacion de la seccion autoincrementable'
+  `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'fecha de creacion de la seccion autoincrementable'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Esta tabla contiene las secciones del website de la empresa';
 
 --
@@ -399,7 +400,7 @@ CREATE TABLE `pm_imgweb` (
   `id` int(11) NOT NULL,
   `nombre_campo` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT 'campo para llamar',
   `url_img` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT 'campo de la ubicacion de la img',
-  `date` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'fecha de creacion'
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'fecha de creacion'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='En esta tabla se almacenan todas las imagenes visibles en el proyecto';
 
 --
@@ -444,7 +445,9 @@ INSERT INTO `pm_permiso` (`idpermiso`, `nombre`, `condicion`) VALUES
 (14, 'editar rutas', 1),
 (15, 'vista rutas', 1),
 (16, 'editar rutasPuestos', 1),
-(17, 'vista rutasPuestos', 1);
+(17, 'vista rutasPuestos', 1),
+(18, 'editar Tarifa', 1),
+(19, 'vista tarifa', 1);
 
 -- --------------------------------------------------------
 
@@ -483,24 +486,27 @@ CREATE TABLE `pm_roles_permiso` (
 --
 
 INSERT INTO `pm_roles_permiso` (`idroles_permiso`, `idroles`, `idpermiso`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(5, 1, 5),
-(6, 1, 6),
-(7, 1, 7),
-(8, 1, 8),
-(9, 1, 9),
-(10, 1, 10),
-(11, 1, 11),
-(12, 1, 12),
-(13, 1, 13),
-(14, 1, 14),
-(15, 1, 15),
-(16, 1, 16),
-(17, 1, 17),
-(18, 2, 17);
+(21, 2, 18),
+(22, 2, 19),
+(23, 1, 1),
+(24, 1, 2),
+(25, 1, 3),
+(26, 1, 4),
+(27, 1, 5),
+(28, 1, 6),
+(29, 1, 7),
+(30, 1, 8),
+(31, 1, 9),
+(32, 1, 10),
+(33, 1, 11),
+(34, 1, 12),
+(35, 1, 13),
+(36, 1, 14),
+(37, 1, 15),
+(38, 1, 16),
+(39, 1, 17),
+(40, 1, 18),
+(41, 1, 19);
 
 -- --------------------------------------------------------
 
@@ -516,9 +522,9 @@ CREATE TABLE `pm_usuario` (
   `usuario` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `clave` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefono` int(11) DEFAULT 0,
+  `telefono` int(11) DEFAULT '0',
   `direccion` varchar(400) COLLATE utf8_unicode_ci DEFAULT 'Dirección',
-  `fecha_creado` datetime NOT NULL DEFAULT current_timestamp(),
+  `fecha_creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idroles` int(11) DEFAULT NULL,
   `condicion` tinyint(1) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -530,8 +536,8 @@ CREATE TABLE `pm_usuario` (
 --
 
 INSERT INTO `pm_usuario` (`idusuario`, `nombre`, `apellido`, `imagen`, `usuario`, `clave`, `email`, `telefono`, `direccion`, `fecha_creado`, `idroles`, `condicion`, `status`, `id_institucion`) VALUES
-(1, 'luis', 'turcios', '1662672317_defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'I.turcios.08@gmail.com', 72134567, 'El salvador, San Miguel', '2022-09-05 22:36:36', 1, 1, 'Desconectado', 1),
-(2, 'jose', 'Ramirez', '1662501700_jr.png', 'barry', '5a9cea259640cac7ec4428c3d584606845c2cb0d6c353252c6487b2cc0be6653', 'joseramirez.root@gmail.com', 72178112, 'El salvador, La libertad, Santa Tecla', '2022-09-06 01:42:53', 2, 1, 'Desconectado', 2);
+(1, 'luis', 'turcios', '1662672317_defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'I.turcios.08@gmail.com', 72134567, 'El salvador, San Miguel', '2022-09-05 22:36:36', 1, 1, 'En linea', 1),
+(2, 'jose', 'Ramirez', '1662501700_jr.png', 'barry', '5a9cea259640cac7ec4428c3d584606845c2cb0d6c353252c6487b2cc0be6653', 'joseramirez.root@gmail.com', 72178112, 'El salvador, La libertad, Santa Tecla', '2022-09-06 01:42:53', 1, 1, 'En linea', 2);
 
 -- --------------------------------------------------------
 
@@ -556,12 +562,34 @@ CREATE TABLE `puestos` (
 --
 
 INSERT INTO `puestos` (`id`, `estado`, `medida_calificacion`, `medida_compensa`, `medida_fondo`, `medida_frente`, `modulo`, `institucion_id_fk`, `sector_id_fk`) VALUES
-(1, '0', 1, 1, 1, 1, 'puestoN-1', 2, 1),
+(1, '0', 8, 1, 4, 2, 'puestoN-1', 2, 1),
 (2, '1', 2, 2, 2, 2, 'puestoN-2', 1, 2),
 (3, '', 3, 3, 3, 3, 'puestoN-3', 2, 6),
 (4, '1', 4, 4, 4, 4, 'puestoN-4', 1, 9),
 (5, '', 5, 5, 5, 5, 'puestoN-5', 2, 9),
-(6, '1', 6, 6, 6, 6, 'puestoN-6', 1, 6);
+(6, '1', 6, 6, 6, 6, 'puestoN-6', 1, 6),
+(7, '', 4, 0, 2, 2, 'PM-10', 1, 1),
+(8, '', 4, 0, 2, 2, 'PM-11', 1, 1),
+(9, '', 4, 0, 2, 2, 'PM-12', 1, 1),
+(10, '', 4, 0, 2, 2, 'PM-13', 1, 1),
+(11, '', 4, 0, 2, 2, 'PM-14', 1, 1),
+(12, '', 4, 0, 2, 2, 'PM-15', 1, 1),
+(13, '', 4, 0, 2, 2, 'PM-16', 1, 1),
+(14, '', 4, 0, 2, 2, 'PM-17', 1, 1),
+(15, '', 4, 0, 2, 2, 'PM-18', 1, 1),
+(16, '', 4, 0, 2, 2, 'PM-19', 1, 1),
+(17, '', 4, 0, 2, 2, 'PM-20', 1, 1),
+(18, '', 36, 0, 6, 6, 'EJ-100', 2, 9),
+(19, '', 36, 0, 6, 6, 'EJ-101', 2, 9),
+(20, '', 36, 0, 6, 6, 'EJ-102', 2, 9),
+(21, '', 36, 0, 6, 6, 'EJ-103', 2, 9),
+(22, '', 36, 0, 6, 6, 'EJ-104', 2, 9),
+(23, '', 36, 0, 6, 6, 'EJ-105', 2, 9),
+(24, '', 36, 0, 6, 6, 'EJ-106', 2, 9),
+(25, '', 36, 0, 6, 6, 'EJ-107', 2, 9),
+(26, '', 36, 0, 6, 6, 'EJ-108', 2, 9),
+(27, '', 36, 0, 6, 6, 'EJ-109', 2, 9),
+(28, '', 36, 0, 6, 6, 'EJ-110', 2, 9);
 
 -- --------------------------------------------------------
 
@@ -616,14 +644,14 @@ INSERT INTO `rutas_puestos` (`id`, `ruta_id`, `puestos_id`) VALUES
 
 CREATE TABLE `sanimovimientos` (
   `pago_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codigo_presup` int(11) NOT NULL DEFAULT 0,
+  `codigo_presup` int(11) NOT NULL DEFAULT '0',
   `fecha_hora_anula` datetime(6) DEFAULT NULL,
   `fecha_horapago` datetime(6) NOT NULL,
   `observaciones` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio_unitario` double NOT NULL,
   `ubicacion_id_fk` int(10) UNSIGNED NOT NULL,
   `usuario_email_fk` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_horainsert` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_horainsert` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `serie_inicial` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `serie_final` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `genero` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
@@ -638,9 +666,9 @@ CREATE TABLE `sanimovimientos` (
 CREATE TABLE `saniresumen` (
   `id` int(10) UNSIGNED NOT NULL,
   `fecha` date NOT NULL,
-  `inicial` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `final` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `tarifa` double UNSIGNED NOT NULL DEFAULT 0,
+  `inicial` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `final` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `tarifa` double UNSIGNED NOT NULL DEFAULT '0',
   `total` int(10) UNSIGNED NOT NULL COMMENT 'Modificacion: se debe agregar el siguiente proceso en la logica de php para almacenar en este campo usar como referencia esto estaba agregado en la consulta: GENERATED ALWAYS AS (((`final` - `inicial`) + 1)) STORED',
   `ingreso` double UNSIGNED NOT NULL COMMENT 'Modificacion: se debe agregar el siguiente proceso en la logica de php para almacenar en este campo usar como referencia esto estaba agregado en la consulta: GENERATED ALWAYS AS ((`total` * `tarifa`)) STORED'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -659,7 +687,7 @@ CREATE TABLE `sanitarifas` (
   `referencia` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vigencia` date NOT NULL,
   `institucion_id_fk` smallint(6) NOT NULL,
-  `vigente` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `vigente` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `ubicacion_id_fk` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -727,7 +755,7 @@ CREATE TABLE `servicios` (
   `id` int(11) NOT NULL,
   `codigo_presup` int(11) NOT NULL,
   `contrib_id_fk` int(11) NOT NULL,
-  `valor_cuota` double UNSIGNED NOT NULL DEFAULT 0,
+  `valor_cuota` double UNSIGNED NOT NULL DEFAULT '0',
   `fecha_egreso` date DEFAULT NULL,
   `fecha_ingreso` date NOT NULL,
   `ultimo_pago` date NOT NULL,
@@ -755,6 +783,15 @@ CREATE TABLE `tarifas` (
   `institucion_id_fk` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `tarifas`
+--
+
+INSERT INTO `tarifas` (`id`, `codigo_presup`, `descripcion`, `precio_unitario`, `aplicafiestas`, `aplicamulta`, `aplicaintereses`, `referencia`, `vigencia`, `institucion_id_fk`) VALUES
+(1, 323443, 'csdcwefewfwef', 22222, b'1', b'1', b'1', '0', '2022-08-31', 1),
+(2, 222222, '222', 22, b'1', b'1', b'1', '00', '2022-09-02', 1),
+(3, 33, '33', 3333, b'1', b'1', b'1', '00', '2022-09-21', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -767,7 +804,7 @@ CREATE TABLE `usuarios` (
   `password` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `institucion_id_fk` smallint(6) NOT NULL,
   `device_prefix` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `alcance` int(10) UNSIGNED NOT NULL DEFAULT 0
+  `alcance` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1145,7 +1182,7 @@ ALTER TABLE `pm_imgweb`
 -- AUTO_INCREMENT de la tabla `pm_permiso`
 --
 ALTER TABLE `pm_permiso`
-  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_roles`
@@ -1157,7 +1194,7 @@ ALTER TABLE `pm_roles`
 -- AUTO_INCREMENT de la tabla `pm_roles_permiso`
 --
 ALTER TABLE `pm_roles_permiso`
-  MODIFY `idroles_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idroles_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_usuario`
@@ -1169,7 +1206,7 @@ ALTER TABLE `pm_usuario`
 -- AUTO_INCREMENT de la tabla `puestos`
 --
 ALTER TABLE `puestos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `rutas`
@@ -1217,7 +1254,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

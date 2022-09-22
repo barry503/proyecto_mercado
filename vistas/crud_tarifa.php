@@ -160,7 +160,11 @@ if(!isset($_SESSION["usuario"])){
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicaintereses">aplicaintereses</label>
-               <input type="text" name="aplicaintereses" id="aplicaintereses" class="form-control">
+               <!-- <input type="text" > -->
+               <select name="aplicaintereses" id="aplicaintereses" class="form-control">
+                 <option value="0">NO</option>
+                 <option value="1">SI</option>
+               </select>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="referencia">referencia</label>
