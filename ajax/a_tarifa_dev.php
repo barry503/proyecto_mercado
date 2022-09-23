@@ -12,7 +12,7 @@ $objTari=new TarifaDev();
 
 // si existe el id
 $id=isset($_POST['id'])? limpiarCadena($_POST['id']):"";
-$codigo_presup=isset($_POST['codigo_presup'])? limpiarCadena($_POST['codigo_presup']):"";
+$codigo_presup=isset($_POST['codigo_presup'])? limpiarCadena($_POST['codigo_presup']):"";#varible para editar
 $descripcion=isset($_POST['descripcion'])? limpiarCadena($_POST['descripcion']):"";
 $precio_unitario=isset($_POST['precio_unitario'])? limpiarCadena($_POST['precio_unitario']):"";
 $aplicafiestas=isset($_POST['aplicafiestas'])? limpiarCadena($_POST['aplicafiestas']):"";
@@ -24,15 +24,51 @@ $idinstitucion=isset($_POST['idinstitucion'])? limpiarCadena($_POST['idinstituci
 
 switch($_GET["op"]){
   case 'guardaryeditar':
+        require ("../config/pdo.php");#conexion
+
+  #validacion para idinstitucion
+  if (!empty($_POST['suplenteIdinstitucion'])) {
+    $idinstitucion = isset($_POST['suplenteIdinstitucion'])? limpiarCadena($_POST['suplenteIdinstitucion']):"";
+  }
+  #validacion para las tarifas
+  if (empty($aplicafiestas) ) { $aplicafiestas="0"; }
+ if(empty($aplicamulta)){   $aplicamulta="0"; }
+ if(empty($aplicaintereses)){  $aplicaintereses="0"; }
+
        if(empty($id)){
+        // si existe un suplente que le asigne un valor a la variable
+         // validacion para codigo_presup
+        
+
+        // consulta para adjudicar valor
+
+        $sqlCuentaT = $conexionPdo->query("SELECT COUNT(*) AS cuenta FROM tarifas WHERE   left(codigo_presup, 8)= '$codigo_presup'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
+        foreach ($sqlCuentaT  as $t):  $cuentT = $t->cuenta; endforeach;
+        if ($cuentT <= 9){
+          $cuentT= $cuentT+1;
+          $codigo_presup = $codigo_presup."0".$cuentT;
+        }else{
+          $cuentT= $cuentT+1;
+          $codigo_presup = $codigo_presup.$cuentT;
+        }
+        /*echo $codigo_presup;#para pruebas */
+        
              $respuesta=$objTari->insertar($codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion);
              echo $respuesta ? "tarifa registrada" : "la tarifa no se pudo registrar";
        }
          else {
+
+          if (isset($_POST['reforma']) == 1) {
+            $sqlDate = $conexionPdo->query("SELECT vigencia FROM tarifas WHERE   id= '$id' ")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
+            foreach ($sqlDate  as $t):  $ultimaF = $t->vigencia; endforeach;
+
+          }
                $respuesta=$objTari->editar($id,$codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion);
              echo $respuesta ? "tarifa actualizada" : "tarifa no se pudo actualizar";
 
          }
+
+
   break;
 
 
@@ -71,7 +107,7 @@ case 'eliminar':
                "7"=>$reg->referencia,
                "8"=>$reg->vigencia,
                "9"=>$reg->name_institucion,
-                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.')"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el tarifa por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash"></i></button>'
+                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.',0)"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el tarifa por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash"></i></button>'.'<button class="btn btn-sm m-1 btn-info" title="reformar" onclick="mostrar('.$reg->id.',1)"><i class="fas fa-calendar"></i></button>'
               );
 
        }

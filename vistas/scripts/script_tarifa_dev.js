@@ -42,9 +42,11 @@ function limpiar()
    $("#vigencia").val("");
    $("#idinstitucion").val("");
 
+      $("#periodo").val("0");
+      $("#periodoTexto").text("");
 
-   
-
+      var dStatic = $("#fechaStatica").val();//fecha estatica
+      $("#vigencia").attr("min", dStatic);
 
 
 }
@@ -60,6 +62,8 @@ function mostrarform(condi)
      $("#btnGuardar").prop("disabled",false);
      $("#btnagregar").hide();
      $(".codigo_presupp").text("");//quito el texto de presu
+
+
   }
   else 
   {
@@ -157,16 +161,22 @@ function guardaryeditar(e)
 
 
 // funcion para mostrar ñlas materias
-function mostrar(id)
+function mostrar(id,reformar)
 {
    $.post("../ajax/a_tarifa_dev.php?op=mostrar",{id : id}, function(data, status)
     {
        data = JSON.parse(data);
        mostrarform(true);
 
+       $("#reforma").val(reformar);//campo para aplicar reforma
+
        $("#id").val(data.id);
        $("#codigo_presup").val(data.codigo_presup);
-       $(".codigo_presupp").text(data.codigo_presup);       
+
+       $(".codigo_presupp").text(data.codigo_presup);
+
+       
+
        $("#descripcion").val(data.descripcion);
        $("#precio_unitario").val(data.precio_unitario);
        $("#aplicafiestas").val(data.aplicafiestas);
@@ -174,9 +184,47 @@ function mostrar(id)
        $("#aplicaintereses").val(data.aplicaintereses);
        $("#referencia").val(data.referencia);
        $("#vigencia").val(data.vigencia);
+
+       //modificamos el atributo de fecha
+       $("#vigencia").attr("min", data.vigencia);
+
        $("#idinstitucion").val(data.institucion_id_fk);
+       $("#suplenteIdinstitucion").val(data.institucion_id_fk);
+
+       $("#idinstitucion").attr("disabled", "true");
+       $("#idinstitucion").attr("title", "el campo esta desabilitado");
+
+        $("#periodo").attr("disabled", "true");
+        $("#periodo").attr("title", "el campo esta desabilitado");
+
+
+        var cuenta_cop= data.codigo_presup;//var para colocar texto
+         if (cuenta_cop.substr(0,8) == 12115999) {//Cambulantes 
+        $("#periodoTexto").text("COBROS VENDEDORES AMBULANTES");
+         } if (cuenta_cop.substr(0,8) == 12115002) {//Cdiario 
+        $("#periodoTexto").text("COBRO DIARIO");
+         } if (cuenta_cop.substr(0,8) == 12115001) {//Cmensual 
+        $("#periodoTexto").text("COBRO MENSUAL");
+         } if (cuenta_cop.substr(0,8) == 12115003) {//Cmensual_diario 
+        $("#periodoTexto").text("COBRO MENSUAL/CALCULO DIARIO");
+         }
+
+
+
+       if (data.aplicafiestas == 1) {
+        $("#aplicafiestas").removeAttr("disabled",false);
+       }else if(data.aplicaintereses == 1){
+        $("#aplicamulta").removeAttr("disabled",false);
+       }else if(data.aplicamulta == 1){
+        $("#aplicaintereses").removeAttr("disabled",false);
+       }else{
+        $("#aplicafiestas").attr("disabled",true);
+        $("#aplicamulta").attr("disabled",true);
+        $("#aplicaintereses").attr("disabled",true);
+
+       }
    })
-   aplicarDisabled("editar");
+
 } 
 
 
@@ -223,15 +271,23 @@ Swal.fire({
      if (periodo=="Cambulantes") {
          console.log(periodo);
          aplicarDisabled();/*esta funcion desabilita campos*/
+         //agrego el codigo de Cambulantes
+         $("#codigo_presup").val("12115999");
      }else if (periodo =="Cdiario"){
          console.log(periodo);
         aplicarDisabled();/*esta funcion desabilita campos*/
+        //agrego el codigo de Cdiario
+        $("#codigo_presup").val("12115002");
      }else if (periodo =="Cmensual"){
          console.log(periodo);
          removerDisabled();/*con esta funcion habilito los campos*/
+         //agrego el codigo de Cmensual
+         $("#codigo_presup").val("12115001");
      }else if (periodo =="Cmensual_diario"){
      console.log(periodo);
-     removerDisabled();/*con esta funcion habilito los campos*/                
+     removerDisabled();/*con esta funcion habilito los campos*/
+     //agrego el codigo de Cmensual_diario
+        $("#codigo_presup").val("12115003");                
      }else{
          // defecto
          removerDisabled();/*con esta funcion habilito los campos*/                
@@ -243,40 +299,39 @@ Swal.fire({
 
 function removerDisabled() {
     // removemos los campos desabilitads
-    $("#precio_unitario").removeAttr("disabled", "false");
-    $("#id").removeAttr("disabled", "false");
-    $("#codigo_presup").removeAttr("disabled", "false");
-    $("#descripcion").removeAttr("disabled", "false");
-    $("#precio_unitario").removeAttr("disabled", "false");
-    $("#aplicafiestas").removeAttr("disabled", "false");
-    $("#aplicamulta").removeAttr("disabled", "false");
-    $("#aplicaintereses").removeAttr("disabled", "false");
-    $("#referencia").removeAttr("disabled", "false");
-    $("#vigencia").removeAttr("disabled", "false");
-    $("#idinstitucion").removeAttr("disabled", "false");
-    $("#periodo").removeAttr("disabled", "false");
+    $("#precio_unitario").removeAttr("disabled",false);
+    $("#id").removeAttr("disabled",false);
+    $("#codigo_presup").removeAttr("disabled",false);
+    $("#descripcion").removeAttr("disabled",false);
+    $("#precio_unitario").removeAttr("disabled",false);
+    $("#aplicafiestas").removeAttr("disabled",false);
+    $("#aplicamulta").removeAttr("disabled",false);
+    $("#aplicaintereses").removeAttr("disabled",false);
+    $("#referencia").removeAttr("disabled",false);
+    $("#vigencia").removeAttr("disabled",false);
+    $("#idinstitucion").removeAttr("disabled",false);
+    $("#periodo").removeAttr("disabled",false);
 }
 
 function aplicarDisabled(e) {
     // se desabilita las aplicaciones
-    $("#aplicafiestas").attr("disabled", "true");
+    $("#aplicafiestas").attr("disabled",true);
     $("#aplicafiestas").attr("title", "el campo esta desabilitado");
     
-    $("#aplicamulta").attr("disabled", "true");
+    $("#aplicamulta").attr("disabled",true);
     $("#aplicamulta").attr("title", "el campo esta desabilitado");
 
-    $("#aplicaintereses").attr("disabled", "true");
+    $("#aplicaintereses").attr("disabled",true);
     $("#aplicaintereses").attr("title", "el campo esta desabilitado");
 
-    $("#periodo").attr("disabled", "true");
+    $("#periodo").attr("disabled",true);
     $("#periodo").attr("title", "el campo esta desabilitado");
 
-    if (e=="editar") {
-        $("#idinstitucion").attr("disabled", "true");
-        $("#idinstitucion").attr("title", "el campo esta desabilitado");
-    }
+    
     
 }
+
+
 
     /*$("#idetificador").keyup(function () {
         alert("funcion para escuchar todos los caracteres escritos en un input"); 

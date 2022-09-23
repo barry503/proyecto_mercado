@@ -45,7 +45,7 @@ if(!isset($_SESSION["usuario"])){
 
 <!-- seccion del contenido -->
 <section class="content">
-
+<input type="hidden" value="<?php echo date('Y-m-d') ?>" id="fechaStatica">
 
 
 
@@ -130,8 +130,7 @@ if(!isset($_SESSION["usuario"])){
             <!--inicio del formulario de registrar y editar -->
             <form name="formulario" id="formulario" method="POST">
     
-                
-
+                <input type="hidden" name="reforma" id="reforma" value="0">
      <div class="row mb-2">
 
      	<div class="form-group col-md-12 col-xs-12 text-center">
@@ -146,19 +145,21 @@ if(!isset($_SESSION["usuario"])){
 
  <div class="form-group col-md-6 col-xs-12">
    <label for="periodo">periodo</label>
+   <h4 id="periodoTexto"></h4>
           <select  name="periodo" id="periodo" class="form-control"  required>
           	<option value="0">SELECCIONA UN PERIODO</option>
           	<option value="Cambulantes">COBROS VENDEDORES AMBULANTES</option>
-          	<option value="Cdiario">COBROS DIARIO</option>
-          	<option value="Cmensual">COBROS MENSUAL</option>
-          	<option value="Cmensual_diario">COBROS MENSUAL/CALCULO DIARIO</option>
+          	<option value="Cdiario">COBRO DIARIO</option>
+          	<option value="Cmensual">COBRO MENSUAL</option>
+          	<option value="Cmensual_diario">COBRO MENSUAL/CALCULO DIARIO</option>
           </select>
  </div>
 
 
            <div class="form-group col-md-6 col-xs-12">
              <label for="descripcion">descripcion</label>
-               <input type="text" name="descripcion" id="descripcion" class="form-control" required>
+               <!-- <input type="text" > -->
+             <textarea name="descripcion" id="descripcion" class="form-control" required></textarea>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="precio_unitario">precio_unitario</label>
@@ -196,10 +197,12 @@ if(!isset($_SESSION["usuario"])){
            <div class="form-group col-md-6 col-xs-12">
              <label for="vigencia">vigencia</label>
                <input type="date" name="vigencia" id="vigencia" class="form-control" min="<?php echo date('Y-m-d') ?>" max="2050-06-01" required>
+               
            </div>
 
             <div class="form-group col-md-6 col-xs-12">
               <label for="idinstitucion" >Institucion ala que pertenece</label>
+              <input type="hidden"  name="suplenteIdinstitucion" id="suplenteIdinstitucion">
               <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true"  required><!-- selectpicker --></select>
            </div>
      </div>
