@@ -20,6 +20,7 @@ if(!isset($_SESSION["usuario"])){
 <?php $name_permiso = retornarNamePermiso(18); ?>
 <?php if($_SESSION[$name_permiso]==1){ ?>
 
+
   
 <!-- Contenedor de todo -->
 <div class="content-wrapper">
@@ -44,9 +45,6 @@ if(!isset($_SESSION["usuario"])){
 
 <!-- seccion del contenido -->
 <section class="content">
-
-
-
 
 
 
@@ -176,11 +174,12 @@ if(!isset($_SESSION["usuario"])){
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="referencia">referencia</label>
-               <input type="text" name="referencia" id="referencia" class="form-control" required>
+               <!-- <input type="text" > -->
+               <textarea name="referencia" id="referencia" class="form-control" required></textarea>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="vigencia">vigencia</label>
-               <input type="date" name="vigencia" id="vigencia" class="form-control" required>
+               <input type="date" name="vigencia" id="vigencia" class="form-control" min="<?php echo date('Y-m-d') ?>" max="2050-06-01" required>
            </div>
 
             <div class="form-group col-md-6 col-xs-12">
