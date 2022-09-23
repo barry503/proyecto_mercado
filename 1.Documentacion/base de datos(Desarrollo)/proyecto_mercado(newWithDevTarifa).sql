@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2022 a las 04:15:43
+-- Tiempo de generación: 23-09-2022 a las 20:21:32
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -447,7 +447,8 @@ INSERT INTO `pm_permiso` (`idpermiso`, `nombre`, `condicion`) VALUES
 (16, 'editar rutasPuestos', 1),
 (17, 'vista rutasPuestos', 1),
 (18, 'editar Tarifa', 1),
-(19, 'vista tarifa', 1);
+(19, 'vista tarifa', 1),
+(20, 'dev tarifas', 1);
 
 -- --------------------------------------------------------
 
@@ -488,25 +489,26 @@ CREATE TABLE `pm_roles_permiso` (
 INSERT INTO `pm_roles_permiso` (`idroles_permiso`, `idroles`, `idpermiso`) VALUES
 (21, 2, 18),
 (22, 2, 19),
-(23, 1, 1),
-(24, 1, 2),
-(25, 1, 3),
-(26, 1, 4),
-(27, 1, 5),
-(28, 1, 6),
-(29, 1, 7),
-(30, 1, 8),
-(31, 1, 9),
-(32, 1, 10),
-(33, 1, 11),
-(34, 1, 12),
-(35, 1, 13),
-(36, 1, 14),
-(37, 1, 15),
-(38, 1, 16),
-(39, 1, 17),
-(40, 1, 18),
-(41, 1, 19);
+(42, 1, 1),
+(43, 1, 2),
+(44, 1, 3),
+(45, 1, 4),
+(46, 1, 5),
+(47, 1, 6),
+(48, 1, 7),
+(49, 1, 8),
+(50, 1, 9),
+(51, 1, 10),
+(52, 1, 11),
+(53, 1, 12),
+(54, 1, 13),
+(55, 1, 14),
+(56, 1, 15),
+(57, 1, 16),
+(58, 1, 17),
+(59, 1, 18),
+(60, 1, 19),
+(61, 1, 20);
 
 -- --------------------------------------------------------
 
@@ -536,7 +538,7 @@ CREATE TABLE `pm_usuario` (
 --
 
 INSERT INTO `pm_usuario` (`idusuario`, `nombre`, `apellido`, `imagen`, `usuario`, `clave`, `email`, `telefono`, `direccion`, `fecha_creado`, `idroles`, `condicion`, `status`, `id_institucion`) VALUES
-(1, 'luis', 'turcios', '1662672317_defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'I.turcios.08@gmail.com', 72134567, 'El salvador, San Miguel', '2022-09-05 22:36:36', 1, 1, 'En linea', 1),
+(1, 'luis', 'turcios', '1662672317_defecto.png', 'luis', 'c5ff177a86e82441f93e3772da700d5f6838157fa1bfdc0bb689d7f7e55e7aba', 'I.turcios.08@gmail.com', 72134567, 'El salvador, San Miguel', '2022-09-05 22:36:36', 1, 1, 'Desconectado', 1),
 (2, 'jose', 'Ramirez', '1662501700_jr.png', 'barry', '5a9cea259640cac7ec4428c3d584606845c2cb0d6c353252c6487b2cc0be6653', 'joseramirez.root@gmail.com', 72178112, 'El salvador, La libertad, Santa Tecla', '2022-09-06 01:42:53', 1, 1, 'En linea', 2);
 
 -- --------------------------------------------------------
@@ -775,9 +777,9 @@ CREATE TABLE `tarifas` (
   `codigo_presup` int(11) NOT NULL,
   `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio_unitario` double NOT NULL,
-  `aplicafiestas` bit(1) NOT NULL,
-  `aplicamulta` bit(1) NOT NULL,
-  `aplicaintereses` bit(1) NOT NULL,
+  `aplicafiestas` tinyint(1) NOT NULL,
+  `aplicamulta` tinyint(1) NOT NULL,
+  `aplicaintereses` tinyint(1) NOT NULL,
   `referencia` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vigencia` date NOT NULL,
   `institucion_id_fk` smallint(6) NOT NULL
@@ -788,9 +790,11 @@ CREATE TABLE `tarifas` (
 --
 
 INSERT INTO `tarifas` (`id`, `codigo_presup`, `descripcion`, `precio_unitario`, `aplicafiestas`, `aplicamulta`, `aplicaintereses`, `referencia`, `vigencia`, `institucion_id_fk`) VALUES
-(1, 323443, 'csdcwefewfwef', 22222, b'1', b'1', b'1', '0', '2022-08-31', 1),
-(2, 222222, '222', 22, b'1', b'1', b'1', '00', '2022-09-02', 1),
-(3, 33, '33', 3333, b'1', b'1', b'1', '00', '2022-09-21', 1);
+(1, 1211599901, 'tarifa 111111', 0.4, 0, 0, 0, 'se establecio la 1er tarifa de la municipalidad', '2021-05-02', 1),
+(2, 1211599902, 'tarifa nueva', 0.5, 0, 0, 0, 'se adjunto una nueva tarifa', '2022-09-30', 1),
+(3, 1211500201, 'tarifa 1', 0.2, 0, 0, 0, 'sss', '2022-09-29', 1),
+(4, 1211500202, 'sss', 0.6, 0, 0, 0, 'sss', '2022-09-30', 1),
+(5, 1211500101, '1', 1, 0, 0, 1, 'qq', '2022-09-28', 1);
 
 -- --------------------------------------------------------
 
@@ -1182,7 +1186,7 @@ ALTER TABLE `pm_imgweb`
 -- AUTO_INCREMENT de la tabla `pm_permiso`
 --
 ALTER TABLE `pm_permiso`
-  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_roles`
@@ -1194,7 +1198,7 @@ ALTER TABLE `pm_roles`
 -- AUTO_INCREMENT de la tabla `pm_roles_permiso`
 --
 ALTER TABLE `pm_roles_permiso`
-  MODIFY `idroles_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `idroles_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `pm_usuario`
@@ -1254,7 +1258,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
