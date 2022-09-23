@@ -48,6 +48,8 @@ function limpiar()
       var dStatic = $("#fechaStatica").val();//fecha estatica
       $("#vigencia").attr("min", dStatic);
 
+      $("#reforma").attr("disabled",true);
+
 
 }
 
@@ -144,9 +146,14 @@ function guardaryeditar(e)
          success: function(e)
          {
              // alert(datos);
-             // bootbox.alert(datos);
+             // bootbox.alert(e);
              // Swal.fire({ icon:'success', title: datos });
-             Alerts('guardados',e);
+                Swal.fire({ html: e,
+                showConfirmButton: false,
+                timer: 6500,
+                timerProgressBar: true
+            });
+             
              mostrarform(false);
               // tabla.ajax.reload();
               listar();
@@ -168,7 +175,11 @@ function mostrar(id,reformar)
        data = JSON.parse(data);
        mostrarform(true);
 
-       $("#reforma").val(reformar);//campo para aplicar reforma
+       if (reformar== true) {
+        $("#reforma").removeAttr("disabled",false);
+       }else{
+        $("#reforma").attr("disabled",true);
+       }
 
        $("#id").val(data.id);
        $("#codigo_presup").val(data.codigo_presup);

@@ -42,7 +42,7 @@ switch($_GET["op"]){
 
         // consulta para adjudicar valor
 
-        $sqlCuentaT = $conexionPdo->query("SELECT COUNT(*) AS cuenta FROM tarifas WHERE   left(codigo_presup, 8)= '$codigo_presup'")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
+        $sqlCuentaT = $conexionPdo->query("SELECT COUNT(*) AS cuenta FROM tarifas WHERE   left(codigo_presup, 8)= '$codigo_presup'")->fetchAll(PDO::  FETCH_OBJ);
         foreach ($sqlCuentaT  as $t):  $cuentT = $t->cuenta; endforeach;
         if ($cuentT <= 9){
           $cuentT= $cuentT+1;
@@ -58,13 +58,32 @@ switch($_GET["op"]){
        }
          else {
 
-          if (isset($_POST['reforma']) == 1) {
-            $sqlDate = $conexionPdo->query("SELECT vigencia FROM tarifas WHERE   id= '$id' ")->fetchAll(PDO::  FETCH_OBJ);/*consulta para traer el nombre completo del alumno*/
-            foreach ($sqlDate  as $t):  $ultimaF = $t->vigencia; endforeach;
+          if (!empty($_POST['reforma']) == "SI") {#si existe una reforma
 
-          }
-               $respuesta=$objTari->editar($id,$codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion);
-             echo $respuesta ? "tarifa actualizada" : "tarifa no se pudo actualizar";
+                      $sqlDate = $conexionPdo->query("SELECT vigencia FROM tarifas WHERE   id= '$id' ")->fetchAll(PDO::  FETCH_OBJ);
+
+                      foreach ($sqlDate  as $t):  $ultimaF = $t->vigencia; endforeach;
+
+                      if($vigencia <= $ultimaF){
+                        echo "<i class='fa fa- fa-warning text-dark t-100 bg-warning'></i><br><h1>La vigencia es la misma o menor a la vigencia actual <br> por favor ingresa una fecha posterior</h1>";
+                        // echo $_POST['reforma'];
+                      }else {
+                        $respuesta=$objTari->insertar($codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion);
+                        echo $respuesta ? "<i class='fa fa  fa-calendar text-success t-100 bg-dark'></i><br><h1>tarifa reformada</h1>" : "la tarifa no se pudo reformar";
+                      }
+
+
+                    } else if (empty($_POST['reforma'])) {#sino existe una reforma
+                      // code...
+                        $respuesta=$objTari->editar($id,$codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion);
+                      echo $respuesta ? "<i class='fa fa  fa-check-square text-success t-100 bg-dark'></i><br><h1>tarifa actualizada</h1>" : "tarifa no se pudo actualizar";
+
+
+
+                    } 
+
+          
+               
 
          }
 
@@ -107,7 +126,7 @@ case 'eliminar':
                "7"=>$reg->referencia,
                "8"=>$reg->vigencia,
                "9"=>$reg->name_institucion,
-                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.',0)"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el tarifa por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash"></i></button>'.'<button class="btn btn-sm m-1 btn-info" title="reformar" onclick="mostrar('.$reg->id.',1)"><i class="fas fa-calendar"></i></button>'
+                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.',false)"><i class="fa fa-edit">Editar</i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el tarifa por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash">Borrar</i></button>'.'<button class="btn btn-sm m-1 btn-info" title="reformar" onclick="mostrar('.$reg->id.',true)"><i class="fas fa-calendar"> Reformar</i></button>'
               );
 
        }

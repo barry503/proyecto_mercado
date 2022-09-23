@@ -130,7 +130,7 @@ if(!isset($_SESSION["usuario"])){
             <!--inicio del formulario de registrar y editar -->
             <form name="formulario" id="formulario" method="POST">
     
-                <input type="hidden" name="reforma" id="reforma" value="0">
+                <input type="hidden" name="reforma" id="reforma" value="SI">
      <div class="row mb-2">
 
      	<div class="form-group col-md-12 col-xs-12 text-center">
