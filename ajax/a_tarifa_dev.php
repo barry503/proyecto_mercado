@@ -54,7 +54,7 @@ switch($_GET["op"]){
         /*echo $codigo_presup;#para pruebas */
         
              $respuesta=$objTari->insertar($codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion);
-             echo $respuesta ? "tarifa registrada" : "la tarifa no se pudo registrar";
+             echo $respuesta ? "<i class='fa fa  fa-check-square text-success t-100 bg-dark'></i><br><h1>tarifa registrada</h1>" : "la tarifa no se pudo registrar";
        }
          else {
 
