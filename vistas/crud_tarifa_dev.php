@@ -46,7 +46,7 @@ if(!isset($_SESSION["usuario"])){
 <!-- seccion del contenido -->
 <section class="content">
 <input type="hidden" value="<?php echo date('Y-m-d') ?>" id="fechaStatica">
-
+<input type="hidden" name="vigenciaStatica" id="vigenciaStatica">
 
 
 
@@ -146,7 +146,7 @@ if(!isset($_SESSION["usuario"])){
  <div class="form-group col-md-6 col-xs-12">
    <label for="periodo">periodo</label>
    <h4 id="periodoTexto"></h4>
-          <select  name="periodo" id="periodo" class="form-control"  required>
+          <select  name="periodo" id="periodo" class="form-control btn btn-outline-dark"  required>
           	<option value="0">SELECCIONA UN PERIODO</option>
           	<option value="Cambulantes">COBROS VENDEDORES AMBULANTES</option>
           	<option value="Cdiario">COBRO DIARIO</option>
@@ -163,12 +163,12 @@ if(!isset($_SESSION["usuario"])){
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="precio_unitario">precio_unitario</label>
-               <input type="text" name="precio_unitario" id="precio_unitario" class="form-control" required>
+               <input type="text" name="precio_unitario" id="precio_unitario" class="form-control btn btn-outline-success" required>
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicafiestas">aplicafiestas</label>
                <!-- <input type="text" name="aplicafiestas" id="aplicafiestas" class="form-control"> -->
-               <select name="aplicafiestas" id="aplicafiestas" class="form-control" required>
+               <select name="aplicafiestas" id="aplicafiestas" class="form-control " required>
                  <option value="0">NO</option>
                  <option value="1">SI</option>
                </select>
@@ -176,7 +176,7 @@ if(!isset($_SESSION["usuario"])){
            <div class="form-group col-md-6 col-xs-12">
              <label for="aplicamulta">aplicamulta</label>
                <!-- <input type="text" name="aplicamulta" id="aplicamulta" class="form-control"> -->
-               <select name="aplicamulta" id="aplicamulta" class="form-control" required>
+               <select name="aplicamulta" id="aplicamulta" class="form-control " required>
                  <option value="0">NO</option>
                  <option value="1">SI</option>
                </select>
@@ -196,7 +196,9 @@ if(!isset($_SESSION["usuario"])){
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="vigencia">vigencia</label>
-               <input type="date" name="vigencia" id="vigencia" class="form-control" min="<?php echo date('Y-m-d') ?>" max="2050-06-01" required>
+
+               <input type="date" name="vigencia" id="vigencia" class="form-control"  max="2050-06-01" required>
+               <!-- min="<?php #echo date('Y-m-d') ?>" -->
                
            </div>
 

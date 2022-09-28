@@ -24,6 +24,12 @@ class TarifaDev
  //inplementar un metodo para insertar una materia
   public function insertar($codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion)
   {
+    #aplicamos formato de 2 decimales para el precio
+    $precio_unitario = number_format($precio_unitario,2);
+    
+    $fecha_creacion = date_default_timezone_set('America/El_Salvador');
+    $fecha_creacion = date("y-m-d");#fecha de creacion de la tarifa
+
          $sql = "INSERT INTO tarifas(
     codigo_presup,
     descripcion,
@@ -33,7 +39,8 @@ class TarifaDev
     aplicaintereses,
     referencia,
     vigencia,
-    institucion_id_fk
+    institucion_id_fk,
+    fecha_creacion
 )
 VALUES(
     '$codigo_presup',
@@ -44,7 +51,8 @@ VALUES(
     '$aplicaintereses',
     '$referencia',
     '$vigencia',
-    '$idinstitucion')";
+    '$idinstitucion',
+    '$fecha_creacion')";
              return ejecutarConsulta($sql);
 
   }
@@ -54,6 +62,9 @@ VALUES(
    //inplementar un metodo para editar registros
 public function editar($id,$codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion)
 	{
+        #aplicamos formato de 2 decimales para el precio
+        $precio_unitario = number_format($precio_unitario,2);
+
          $sql = "UPDATE
     tarifas
 SET
@@ -110,7 +121,9 @@ public function listar()
     t.referencia,
     t.vigencia,
     t.institucion_id_fk,
-    i.nombre AS name_institucion
+    i.nombre AS name_institucion,
+
+    t.fecha_creacion/*campo para fun validCreate()*/
 FROM
     tarifas t
 INNER JOIN instituciones i ON

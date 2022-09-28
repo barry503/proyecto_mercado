@@ -22,6 +22,8 @@ $referencia=isset($_POST['referencia'])? limpiarCadena($_POST['referencia']):"";
 $vigencia=isset($_POST['vigencia'])? limpiarCadena($_POST['vigencia']):"";
 $idinstitucion=isset($_POST['idinstitucion'])? limpiarCadena($_POST['idinstitucion']):"";
 
+
+
 switch($_GET["op"]){
   case 'guardaryeditar':
         require ("../config/pdo.php");#conexion
@@ -42,7 +44,7 @@ switch($_GET["op"]){
 
         // consulta para adjudicar valor
 
-        $sqlCuentaT = $conexionPdo->query("SELECT COUNT(*) AS cuenta FROM tarifas WHERE   left(codigo_presup, 8)= '$codigo_presup'")->fetchAll(PDO::  FETCH_OBJ);
+        $sqlCuentaT = $conexionPdo->query("SELECT COUNT(DISTINCT codigo_presup) AS cuenta FROM tarifas WHERE   left(codigo_presup, 8)= '$codigo_presup' AND institucion_id_fk='$idinstitucion' ")->fetchAll(PDO::  FETCH_OBJ);
         foreach ($sqlCuentaT  as $t):  $cuentT = $t->cuenta; endforeach;
         if ($cuentT <= 9){
           $cuentT= $cuentT+1;
@@ -110,7 +112,13 @@ case 'eliminar':
 
 
      case'listar':
+
+     require ("../config/pdo.php");#conexion
       $respuesta=$objTari->listar();
+
+      //archivo con la funcion validBtnBorrar();
+      require ("funciones_extras/fun_listar_tarifa_dev.php");#conexion
+
       // vamos a declarar un array o arreglo
        $data= Array(); 
 
@@ -119,14 +127,14 @@ case 'eliminar':
                "0" =>$reg->id,
                "1"=>$reg->codigo_presup,
                "2"=>$reg->descripcion,
-               "3"=>$reg->precio_unitario,
+               "3"=>number_format($reg->precio_unitario,2),
                "4"=>($reg->aplicafiestas) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
                "5"=>($reg->aplicamulta) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
                "6"=>($reg->aplicaintereses) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
                "7"=>$reg->referencia,
                "8"=>$reg->vigencia,
                "9"=>$reg->name_institucion,
-                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.',false)"><i class="fa fa-edit">Editar</i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el tarifa por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash">Borrar</i></button>'.'<button class="btn btn-sm m-1 btn-info" title="reformar" onclick="mostrar('.$reg->id.',true)"><i class="fas fa-calendar"> Reformar</i></button>'
+                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.',false)"><i class="fa fa-edit">Editar</i></button>    '.validBtnBorrar($reg->id,$reg->codigo_presup,$reg->fecha_creacion).'<button class="btn btn-sm m-1 btn-info" title="reformar" onclick="mostrar('.$reg->id.',true)"><i class="fas fa-calendar"> Reformar</i></button>'
               );
 
        }

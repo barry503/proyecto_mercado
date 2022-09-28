@@ -40,13 +40,19 @@ function limpiar()
    $("#aplicaintereses").val("");
    $("#referencia").val("");
    $("#vigencia").val("");
+
+   $("#vigenciaStatica").val("");
+
    $("#idinstitucion").val("");
 
       $("#periodo").val("0");
       $("#periodoTexto").text("");
+      $("#periodo").show();
 
-      var dStatic = $("#fechaStatica").val();//fecha estatica
-      $("#vigencia").attr("min", dStatic);
+      $("#suplenteIdinstitucion").val("");//esta linea resuelve el bug de seleccionar la institucion
+
+/*      var dStatic = $("#fechaStatica").val();//fecha estatica
+      $("#vigencia").attr("min", dStatic);*/
 
       $("#reforma").attr("disabled",true);
 
@@ -177,7 +183,37 @@ function mostrar(id,reformar)
 
        if (reformar== true) {
         $("#reforma").removeAttr("disabled",false);
+        // alert("se realizara una reforma");
+        $("#btnGuardar").hide();
+        //cuando escribe en este campo
+          // $("#vigencia").keyup(function () {
+         // $('#vigencia').on('click', function(e) {
+            $("#vigencia").change(function(){
+              var vigencia = $(this).val();
+              var vigenciaStatica = $('#vigenciaStatica').val();
+
+
+              if (vigencia<= vigenciaStatica) {
+                console.log("vigencia igual o menor");
+              // $("#vigencia").attr("type","text");
+
+                Swal.fire({ html: "<i class='fa fa- fa-warning text-dark  bg-warning'></i><br><p>La vigencia es la misma o menor a la vigencia actual <br> por favor ingresa una fecha posterior</p>",
+                    position: "top-end",
+                    toast: true,
+                    background: '#ffc107',/*fd7e14*/
+                    showConfirmButton: false,
+                    timer: 2500
+
+                });
+                $("#btnGuardar").hide();
+              }else{
+                $("#btnGuardar").show();
+              }
+          // })
+            // }).keyup();
+            });
        }else{
+        $("#btnGuardar").show();
         $("#reforma").attr("disabled",true);
        }
 
@@ -186,7 +222,7 @@ function mostrar(id,reformar)
 
        $(".codigo_presupp").text(data.codigo_presup);
 
-       
+       $("#periodo").hide();//ocultamos el select
 
        $("#descripcion").val(data.descripcion);
        $("#precio_unitario").val(data.precio_unitario);
@@ -195,6 +231,7 @@ function mostrar(id,reformar)
        $("#aplicaintereses").val(data.aplicaintereses);
        $("#referencia").val(data.referencia);
        $("#vigencia").val(data.vigencia);
+       $("#vigenciaStatica").val(data.vigencia);
 
        //modificamos el atributo de fecha
        $("#vigencia").attr("min", data.vigencia);
@@ -322,6 +359,7 @@ function removerDisabled() {
     $("#vigencia").removeAttr("disabled",false);
     $("#idinstitucion").removeAttr("disabled",false);
     $("#periodo").removeAttr("disabled",false);
+    $("#vigencia").removeAttr("min");
 }
 
 function aplicarDisabled(e) {
@@ -335,8 +373,8 @@ function aplicarDisabled(e) {
     $("#aplicaintereses").attr("disabled",true);
     $("#aplicaintereses").attr("title", "el campo esta desabilitado");
 
-    $("#periodo").attr("disabled",true);
-    $("#periodo").attr("title", "el campo esta desabilitado");
+    // $("#periodo").attr("disabled",true);
+    // $("#periodo").attr("title", "el campo esta desabilitado");
 
     
     
