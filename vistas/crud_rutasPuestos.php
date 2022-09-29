@@ -127,9 +127,15 @@ if(!isset($_SESSION["usuario"])){
                 <select name="ruta_id" id="ruta_id"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
              </div>
 
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
-              <label for="puestos_id" >Elige el puesto</label>
-              <select name="puestos_id" id="puestos_id"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po text-center">
+              <label for="puestos_id" >Elige los puestos</label>
+              <!-- <select name="puestos_id" id="puestos_id"  class="form-control " data-live-search="true" >selectpicker</select> -->
+              
+                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                 <ul id="puestos_id">
+                   
+                 </ul>
+              </div>
            </div>
      </div>
 

@@ -13,13 +13,13 @@ $objRutaP=new RutasPuestos();
 $id= isset($_POST["id"])? limpiarCadena($_POST["id"]):"";
 
 $ruta_id= isset($_POST["ruta_id"])? limpiarCadena($_POST["ruta_id"]):"";
-$puestos_id= isset($_POST["puestos_id"])? limpiarCadena($_POST["puestos_id"]):"";
+// $puestos_id= isset($_POST["puestos_id"])? limpiarCadena($_POST["puestos_id"]):"";
 
 
 switch($_GET["op"]){
   case 'guardaryeditar':
        if(empty($id)){
-             $respuesta=$objRutaP->insertar($ruta_id,$puestos_id);
+             $respuesta=$objRutaP->insertar($ruta_id,$_POST['puestos_id']);
              echo $respuesta ? "Se agrego una ruta al puesto" : " no se pudo registrar";
        }
          else {
@@ -56,7 +56,7 @@ case 'eliminar':
              "0"=>$reg->id,
              "1"=>$reg->nombre_ruta,
              "2"=>$reg->identificador_puesto,
-                "3" =>'<button title="Editar" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.')"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash"></i></button>'
+                "3" =>/*'<button title="Editar" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.')"><i class="fa fa-edit"></i></button>    '.*/'<button class="btn btn-sm m-1 btn-danger" title="Eliminar por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash"> Eliminar</i></button>'
               );
 
        }
@@ -109,13 +109,31 @@ case 'eliminar':
       break;
 
       case "selectPuesto":
+      require ("../config/pdo.php");#conexion
 
         $respuesta = $objRutaP->selectPuesto();
        while($reg = $respuesta->fetch_object()){
 
-        echo '<option  value="' . $reg->id .'">'. $reg->id.' , '.$reg->modulo.'</option>';
+        $sql= $conexionPdo->query("SELECT * FROM rutas_puestos WHERE   puestos_id='$reg->id'")->fetchAll(PDO::  FETCH_OBJ);
+
+                 foreach ($sql  as $c){$dataPuestos_id = $c->puestos_id;  }#ciclo de $Consql
+                 if(isset($dataPuestos_id) == ""){ $dataPuestos_id = "0"; }
+                 if ($reg->id == $dataPuestos_id) {
+                   // code...
+                  // echo 'existen en rutas puestos';
+                 }else{
+                  // echo '<option  value="' . $reg->id .'">'. $reg->id.' , '.$reg->modulo.'</option>';
+
+                  // $sw= in_array($reg->idpermiso,$valores)?'checked':'';
+
+                        echo '<li><label> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></li>';
+                        // echo '<hr class="bg-dark">'; 
+                 }
+
 
        }
+
+
 
         break;    
 

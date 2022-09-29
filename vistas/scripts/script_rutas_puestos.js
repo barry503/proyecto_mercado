@@ -25,17 +25,19 @@ Primary use:  Open Source                                       *
                 // $("#ruta_id").selectpicker('refresh');
                 // r.preventDefault();
             });
-
-     $.post("../ajax/a_rutasPuestos.php?op=selectPuesto", function(r){
-
-                $("#puestos_id").html(r);
-                // $("#puestos_id").selectpicker('refresh');
-                // r.preventDefault();
-            });
+     opcionPuesto();
 
      
 
  }
+
+//Funcion limpiar
+function opcionPuesto(){
+ //mostramos los puestos
+ $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&id=",function(r){
+          $("#puestos_id").html(r);
+ });
+}
 
 //Funcion limpiar
 function limpiar()
@@ -63,6 +65,7 @@ function mostrarform(condi)
      $("#formularioregistros").show();
      $("#btnGuardar").prop("disabled",false);
      $("#btnagregar").hide();
+     opcionPuesto();
   }
   else 
   {
@@ -146,6 +149,7 @@ function guardaryeditar(e)
              // Swal.fire({ icon:'success', title: datos });
              Alerts('guardados',e);
              mostrarform(false);
+             opcionPuesto();
               // tabla.ajax.reload();
               listar();
              //setTimeout('document.location.reload()'); //para recargar la pajina web (provicional) 

@@ -22,10 +22,13 @@ class RutasPuestos
 
 
  //inplementar un metodo para insertar una materia
-  public function insertar($ruta_id,$puestos_id)
-  {
-         $sql = "INSERT INTO rutas_puestos (ruta_id,puestos_id) VALUES('$ruta_id','$puestos_id')";
-             return ejecutarConsulta($sql);
+  public function insertar($ruta_id,$puestos_id){
+    foreach ($puestos_id as $key) {
+        // code...
+    $sql = "INSERT INTO rutas_puestos (ruta_id,puestos_id) VALUES('$ruta_id','$key')";
+    $execute= ejecutarConsulta($sql);
+    }
+    return $execute;
 
   }
 
@@ -89,9 +92,22 @@ public function selectRuta()
 
 public function selectPuesto()
 {
-    $sql= "SELECT * FROM puestos ";
+    $sql= "SELECT * FROM puestos";
     return ejecutarConsulta($sql);
 }
+
+
+
+
+// para el check de los puestos
+
+#inplementar un metodo  para listar  los permisos marcados
+/*public function listarPuestosMarcados($id){
+  $sql="SELECT * FROM pm_roles_permiso WHERE id='$id'";
+  return ejecutarConsulta($sql);
+}
+*/
+
 
 
 }
