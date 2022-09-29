@@ -18,17 +18,47 @@ $nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
 
 
+#convertir todo los string a mayusculas
+ function yus($string){ $cadenamodificada = strtoupper($string); return $cadenamodificada; }
+#funcion para cambiar la ñ minuscula a mayuscula Ñ 
+ function uletra($string){ $trasformada =str_replace("ñ","Ñ",$string); return $trasformada; }
+
 switch($_GET["op"]){
   case 'guardaryeditar':
-       if(empty($idgiros)){
-             $respuesta=$objGiros->insertar($nombre,$idinstitucion);
-             echo $respuesta ? "giros registrado" : "El giros no se pudo registrar";
-       }
-         else {
-               $respuesta=$objGiros->editar($idgiros,$nombre,$idinstitucion);
-             echo $respuesta ? "giros actualizado" : "giros no se pudo actualizar";
+  require ("../config/pdo.php");#conexion
 
-         }
+
+  if(empty($idgiros)){
+    // validacion de giros
+    $sqlone = $conexionPdo->query("SELECT institucion_id_fk,UPPER(nombre) AS name FROM giros WHERE institucion_id_fk='$idinstitucion'")->fetchAll(PDO::  FETCH_OBJ);
+
+
+    $comparar_nombre = yus(uletra($nombre));
+    $comparar_nombre = strtr ($comparar_nombre, " ", "_");
+
+    foreach ($sqlone  as $sapo):
+      $nombre_base = strtr ($sapo->name, " ", "_");
+    if ($nombre_base==$comparar_nombre) {
+        // code...
+        echo $sms = "<i class='fas fa  fa-meh-o  text-danger t-100 '></i><br><h1>el giro ya existe</h1>"; 
+
+    }
+    endforeach;
+    if (isset($sms)) {
+        // code...
+      // echo "no registrado porque existen registros";
+    }else{
+      // echo "consultas exitosas";
+        $respuesta=$objGiros->insertar($nombre,$idinstitucion);
+        echo $respuesta ? "<i class='fas fa  fa-smile-o text-success t-100 '></i><br><h1>giro registrado</h1>" : "El giros no se pudo registrar";
+      
+    }
+  }
+    else {
+          $respuesta=$objGiros->editar($idgiros,$nombre,$idinstitucion);
+        echo $respuesta ? "<i class='fas fa  fa-repeat text-success t-100 '></i><br><h1>giro actualizado</h1>" : "giros no se pudo actualizar";
+
+    }
   break;
 
 
