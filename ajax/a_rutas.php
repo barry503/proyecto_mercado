@@ -37,7 +37,11 @@ case 'eliminar':
 
   break;
 
+case 'DesasignarUsuario':
+           $respuesta=$objRuta->DesasignarUsuario($idrutas);
+             echo $respuesta ? "la ruta ya no tiene un usuario asignado" : "el usuario no se pudo desasignar";
 
+  break;
 
 
     case'mostrar':
@@ -52,7 +56,14 @@ case 'eliminar':
      case'listar':
       $respuesta=$objRuta->listar();
       // vamos a declarar un array o arreglo
-       $data= Array(); 
+       $data= Array();
+       #funcion para mostrar la institucion
+       require ("../config/pdo.php");/*conexion*/
+      function funNameInstutucion($id)
+       {   global $conexionPdo;
+           $sql=$conexionPdo->query("SELECT id,nombre AS name_institucion FROM instituciones WHERE id='$id' ")->fetchAll(PDO::  FETCH_OBJ);
+           foreach ($sql as $key): return $key->name_institucion; endforeach;#retorna el nombre en lugar del numero
+       }
 
        while($reg=$respuesta->fetch_object()){
            $data[]=array(
@@ -60,8 +71,8 @@ case 'eliminar':
              "1"=>$reg->descripcion,
              "2"=>$reg->nombre,
              "3"=>' '.$reg->nombre_usuario.','.$reg->correo_usuario,
-             "4"=>$reg->name_institucion,
-                "5" =>'<button title="Editar el ruta" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idrutas.')"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el ruta por completo" onclick="eliminar('.$reg->idrutas.')"><i class="fas fa-trash"></i></button>'
+             "4"=>funNameInstutucion($reg->institucion_id_fk),
+                "5" =>'<button title="Editar el ruta" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idrutas.')"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el ruta por completo" onclick="eliminar('.$reg->idrutas.')"><i class="fas fa-trash"></i></button>'.'<button class="btn btn-sm m-1 btn-info" title="Desasignar el usuario a la ruta" onclick="DesasignarUsuario('.$reg->idrutas.')"><i class="fas fa-trash"></i><i class="fas fa-user"></i></button>'
               );
 
        }
@@ -105,8 +116,9 @@ case 'eliminar':
 
 
     case "selectAndroid":
+    $inst = $_GET['inst'];
 
-      $respuesta = $objRuta->selectAndroid();
+      $respuesta = $objRuta->selectAndroid($inst);
      while($reg = $respuesta->fetch_object()){
 
       echo '<option title="' . $reg->email .'" value="' . $reg->email .'">'. $reg->email.' , '.$reg->nombre.'</option>';

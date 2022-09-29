@@ -25,12 +25,20 @@ Primary use:  Open Source                                       *
                 // r.preventDefault();
             });
 
-     $.post("../ajax/a_rutas.php?op=selectAndroid", function(r){
+     
 
-                $("#correo_usuario").html(r);
-                // $("#correo_usuario").selectpicker('refresh');
-                // r.preventDefault();
-            });
+
+     //evento click para select de periodo
+      $('#idinstitucion').on('click', function(e) {
+          var inst = $("#idinstitucion").val();
+          $.post("../ajax/a_rutas.php?op=selectAndroid&inst="+inst, function(r){
+
+                     $("#correo_usuario").html(r);
+                     // $("#correo_usuario").selectpicker('refresh');
+                     // r.preventDefault();
+                 });
+          
+      });
 
      
 
@@ -165,13 +173,17 @@ function mostrar(idrutas)
        data = JSON.parse(data);
        mostrarform(true);
 
+$.post("../ajax/a_rutas.php?op=selectAndroid&inst="+data.institucion_id_fk, function(r){
+                     $("#correo_usuario").html(r);
+                     $("#correo_usuario").val(data.usuario_email_fk); 
+                 });
 
 $("#idrutas").val(data.id);
 $("#descripcion").val(data.descripcion);
 $("#nombre").val(data.nombre);
 $("#idinstitucion").val(data.institucion_id_fk);
 // $("#idinstitucion").selectpicker('refresh');
-$("#correo_usuario").val(data.usuario_email_fk);
+// $("#correo_usuario").val(data.usuario_email_fk);
 // $("#correo_usuario").selectpicker('refresh');
 
 // $(".cam-po a").attr("href", "#");
@@ -212,5 +224,35 @@ Swal.fire({
         });
 
 }
+
+function DesasignarUsuario(idrutas)
+{
+   
+Swal.fire({
+            html: '<h1 class="text-white">Desasignar el usuario de la ruta</h1><p class="text-white">¿Esta segur@ de remover el usuario y asignar el valor null ?</p>',
+            icon: 'error',
+            background: '#dc3545d6',
+            showCancelButton: true,
+            confirmButtonText: "Desasignar",
+            cancelButtonText: "Cancelar",
+        })
+        .then(resultado => {
+            if (resultado.value) {
+                // Hicieron click en "Sí"
+                console.log("Confirmacion verdadera");
+                $.post("../ajax/a_rutas.php?op=DesasignarUsuario", {idrutas : idrutas}, function(e){
+                         Alerts('guardados',e);
+                         listar();
+                       });
+            } else {
+                // Dijeron que no
+                console.log("Confirmacion falsa");
+                //alerta eliminacion cancelada
+                Alerts('datosAsalvo');
+            }
+        });
+
+}
+
 
  inicial();
