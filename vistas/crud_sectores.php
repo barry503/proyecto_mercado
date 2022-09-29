@@ -134,7 +134,7 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
            <!-- </div> -->
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-por">
               <label for="idinstitucion" >Institucion ala que pertenece</label>
-              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
               <!-- <select name="idinstitucion" id="idinstitucion"  class="form-control selectpicker" data-live-search="true" required> -->
               <!-- <?php #foreach ($sqlins as $i): ?>
                 <option value="<?php #echo $i->id ?>"><?php #echo $i->nombre; ?></option>

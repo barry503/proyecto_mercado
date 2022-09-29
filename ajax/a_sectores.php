@@ -17,18 +17,49 @@ $nombre_sector=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 
 $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
 
+#convertir todo los string a mayusculas
+ function yus($string){ $cadenamodificada = strtoupper($string); return $cadenamodificada; }
+#funcion para cambiar la ñ minuscula a mayuscula Ñ 
+ function uletra($string){ $trasformada =str_replace("ñ","Ñ",$string); return $trasformada; }
 
 switch($_GET["op"]){
 
 // case de sectores-------------------------------------------------------------------------->>>>>>>>>>>>>>>>>>
   case 'guardaryeditar':
+  require ("../config/pdo.php");#conexion
+
        if(empty($idsector)){
-             $respuesta=$obj_secto->insertar($nombre_sector,$idinstitucion);
-             echo $respuesta ? "Sector registrado" : "El Sector no se pudo registrar";
+        // validacion de sectors
+        $sqlone = $conexionPdo->query("SELECT institucion_id_fk,UPPER(nombre) AS name FROM sectores WHERE institucion_id_fk='$idinstitucion'")->fetchAll(PDO::  FETCH_OBJ);
+
+
+        $comparar_nombre = yus(uletra($nombre_sector));
+        $comparar_nombre = strtr ($comparar_nombre, " ", "_");
+
+        foreach ($sqlone  as $sapo):
+          $nombre_base = strtr ($sapo->name, " ", "_");
+        if ($nombre_base==$comparar_nombre) {
+            // code...
+            echo $sms = "<i class='fas fa  fa-meh-o  text-danger t-100 '></i><br><h1>el sector ya existe</h1>"; 
+
+        }
+        endforeach;
+        if (isset($sms)) {
+            // code...
+          // echo "no registrado porque existen registros";
+        }else{
+          // echo "consultas exitosas";
+            $respuesta=$obj_secto->insertar($nombre_sector,$idinstitucion);
+            echo $respuesta ? "<i class='fas fa  fa-smile-o text-success t-100 '></i><br><h1>sector registrado</h1>" : "El sectors no se pudo registrar";
+             /*$respuesta=$obj_secto->insertar($nombre_sector,$idinstitucion);
+             echo $respuesta ? "Sector registrado" : "El Sector no se pudo registrar";*/
+          
+        }
+        
        }
          else {
                $respuesta=$obj_secto->editar($idsector,$nombre_sector,$idinstitucion);
-             echo $respuesta ? "Sector actualizado" : "Sector no se pudo actualizar";
+             echo $respuesta ? "<i class='fas fa  fa-repeat text-success t-100 '></i><br><h1>Sector actualizado</h1>" : "Sector no se pudo actualizar";
 
          }
   break;

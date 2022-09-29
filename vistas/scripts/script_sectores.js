@@ -130,8 +130,8 @@ function guardaryeditar(e)
          {
              // alert(datos);
              // bootbox.alert(datos);
-             // Swal.fire({ icon:'success', title: datos });
-             Alerts('guardados',e);
+             Swal.fire({ html: e });
+             // Alerts('guardados',e);
              mostrarform(false);
               // tabla.ajax.reload();
               listar();
