@@ -90,10 +90,10 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                 <th>id</th>
+<!--                  <th>id</th>
                  <th>giros</th>
                  <th>Alcaldia</th>
-                 <!-- <th>acciones</th> -->
+                 <th>acciones</th> -->
               
                
                             

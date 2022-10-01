@@ -102,7 +102,7 @@ if(!isset($_SESSION["usuario"])){
                       </tbody>
 
                 <tfoot >
-                   <th>ID</th>
+<!--                    <th>ID</th>
                    <th>Usuario</th>
                    <th title="Si esta dentro del sistema">Conexion</th>
                    <th>Rol</th>
@@ -113,7 +113,7 @@ if(!isset($_SESSION["usuario"])){
                    <th>Imagen</th>
                    <th>Direccion</th>
                    <th>Estado del usuario</th>
-                   <th>Acciones</th>
+                   <th>Acciones</th> -->
                               
                 </tfoot>
 

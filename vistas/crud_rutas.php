@@ -97,12 +97,12 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                 <th>id</th>
+<!--                  <th>id</th>
                  <th>Descripcion</th>
                  <th>Nombre</th>
                  <th>usuario</th>
                  <th>Institucion</th>
-                 <th>acciones</th>
+                 <th>acciones</th> -->
               
                
                             

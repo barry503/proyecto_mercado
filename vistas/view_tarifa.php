@@ -97,7 +97,7 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                 <th>id</th>
+<!--                  <th>id</th>
                  <th>codigo_presup</th>
                  <th>descripcion</th>
                  <th>precio_unitario</th>
@@ -106,7 +106,7 @@ if(!isset($_SESSION["usuario"])){
                  <th>aplicaintereses</th>
                  <th>referencia</th>
                  <th>vigencia</th>
-                 <th>idinstitucion</th>
+                 <th>idinstitucion</th> -->
                  
               
                

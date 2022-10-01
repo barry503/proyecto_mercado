@@ -84,10 +84,10 @@ if(!isset($_SESSION["usuario"])){
                 <th>id</th>
                 <th>codigo_presup</th>
                 <th>descripcion</th>
-                <th>precio_unitario</th>
-                <th>aplicafiestas</th>
-                <th>aplicamulta</th>
-                <th>aplicaintereses</th>
+                <th title="precio_unitario">Precio</th>
+                <th title="aplicafiestas">fiestas</th>
+                <th title="aplicamulta">multa</th>
+                <th title="aplicaintereses">intereses</th>
                 <th>referencia</th>
                 <th>vigencia</th>
                 <th>idinstitucion</th>
@@ -99,7 +99,7 @@ if(!isset($_SESSION["usuario"])){
                         <!-- datos de bd en el archivo url: scripts/sexo.js -->
                     </tbody>
 
-              <tfoot >
+              <!-- <tfoot >
                  <th>id</th>
                  <th>codigo_presup</th>
                  <th>descripcion</th>
@@ -114,7 +114,7 @@ if(!isset($_SESSION["usuario"])){
               
                
                             
-              </tfoot>
+              </tfoot> -->
 
 
           </table>

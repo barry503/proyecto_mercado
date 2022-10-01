@@ -96,7 +96,7 @@ if(!isset($_SESSION["usuario"])){
                         <!-- datos de bd en  js-->
                     </tbody>
               <tfoot >
-               <th>idpuesto</th>
+<!--                <th>idpuesto</th>
                <th>modulo</th>
                <th>medida_frente</th>
                <th>medida_fondo</th>
@@ -105,7 +105,7 @@ if(!isset($_SESSION["usuario"])){
                <th>medida_compensa</th>
                <th>name_institucion</th>
                <th>name_sector</th>
-               <th>acciones</th>
+               <th>acciones</th> -->
               </tfoot>
           </table>
           <!-- / fin tabla -->

@@ -90,9 +90,9 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                 <th>id</th>
+<!--                  <th>id</th>
                  <th>sector</th>
-                 <th>Alcaldia</th>
+                 <th>Alcaldia</th> -->
                  
               
                

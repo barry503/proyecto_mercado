@@ -93,14 +93,14 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                <th>email</th>
+<!--                 <th>email</th>
                 <th>nombre</th>
                 <th>password</th>
                 <th>idinstitucion</th>
                 <th>device_prefix</th>
                 <th>alcance</th>
-                <!-- <th>acciones</th> -->
-              
+                <th>acciones</th>
+               -->
                             
               </tfoot>
 

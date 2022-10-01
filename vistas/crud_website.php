@@ -128,12 +128,12 @@ if(!isset($_SESSION["usuario"])){
                     </tbody>
 
               <tfoot >
-                <th>id</th>
+<!--                 <th>id</th>
                 <th>nombre seccion</th>
                 <th>contenido publico</th>
                 <th>descripcion</th>
                 <th>estado</th>
-                <th>fecha de creacion</th>
+                <th>fecha de creacion</th> -->
               </tfoot>
 
 
