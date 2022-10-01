@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2022 a las 20:21:32
+-- Tiempo de generación: 01-10-2022 a las 09:45:19
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -187,7 +187,11 @@ CREATE TABLE `giros` (
 INSERT INTO `giros` (`id`, `nombre`, `institucion_id_fk`) VALUES
 (1, 'loremm', 2),
 (2, 'vsdf', 1),
-(3, 'giro n 11', 2);
+(3, 'giro n 11', 2),
+(5, 'nada raro', 2),
+(7, 'compra verduras', 1),
+(9, 'compra verduras', 2),
+(11, 'NEW', 1);
 
 -- --------------------------------------------------------
 
@@ -564,34 +568,11 @@ CREATE TABLE `puestos` (
 --
 
 INSERT INTO `puestos` (`id`, `estado`, `medida_calificacion`, `medida_compensa`, `medida_fondo`, `medida_frente`, `modulo`, `institucion_id_fk`, `sector_id_fk`) VALUES
-(1, '0', 8, 1, 4, 2, 'puestoN-1', 2, 1),
-(2, '1', 2, 2, 2, 2, 'puestoN-2', 1, 2),
-(3, '', 3, 3, 3, 3, 'puestoN-3', 2, 6),
-(4, '1', 4, 4, 4, 4, 'puestoN-4', 1, 9),
-(5, '', 5, 5, 5, 5, 'puestoN-5', 2, 9),
-(6, '1', 6, 6, 6, 6, 'puestoN-6', 1, 6),
-(7, '', 4, 0, 2, 2, 'PM-10', 1, 1),
-(8, '', 4, 0, 2, 2, 'PM-11', 1, 1),
-(9, '', 4, 0, 2, 2, 'PM-12', 1, 1),
-(10, '', 4, 0, 2, 2, 'PM-13', 1, 1),
-(11, '', 4, 0, 2, 2, 'PM-14', 1, 1),
-(12, '', 4, 0, 2, 2, 'PM-15', 1, 1),
-(13, '', 4, 0, 2, 2, 'PM-16', 1, 1),
-(14, '', 4, 0, 2, 2, 'PM-17', 1, 1),
-(15, '', 4, 0, 2, 2, 'PM-18', 1, 1),
-(16, '', 4, 0, 2, 2, 'PM-19', 1, 1),
-(17, '', 4, 0, 2, 2, 'PM-20', 1, 1),
-(18, '', 36, 0, 6, 6, 'EJ-100', 2, 9),
-(19, '', 36, 0, 6, 6, 'EJ-101', 2, 9),
-(20, '', 36, 0, 6, 6, 'EJ-102', 2, 9),
-(21, '', 36, 0, 6, 6, 'EJ-103', 2, 9),
-(22, '', 36, 0, 6, 6, 'EJ-104', 2, 9),
-(23, '', 36, 0, 6, 6, 'EJ-105', 2, 9),
-(24, '', 36, 0, 6, 6, 'EJ-106', 2, 9),
-(25, '', 36, 0, 6, 6, 'EJ-107', 2, 9),
-(26, '', 36, 0, 6, 6, 'EJ-108', 2, 9),
-(27, '', 36, 0, 6, 6, 'EJ-109', 2, 9),
-(28, '', 36, 0, 6, 6, 'EJ-110', 2, 9);
+(1, '', 1, 0, 1, 1, 'PM-1', 2, 4),
+(2, '', 1, 0, 1, 1, 'PM-2', 2, 4),
+(3, '', 1, 0, 1, 1, 'PM-3', 2, 4),
+(4, '', 1, 0, 1, 1, 'PM-4', 2, 4),
+(5, '', 1, 0, 1, 1, 'PM-5', 2, 4);
 
 -- --------------------------------------------------------
 
@@ -612,11 +593,16 @@ CREATE TABLE `rutas` (
 --
 
 INSERT INTO `rutas` (`id`, `descripcion`, `nombre`, `institucion_id_fk`, `usuario_email_fk`) VALUES
-(1, 'ruta 1', 'ruta #1', 1, 'usuario1@corre.com'),
-(2, 'ruta 2', 'ruta #2', 2, 'usuario2@corre.com'),
-(3, 'ruta 3', 'ruta #3', 1, 'usuario3@corre.com'),
-(4, 'ruta 4', 'ruta #4', 2, 'usuario4@corre.com'),
-(5, 'ruta 5', 'ruta #5', 1, 'usuario5@corre.com');
+(1, 'ruta 1', 'ruta #1', 1, NULL),
+(2, 'ruta 2', 'ruta #2', 2, NULL),
+(3, 'ruta 3', 'ruta #3', 1, 'usuario1@corre.com'),
+(4, 'ruta 4', 'ruta #4', 1, 'usuario3@corre.com'),
+(5, 'ruta 5', 'ruta #5', 1, 'usuario5@corre.com'),
+(6, 'Excepteur sint occaecat cupidatat non proident, su', 'calle #100', 2, NULL),
+(7, 'Excepteur sint occaecat cupidatat non proident, su', 'calle #122', 1, 'usuario2@corre.com'),
+(10, 'vv', 'xsxscdvdc', 1, 'usuario1@corre.com'),
+(11, 'j', 'cdhbbdbh', 1, NULL),
+(12, 'jjj', 'nada raro', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -635,8 +621,8 @@ CREATE TABLE `rutas_puestos` (
 --
 
 INSERT INTO `rutas_puestos` (`id`, `ruta_id`, `puestos_id`) VALUES
-(1, 1, 1),
-(2, 2, 2);
+(4, 2, 1),
+(5, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -745,7 +731,10 @@ INSERT INTO `sectores` (`id`, `nombre`, `institucion_id_fk`) VALUES
 (6, 'mercado miguel', 2),
 (7, 'mercado la diosa', 2),
 (8, 'mercado bueno aires', 1),
-(9, 'mercado centro', 1);
+(9, 'mercado centro', 1),
+(11, 'new', 1),
+(12, 'new', 2),
+(13, 'mercado el angel', 1);
 
 -- --------------------------------------------------------
 
@@ -782,19 +771,22 @@ CREATE TABLE `tarifas` (
   `aplicaintereses` tinyint(1) NOT NULL,
   `referencia` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vigencia` date NOT NULL,
-  `institucion_id_fk` smallint(6) NOT NULL
+  `institucion_id_fk` smallint(6) NOT NULL,
+  `fecha_creacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tarifas`
 --
 
-INSERT INTO `tarifas` (`id`, `codigo_presup`, `descripcion`, `precio_unitario`, `aplicafiestas`, `aplicamulta`, `aplicaintereses`, `referencia`, `vigencia`, `institucion_id_fk`) VALUES
-(1, 1211599901, 'tarifa 111111', 0.4, 0, 0, 0, 'se establecio la 1er tarifa de la municipalidad', '2021-05-02', 1),
-(2, 1211599902, 'tarifa nueva', 0.5, 0, 0, 0, 'se adjunto una nueva tarifa', '2022-09-30', 1),
-(3, 1211500201, 'tarifa 1', 0.2, 0, 0, 0, 'sss', '2022-09-29', 1),
-(4, 1211500202, 'sss', 0.6, 0, 0, 0, 'sss', '2022-09-30', 1),
-(5, 1211500101, '1', 1, 0, 0, 1, 'qq', '2022-09-28', 1);
+INSERT INTO `tarifas` (`id`, `codigo_presup`, `descripcion`, `precio_unitario`, `aplicafiestas`, `aplicamulta`, `aplicaintereses`, `referencia`, `vigencia`, `institucion_id_fk`, `fecha_creacion`) VALUES
+(1, 1211599901, 'descripcion', 1, 0, 0, 0, '1', '2022-09-01', 2, '2022-09-28'),
+(2, 1211599901, '1', 1, 0, 0, 0, '1', '2022-09-02', 2, '2022-09-28'),
+(7, 1211599901, '1', 1, 0, 0, 0, '1', '2022-09-29', 2, '2022-09-28'),
+(8, 1211599901, '1', 1, 0, 0, 0, '1', '2022-09-30', 2, '2022-09-28'),
+(13, 1211599902, '2', 2, 0, 0, 0, '2', '2022-09-06', 2, '2022-09-28'),
+(14, 1211599901, '33', 3, 0, 0, 0, '3', '2022-09-14', 1, '2022-09-28'),
+(15, 1211599903, '3', 3, 0, 0, 0, '3', '2022-03-23', 2, '2022-09-28');
 
 -- --------------------------------------------------------
 
@@ -1138,7 +1130,7 @@ ALTER TABLE `financiamientos`
 -- AUTO_INCREMENT de la tabla `giros`
 --
 ALTER TABLE `giros`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `impuestos`
@@ -1210,19 +1202,19 @@ ALTER TABLE `pm_usuario`
 -- AUTO_INCREMENT de la tabla `puestos`
 --
 ALTER TABLE `puestos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `rutas`
 --
 ALTER TABLE `rutas`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `rutas_puestos`
 --
 ALTER TABLE `rutas_puestos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `saniresumen`
@@ -1246,7 +1238,7 @@ ALTER TABLE `saniubicaciones`
 -- AUTO_INCREMENT de la tabla `sectores`
 --
 ALTER TABLE `sectores`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
@@ -1258,7 +1250,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
