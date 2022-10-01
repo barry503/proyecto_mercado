@@ -56,15 +56,22 @@ function listar()
 {      /* tbllistado va en la tabla*/
   tabla=$('#tbllistado').dataTable(
   {
+    language: {
+                lengthMenu: 'Mostrar _MENU_ registros por página',
+                zeroRecords: 'No se encontró nada, lo siento',
+                info: 'Mostrando página _PAGE_ de _PAGES_ ',
+                infoEmpty: 'No hay registros disponibles',
+                infoFiltered: '(filtrado de _MAX_ registros totales)',
+            },
       "aProcessing": true,//Activamos el procesamiento del datatables
       "aServerSide": true,//Paginacion y filtrado realizados por el servidor
       dom: 'Bfrtip',//Definimos los elementos del control de tabla 
 
       buttons: [
                   'copyHtml5',
-                  'excelHtml5',
-                  'csvHtml5',
-                  'pdf'
+'excelHtml5',
+'pdf',
+'print'
             ],
             "ajax":
                     {

@@ -99,15 +99,22 @@ function listar()
 {      /* tbllistado va en la tabla*/
   tabla=$('#tbllistado').dataTable(
   {
+    language: {
+                lengthMenu: 'Mostrar _MENU_ registros por página',
+                zeroRecords: 'No se encontró nada, lo siento',
+                info: 'Mostrando página _PAGE_ de _PAGES_ ',
+                infoEmpty: 'No hay registros disponibles',
+                infoFiltered: '(filtrado de _MAX_ registros totales)',
+            },
       "aProcessing": true,//Activamos el procesamiento del datatables
       "aServerSidrutase": true,//Paginacion y filtrado realizados por el servidrutasor
       dom: 'Bfrtip',//Definimos los elementos del control de tabla 
 
       buttons: [
                   'copyHtml5',
-                  'excelHtml5',
-                  'csvHtml5',
-                  'pdf'
+'excelHtml5',
+'pdf',
+'print'
             ],
             "ajax":
                     {
@@ -229,7 +236,7 @@ function DesasignarUsuario(idrutas)
 {
    
 Swal.fire({
-            html: '<h1 class="text-white">Desasignar el usuario de la ruta</h1><p class="text-white">¿Esta segur@ de remover el usuario y asignar el valor null ?</p>',
+            html: '<h1 class="text-white">Desasignar el usuario de la ruta</h1><p class="text-white">¿Esta segur@ de remover el usuario ?</p>',
             icon: 'error',
             background: '#dc3545d6',
             showCancelButton: true,

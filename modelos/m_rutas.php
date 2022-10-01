@@ -24,10 +24,14 @@ class Rutas
  //inplementar un metodo para insertar una materia
   public function insertar($descripcion,$nombre,$idinstitucion,$correo_usuario)
   {
-         $sql = "INSERT INTO rutas (descripcion,nombre,institucion_id_fk,usuario_email_fk )
-         VALUES('$descripcion','$nombre' ,'$idinstitucion','$correo_usuario')";
-             return ejecutarConsulta($sql);
-
+    if ($correo_usuario=="NULL") {
+        $sql = "INSERT INTO rutas (descripcion,nombre,institucion_id_fk,usuario_email_fk )
+        VALUES('$descripcion','$nombre' ,'$idinstitucion',NULL)";
+    }else{
+        $sql = "INSERT INTO rutas (descripcion,nombre,institucion_id_fk,usuario_email_fk )
+        VALUES('$descripcion','$nombre' ,'$idinstitucion','$correo_usuario')";
+    }
+            return ejecutarConsulta($sql);
   }
 
 

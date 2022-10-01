@@ -68,9 +68,9 @@ case 'DesasignarUsuario':
        while($reg=$respuesta->fetch_object()){
            $data[]=array(
              "0"=>$reg->idrutas,
-             "1"=>$reg->descripcion,
-             "2"=>$reg->nombre,
-             "3"=>' '.$reg->nombre_usuario.','.$reg->correo_usuario,
+             "1"=>$reg->nombre,
+             "2"=>$reg->descripcion,
+             "3"=>($reg->nombre_usuario)? $reg->nombre_usuario:"sin usuario",
              "4"=>funNameInstutucion($reg->institucion_id_fk),
                 "5" =>'<button title="Editar el ruta" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idrutas.')"><i class="fa fa-edit"></i></button>    '.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el ruta por completo" onclick="eliminar('.$reg->idrutas.')"><i class="fas fa-trash"></i></button>'.'<button class="btn btn-sm m-1 btn-info" title="Desasignar el usuario a la ruta" onclick="DesasignarUsuario('.$reg->idrutas.')"><i class="fas fa-trash"></i><i class="fas fa-user"></i></button>'
               );
@@ -119,6 +119,7 @@ case 'DesasignarUsuario':
     $inst = $_GET['inst'];
 
       $respuesta = $objRuta->selectAndroid($inst);
+      echo '<option title="sin usuario" value="NULL">sin usuario</option>';
      while($reg = $respuesta->fetch_object()){
 
       echo '<option title="' . $reg->email .'" value="' . $reg->email .'">'. $reg->email.' , '.$reg->nombre.'</option>';

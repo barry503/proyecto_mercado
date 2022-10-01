@@ -83,8 +83,9 @@ $sqlins = $conexionPdo->query("SELECT * FROM instituciones WHERE estado='1' ")->
         <!-- inicio panel-body o cuerpo de tabla -->
         <div class="panel-body table-responsive" id="listadoregistros">
               <!-- inicio tabla -->
-          <table id="tbllistado" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
-              <thead >
+          <table id="tbllistado" class="table display nowrap dataTable dtr-inline collapsed table-borderless table-striped table-bordered table-condensed table-hover" ><!-- table-earning = clase que causa pointer-->
+            <div class="box-tools pull-right"></div>
+              <thead class="bg-dark text-white">
                  <th>id</th>
                  <th>sector</th>
                  <th>Alcaldia</th>

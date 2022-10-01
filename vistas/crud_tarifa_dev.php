@@ -72,15 +72,14 @@ if(!isset($_SESSION["usuario"])){
 
 
       
-      <div class="box-tools pull-right">  
-        <!-- nose si es necesario en esta version -->
-      </div>
        
+
         <!-- inicio panel-body o cuerpo de tabla -->
         <div class="panel-body table-responsive" id="listadoregistros">
               <!-- inicio tabla -->
-          <table id="tbllistado" class="table table-borderless table-striped table-earning   table-bordered  table-condensed table-hover" >
-              <thead class="bg-dark">
+          <table id="tbllistado" class="table display nowrap dataTable dtr-inline collapsed table-borderless table-striped table-bordered table-condensed table-hover" ><!-- table-earning = clase que causa pointer-->
+            <div class="box-tools pull-right"></div>
+              <thead class="bg-dark text-white">
                 <th>id</th>
                 <th>codigo_presup</th>
                 <th>descripcion</th>
@@ -96,11 +95,15 @@ if(!isset($_SESSION["usuario"])){
                             
               </thead>  
                     <tbody>
-                        <!-- datos de bd en el archivo url: scripts/sexo.js -->
+                         <tr class="odd">
+                          <td class="dtr-control sorting_1" tabindex="0" style="">Airi Satou</td>
+                          <td class="">Accountant</td><td>Tokyo</td><td class="dt-body-right" style="">33</td>
+                          <td class="dt-body-right" style="">27/11/2008</td><td class="dt-body-right dtr-hidden" style="display: none;">$162,700</td>
+                         </tr>
                     </tbody>
 
-              <!-- <tfoot >
-                 <th>id</th>
+              <tfoot>
+<!--                  <th>id</th>
                  <th>codigo_presup</th>
                  <th>descripcion</th>
                  <th>precio_unitario</th>
@@ -110,11 +113,11 @@ if(!isset($_SESSION["usuario"])){
                  <th>referencia</th>
                  <th>vigencia</th>
                  <th>idinstitucion</th>
-                 <th>acciones</th>
+                 <th>acciones</th> -->
               
                
                             
-              </tfoot> -->
+              </tfoot>
 
 
           </table>
