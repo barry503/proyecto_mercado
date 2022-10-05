@@ -19,17 +19,26 @@ Primary use:  Open Source                                       *
                     $("#idinstitucion2").html(r);
                     // $("#idinstitucion").selectpicker('refresh');
          });
-         $.post("../ajax/a_puesto.php?op=selectSector", function(r){
-                    $("#idsector").html(r);
-                    $("#idsector2").html(r);
-                    // $("#idsector").selectpicker('refresh');
-         });
+
 
      $("#formulario").on("submit",function(e)
      {
           guardaryeditar(e);
        
      })
+
+
+   //evento click para select de periodo
+      $('#idinstitucion').on('click', function(e) {
+          var inst = $("#idinstitucion").val();
+
+          $.post("../ajax/a_puesto.php?op=selectSector&inst="+inst, function(r){
+                     $("#idsector").html(r);
+                     $("#idsector2").html(r);
+                     // $("#idsector").selectpicker('refresh');
+          });
+          
+      });
 
 
 

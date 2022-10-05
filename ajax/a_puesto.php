@@ -157,8 +157,9 @@ switch($_GET["op"]){
 
 
                 case "selectSector":
+                $param = $_GET['inst'];
 
-                  $respuesta = $puestoS->selectSector();
+                  $respuesta = $puestoS->selectSector($param);
                  while($reg = $respuesta->fetch_object()){
 
                   echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';

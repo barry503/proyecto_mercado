@@ -25,8 +25,8 @@ public function selectInstituciones(){
   return ejecutarConsulta($sql);
 }
 
-public function selectSector(){
-  $sql="SELECT * FROM sectores ";
+public function selectSector($idinstitucion){
+  $sql="SELECT * FROM sectores WHERE institucion_id_fk='$idinstitucion'";
   return ejecutarConsulta($sql);
 }
 
