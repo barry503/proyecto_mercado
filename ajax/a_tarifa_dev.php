@@ -126,15 +126,15 @@ case 'eliminar':
            $data[]=array(
                "0" =>$reg->id,
                "1"=>$reg->codigo_presup,
-               "2"=>$reg->descripcion,
-               "3"=>number_format($reg->precio_unitario,2),
-               "4"=>($reg->aplicafiestas) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
-               "5"=>($reg->aplicamulta) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
-               "6"=>($reg->aplicaintereses) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
-               "7"=>$reg->referencia,
-               "8"=>$reg->vigencia,
-               "9"=>$reg->name_institucion,
-                "10" =>'<button title="Editar el tarifa" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.',false)"><i class="fa fa-edit">Editar</i></button>    '.validBtnBorrar($reg->id,$reg->codigo_presup,$reg->fecha_creacion).'<button class="btn btn-sm m-1 btn-info" title="reformar" onclick="mostrar('.$reg->id.',true)"><i class="fas fa-calendar"> Reformar</i></button>'
+               "2"=>number_format($reg->precio_unitario,2),
+               "3"=>($reg->aplicafiestas) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
+               "4"=>($reg->aplicamulta) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
+               "5"=>($reg->aplicaintereses) ? '<p class="badge badge-info">SI</p>':'<p class="badge badge-danger">NO</p>',
+               "6"=>$reg->referencia,
+               "7"=>$reg->vigencia,
+               "8"=>$reg->name_institucion,
+                "9" =>ValidEditar($reg->id,$reg->codigo_presup,$reg->fecha_creacion,$reg->institucion_id_fk).' '.validBtnBorrar($reg->id,$reg->codigo_presup,$reg->fecha_creacion,$reg->institucion_id_fk),
+                "10" =>$reg->descripcion
               );
 
        }

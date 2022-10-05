@@ -19,25 +19,40 @@ Primary use:  Open Source                                       *
           guardaryeditar(e);
        
      })
-     $.post("../ajax/a_rutasPuestos.php?op=selectRuta", function(r){
 
-                $("#ruta_id").html(r);
-                // $("#ruta_id").selectpicker('refresh');
+     // opcionPuesto();
+
+     $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
+
+                $("#idinstitucion").html(r);
+                // $("#idinstitucion").selectpicker('refresh');
                 // r.preventDefault();
             });
-     opcionPuesto();
-
      
+     //evento click para select de periodo
+      $('#idinstitucion').on('click', function(e) {
+          var inst = $("#idinstitucion").val();
+          
+          $.post("../ajax/a_rutasPuestos.php?op=selectRuta&inst="+inst, function(r){
+
+                     $("#ruta_id").html(r);
+                     // $("#ruta_id").selectpicker('refresh');
+                     // r.preventDefault();
+                 });
+
+
+          //post para los puestos
+          $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&inst="+inst,function(r){
+                   $("#puestos_id").html(r);
+          });
+          
+      });
+
+
 
  }
 
-//Funcion limpiar
-function opcionPuesto(){
- //mostramos los puestos
- $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&id=",function(r){
-          $("#puestos_id").html(r);
- });
-}
+
 
 //Funcion limpiar
 function limpiar()
@@ -48,6 +63,7 @@ function limpiar()
    $("#ruta_id").val("");
    // $("#ruta_id").selectpicker('refresh');
    $("#puestos_id").val("");
+   $("#idinstitucion").val("");
    // $("#puestos_id").selectpicker('refresh');
    
    // $(".cam-po a").attr("href", "#");
@@ -65,7 +81,7 @@ function mostrarform(condi)
      $("#formularioregistros").show();
      $("#btnGuardar").prop("disabled",false);
      $("#btnagregar").hide();
-     opcionPuesto();
+     // opcionPuesto();
   }
   else 
   {

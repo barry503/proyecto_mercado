@@ -82,7 +82,6 @@ if(!isset($_SESSION["usuario"])){
               <thead class="bg-dark text-white">
                 <th>id</th>
                 <th>codigo_presup</th>
-                <th>descripcion</th>
                 <th title="precio_unitario">Precio</th>
                 <th title="aplicafiestas">fiestas</th>
                 <th title="aplicamulta">multa</th>
@@ -91,6 +90,7 @@ if(!isset($_SESSION["usuario"])){
                 <th>vigencia</th>
                 <th>idinstitucion</th>
                  <th>acciones</th>
+                <th>descripcion</th>
                  
                             
               </thead>  

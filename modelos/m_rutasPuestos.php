@@ -84,15 +84,15 @@ FROM
 
 }
 
-public function selectRuta()
+public function selectRuta($idinstitucion)
 {
-    $sql= "SELECT * FROM rutas ";
+    $sql= "SELECT * FROM rutas WHERE institucion_id_fk='$idinstitucion'";
     return ejecutarConsulta($sql);
 }
 
-public function selectPuesto()
+public function selectPuesto($idinstitucion)
 {
-    $sql= "SELECT * FROM puestos";
+    $sql= "SELECT * FROM puestos WHERE institucion_id_fk='$idinstitucion'";
     return ejecutarConsulta($sql);
 }
 

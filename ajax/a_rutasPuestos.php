@@ -98,8 +98,8 @@ case 'eliminar':
 
 
     case "selectRuta":
-
-      $respuesta = $objRutaP->selectRuta();
+    $param = $_GET['inst'];
+      $respuesta = $objRutaP->selectRuta($param);
      while($reg = $respuesta->fetch_object()){
 
       echo '<option  value="' . $reg->id .'">'. $reg->nombre.' , '.$reg->descripcion.'</option>';
@@ -109,9 +109,10 @@ case 'eliminar':
       break;
 
       case "selectPuesto":
+      $param = $_GET['inst'];
       require ("../config/pdo.php");#conexion
 
-        $respuesta = $objRutaP->selectPuesto();
+        $respuesta = $objRutaP->selectPuesto($param);
        while($reg = $respuesta->fetch_object()){
 
         $sql= $conexionPdo->query("SELECT * FROM rutas_puestos WHERE   puestos_id='$reg->id'")->fetchAll(PDO::  FETCH_OBJ);
@@ -126,7 +127,9 @@ case 'eliminar':
 
                   // $sw= in_array($reg->idpermiso,$valores)?'checked':'';
 
-                        echo '<li><label> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></li>';
+                        // echo '<li><label> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></li>';
+                        echo '<div class"col-lg-4"><label class="btn btn-outline-dark"> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></div>';
+
                         // echo '<hr class="bg-dark">'; 
                  }
 

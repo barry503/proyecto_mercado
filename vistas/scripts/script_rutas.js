@@ -31,6 +31,7 @@ Primary use:  Open Source                                       *
      //evento click para select de periodo
       $('#idinstitucion').on('click', function(e) {
           var inst = $("#idinstitucion").val();
+          
           $.post("../ajax/a_rutas.php?op=selectAndroid&inst="+inst, function(r){
 
                      $("#correo_usuario").html(r);
