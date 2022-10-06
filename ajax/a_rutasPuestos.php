@@ -20,7 +20,7 @@ switch($_GET["op"]){
   case 'guardaryeditar':
        if(empty($id)){
              $respuesta=$objRutaP->insertar($ruta_id,$_POST['puestos_id']);
-             echo $respuesta ? "Se agrego una ruta al puesto" : " no se pudo registrar";
+             echo $respuesta ? "Se agregaron ".count($_POST['puestos_id'])."  puestos a la ruta" : " no se pudo registrar";
        }
          else {
                $respuesta=$objRutaP->editar($id,$ruta_id,$puestos_id);
@@ -128,7 +128,7 @@ case 'eliminar':
                   // $sw= in_array($reg->idpermiso,$valores)?'checked':'';
 
                         // echo '<li><label> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></li>';
-                        echo '<div class"col-lg-4"><label class="btn btn-outline-dark"> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></div>';
+                        echo '<div class"col-lg-4 p-5 mr-5"><label class="btn btn-outline-dark"> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></div>';
 
                         // echo '<hr class="bg-dark">'; 
                  }

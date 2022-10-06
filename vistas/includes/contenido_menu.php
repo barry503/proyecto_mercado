@@ -102,6 +102,15 @@
                 </a>
             <?php endif; ?>
 
+            <?php $menu_permiso = menu_fun(21); ?>
+            <?php if (!empty($_SESSION[$menu_permiso])==1): ?>
+                <a href="crud_contribuyente.php">
+                <i class="fa fa-list-alt"></i><?php echo strtr ($menu_permiso, "_", " "); ?>
+                </a>
+            <?php endif; ?>
+
+             
+
              
             
         </li>

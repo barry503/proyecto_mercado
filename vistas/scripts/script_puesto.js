@@ -27,6 +27,11 @@ Primary use:  Open Source                                       *
        
      })
 
+$.post("../ajax/a_puesto.php?op=selectSectorAll", function(r){
+           $("#idsector").html(r);
+           $("#idsector2").html(r);
+           // $("#idsector").selectpicker('refresh');
+});
 
    //evento click para select de periodo
       $('#idinstitucion').on('click', function(e) {
@@ -194,8 +199,9 @@ function guardaryeditar(e)
              // Swal.fire({ icon:'success', title: datos });
              Alerts('guardados',e);
              mostrarform(false);
-              // tabla.ajax.reload();
-              listar();
+              var tabla = $('#tbllistado').DataTable();//accedo a la tabla de nuevo
+              tabla.ajax.reload();
+              // listar();
              //setTimeout('document.location.reload()'); //para recargar la pajina web (provicional) 
          }         
            
@@ -223,7 +229,8 @@ $("#medida_fondo").val(data.medida_fondo);
 $("#medida_frente").val(data.medida_frente);
 $("#modulo").val(data.modulo);
 
-$("#idinstitucion").val(data.institucion_id_fk);
+ $("#idinstitucion").val(data.institucion_id_fk);
+
 $("#idsector").val(data.sector_id_fk);
 
 

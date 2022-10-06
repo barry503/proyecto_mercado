@@ -1,7 +1,7 @@
 /****************************************************************
 Project:  proyecto_mercado                                      *
 Version:  1.0                                                   *
-Last change:  13/09/2022                                        *
+Last change:  05/10/2022                                        *
 Assigned to:  https://github.com/barry503                       *
 Primary use:  Open Source                                       *
 ****************************************************************/
@@ -11,62 +11,45 @@ Primary use:  Open Source                                       *
 //Funcion que se ejecuta al inicio
  function inicial(){
      mostrarform(false);
-     listar();
-     $(".cam-po a").attr("href", "#");
+     listar(); 
 
      $("#formulario").on("submit",function(e)
      {
           guardaryeditar(e);
        
      })
-
-     // opcionPuesto();
-
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
-                $("#idinstitucion").html(r);
+                $("#institucion_id_fk").html(r);
                 // $("#idinstitucion").selectpicker('refresh');
-                // r.preventDefault();
+                
             });
-     
-     //evento click para select de periodo
-      $('#idinstitucion').on('click', function(e) {
-          var inst = $("#idinstitucion").val();
-          
-          $.post("../ajax/a_rutasPuestos.php?op=selectRuta&inst="+inst, function(r){
+     $.post("../ajax/a_contribuyente.php?op=selectMunicipio", function(r){
 
-                     $("#ruta_id").html(r);
-                     // $("#ruta_id").selectpicker('refresh');
-                     // r.preventDefault();
-                 });
-
-
-          //post para los puestos
-          $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&inst="+inst,function(r){
-                   $("#puestos_id").html(r);
-          });
-          
-      });
-
-
+                $("#municipio_id_fk").html(r);
+                // $("#municipio_id_fk").selectpicker('refresh');
+                
+            });
 
  }
 
-
-
 //Funcion limpiar
-function limpiar()
-{
-
+function limpiar(){
 
    $("#id").val("");
-   $("#ruta_id").val("");
-   // $("#ruta_id").selectpicker('refresh');
-   $("#puestos_id").val("");
-   $("#idinstitucion").val("");
-   // $("#puestos_id").selectpicker('refresh');
+   $("#dui").val("");
+   $("#nit").val("");
+   $("#apellidos").val("");
+   $("#codigo_cta").val("");
+   $("#direccion").val("");
+   $("#nombres").val("");
+   $("#telefono_principal").val("");
+   $("#telefono_secundario").val("");
+   $("#institucion_id_fk").val("");
+   // $("#idinstitucion").selectpicker('refresh');
+   $("#municipio_id_fk").val("");
+   // $("#municipio_id_fk").selectpicker('refresh');
    
-   // $(".cam-po a").attr("href", "#");
 
 }
 
@@ -76,12 +59,10 @@ function mostrarform(condi)
   limpiar();
   if (condi)
   {
-
      $("#listadoregistros").hide();
      $("#formularioregistros").show();
      $("#btnGuardar").prop("disabled",false);
      $("#btnagregar").hide();
-     // opcionPuesto();
   }
   else 
   {
@@ -100,8 +81,6 @@ function cancelarform()
     limpiar();
     mostrarform(false);
 }
-
-
 
 
 
@@ -130,7 +109,7 @@ function listar()
             "ajax":
                     {
 
-                         url: "../ajax/a_rutasPuestos.php?op="+urlistar,
+                         url: "../ajax/a_contribuyente.php?op="+urlistar,
                          type : "get",
                          dataType : "json",
                          error: function(e){
@@ -159,7 +138,7 @@ function guardaryeditar(e)
      var formData = new FormData($("#formulario")[0]);
 
      $.ajax({
-         url:"../ajax/a_rutasPuestos.php?op=guardaryeditar",
+         url:"../ajax/a_contribuyente.php?op=guardaryeditar",
          type: "POST",
          data: formData,
          contentType: false,
@@ -169,10 +148,9 @@ function guardaryeditar(e)
          {
              // alert(datos);
              // bootbox.alert(datos);
-             // Swal.fire({ icon:'success', title: datos });
-             Alerts('guardados',e);
+             Swal.fire({ html: e });
+             // Alerts('guardados',e);
              mostrarform(false);
-             //opcionPuesto();
               // tabla.ajax.reload();
               listar();
              //setTimeout('document.location.reload()'); //para recargar la pajina web (provicional) 
@@ -184,24 +162,29 @@ function guardaryeditar(e)
 
 
 
-// funcion para mostrar ñlas materias
+// funcion para mostrar ñlas 
 function mostrar(id)
 {
-   $.post("../ajax/a_rutasPuestos.php?op=mostrar",{id : id}, function(data, status)
+   $.post("../ajax/a_contribuyente.php?op=mostrar",{id : id}, function(data, status)
     {
        data = JSON.parse(data);
        mostrarform(true);
 
 
+
 $("#id").val(data.id);
-$("#ruta_id").val(data.ruta_id);
-// $("#ruta_id").selectpicker('refresh');
-$("#puestos_id").val(data.puestos_id);
-// $("#puestos_id").selectpicker('refresh');
-
-// $(".cam-po a").attr("href", "#");
-
-
+$("#dui").val(data.dui);
+$("#nit").val(data.nit);
+$("#apellidos").val(data.apellidos);
+$("#codigo_cta").val(data.codigo_cta);
+$("#direccion").val(data.direccion);
+$("#nombres").val(data.nombres);
+$("#telefono_principal").val(data.telefono_principal);
+$("#telefono_secundario").val(data.telefono_secundario);
+$("#institucion_id_fk").val(data.institucion_id_fk);
+// $("#idinstitucion").selectpicker('refresh');
+$("#municipio_id_fk").val(data.municipio_id_fk);
+// $("#municipio_id_fk").selectpicker('refresh');
    })
 } 
 
@@ -213,7 +196,7 @@ function eliminar(id)
 {
    
 Swal.fire({
-            html: '<h1 class="text-white">Eliminar la ruta</h1><p class="text-white">¿Esta segur@ de eliminar la ruta ?</p>',
+            html: '<h1 class="text-white">Eliminar el Contribuyente</h1><p class="text-white">¿Esta segur@ de eliminar el Contribuyente ?</p>',
             icon: 'error',
             background: '#dc3545d6',
             showCancelButton: true,
@@ -224,7 +207,7 @@ Swal.fire({
             if (resultado.value) {
                 // Hicieron click en "Sí"
                 console.log("Confirmacion verdadera");
-                $.post("../ajax/a_rutasPuestos.php?op=eliminar", {id : id}, function(e){
+                $.post("../ajax/a_contribuyente.php?op=eliminar", {id : id}, function(e){
                          Alerts('datosEliminados',e);
                          listar();
                        });
@@ -237,5 +220,6 @@ Swal.fire({
         });
 
 }
+
 
  inicial();

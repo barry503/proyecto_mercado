@@ -168,6 +168,19 @@ switch($_GET["op"]){
 
                   break;
 
+
+                  case "selectSectorAll":
+                  
+
+                    $respuesta = $puestoS->selectSectorAll();
+                   while($reg = $respuesta->fetch_object()){
+
+                    echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';
+
+                   }
+
+                    break;
+
                   case 'guardarVarios':
 
                   $prefijo_modulo = $_POST['prefijo_modulo'];

@@ -30,6 +30,12 @@ public function selectSector($idinstitucion){
   return ejecutarConsulta($sql);
 }
 
+public function selectSectorAll(){
+  $sql="SELECT * FROM sectores";
+  return ejecutarConsulta($sql);
+}
+
+
 
 
 /*  ---------------------------------------------------------------------------------------------------------- */
