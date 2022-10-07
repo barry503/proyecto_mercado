@@ -31,6 +31,45 @@ Primary use:  Open Source                                       *
                 
             });
 
+   //evento click para select de periodo
+      $('#institucion_id_fk').on('click', function(e) {
+          var inst = $("#institucion_id_fk").val();
+
+          $.post("../ajax/a_puesto.php?op=selectSector&inst="+inst, function(r){
+                     $("#idsector").html(r);
+                     // $("#idsector2").html(r);
+                     // $("#idsector").selectpicker('refresh');
+          });
+      })
+
+
+      //evento click para select de periodo
+         $('#idsector').on('click', function(e) {
+             var sect = $("#idsector").val();
+             
+             $.post("../ajax/a_contribuyente.php?op=selectPuesto&sect="+sect, function(r){
+                        $("#puesto").html(r);
+                        // $("#idsector2").html(r);
+                        // $("#idsector").selectpicker('refresh');
+             });
+         })
+
+
+
+         //evento click para select de periodo
+            $('#puesto').on('click', function(e) {
+                var id = $("#puesto").val();
+                
+                $.post("../ajax/a_contribuyente.php?op=informacion_puesto&id="+id, function(r){
+                           $("#informacion_puesto").html(r);
+                           // $("#idsector2").html(r);
+                           // $("#idsector").selectpicker('refresh');
+                });
+            })
+
+          
+
+
  }
 
 //Funcion limpiar

@@ -135,6 +135,30 @@ case 'eliminar':
 
       break;    
 
+      case "selectPuesto":
+      $sect = $_GET['sect'];
+        $respuesta = $obj_contri->selectPuestoXsector($sect);
+       while($reg = $respuesta->fetch_object()){
+
+        echo '<option  value="' . $reg->id .'">'.$reg->modulo.'</option>';
+
+       }
+
+        break;
+
+        case "informacion_puesto":
+        $id = $_GET['id'];
+          $respuesta = $obj_contri->informacion_puesto($id);
+         while($reg = $respuesta->fetch_object()){
+          echo '<div class"text-center"><h4><b>ID:</b>'.$reg->id.'</h4> ';
+          echo '<h4><b>Modulo:</b>'.$reg->modulo.'</h4> ';
+          echo '<h4><b>Medida Frente:</b>'.$reg->medida_frente.'</h4> ';
+          echo '<h4><b>Medida Fondo:</b>'.$reg->medida_fondo.'</h4> ';
+          echo '<h4><b>Medida Calificacion:</b>'.$reg->medida_calificacion.'</h4> </div>';
+         }
+
+          break;
+
 // end switch -------------------------------------------------------------------------->>>>>>>>>>>>>>>>>>
 
 }

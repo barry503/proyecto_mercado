@@ -246,7 +246,7 @@ function eliminar(idpuesto)
 {
    
 Swal.fire({
-            html: '<h1 class="text-white">Eliminar el permiso</h1><p class="text-white">¿Esta segur@ de eliminar el permiso ?</p>',
+            html: '<h1 class="text-white">Eliminar el puesto</h1><p class="text-white">¿Esta segur@ de eliminar el puesto ?</p>',
             icon: 'error',
             background: '#dc3545d6',
             showCancelButton: true,
@@ -276,7 +276,7 @@ Swal.fire({
 function activar(idpuesto){
 
 Swal.fire({
-            html: '<h1 class="text-white">activar el permiso</h1><p class="text-white">¿Esta segur@ de activar el permiso ?</p>',
+            html: '<h1 class="text-white">Ocupar el puesto</h1><p class="text-white">¿Esta segur@ de ocupar el puesto ?</p>',
             icon: 'warning',
             background: '#28a745c7',
             showCancelButton: true,
@@ -304,7 +304,7 @@ Swal.fire({
 //Funcion para desactivar registros
 function desactivar(idpuesto){
     Swal.fire({
-                html: '<h1 class="text-white">desactivar el permiso</h1><p class="text-white">¿Esta segur@ de desactivar el permiso ?</p>',
+                html: '<h1 class="text-white">desactivar el puesto</h1><p class="text-white">¿Esta segur@ de desactivar el puesto ?</p>',
                 icon: 'warning',
                 background: '#343a40d6',
                 showCancelButton: true,

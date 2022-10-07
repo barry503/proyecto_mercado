@@ -87,6 +87,23 @@ INNER JOIN municipios m INNER JOIN instituciones i ON
 
 
 
+public function selectPuestoXsector($idsector)
+{
+    $sql= "SELECT * FROM puestos WHERE sector_id_fk='$idsector' AND estado='DISPONIBLE'";
+    return ejecutarConsulta($sql);
+}
+
+
+
+
+public function informacion_puesto($id)
+{
+    $sql= "SELECT * FROM puestos WHERE  id='$id'";
+    return ejecutarConsulta($sql);
+}
+
+
+
 }
 
 

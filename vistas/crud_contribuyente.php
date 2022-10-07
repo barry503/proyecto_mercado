@@ -57,8 +57,8 @@ if(!isset($_SESSION["usuario"])){
 <!-- inicio card -->
  <div class="card">
               <div class="card-header"> <!-- inicio card-header-->
-                 <h3 class="card-title">Sector  
-                  <button class="btn btn-info" id="btnagregar" onclick="mostrarform(true)" >
+                 <h3 class="card-title">Contribuyente  
+                  <button class="btn btn-dark" id="btnagregar" onclick="mostrarform(true)" >
                     
                     <i class="fa fa-plus-circle"></i>Agregar
                   
@@ -107,9 +107,6 @@ if(!isset($_SESSION["usuario"])){
 
         </div>
        
-
-
-
        <!-- inicio panel-body -->
        <div class="panel-body"  id="formularioregistros">
             <!--inicio del formulario de registrar y editar -->
@@ -117,17 +114,37 @@ if(!isset($_SESSION["usuario"])){
 
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active show" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="false">Datos Personales</a>
+                  <a class="nav-link active show" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="false">Datos Generales</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Menu 1</a>
+                  <a class="nav-link" id="generales-tab" data-toggle="tab" href="#generales" role="tab" aria-controls="generales" aria-selected="false">Datos Personales</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Menu 2</a>
+                  <a class="nav-link" id="puestos-tab" data-toggle="tab" href="#puestos" role="tab" aria-controls="puestos" aria-selected="true">Datos Puesto</a>
                 </li>
               </ul>
               <div class="tab-content pl-3 p-1" id="myTabContent">
                 <div class="tab-pane fade active show" id="datos" role="tabpanel" aria-labelledby="datos-tab">
+                  
+                  <h3>Datos Generales</h3>
+                  <div class="row mb-2">
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                     <label for="institucion_id_fk" >Institucion ala que pertenece</label>
+                     <select name="institucion_id_fk" id="institucion_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
+                  </div>
+
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                     <label for="municipio_id_fk" >Municipio al que pertenece</label>
+                     <select name="municipio_id_fk" id="municipio_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
+                  </div>
+
+                  </div>
+
+
+
+                </div>
+                <div class="tab-pane fade" id="generales" role="tabpanel" aria-labelledby="generales-tab">
+                  
                   <h3>Datos Personales del Contribuyente</h3>
                   <div class="row mb-2">
 
@@ -158,56 +175,87 @@ if(!isset($_SESSION["usuario"])){
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Nombre del contribuyente:</label>
+                             <label>Nombres del contribuyente:</label>
                              <div class="input-group">
                              <div class="input-group-addon">
-                             *<b>NIT</b>
+                             *<b>NOMBRES</b>
                              </div>
-                             <input type="text" class="form-control" name="nit" id="nit"  placeholder="Escribe el nit del Contribuyente " required> 
+                             <input type="text" class="form-control" name="nombres" id="nombres"  placeholder="Escribe los nombres del Contribuyente " required> 
                              </div>
 
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Documento de identificacion tributaria:</label>
+                             <label>apellidos del contribuyente:</label>
                              <div class="input-group">
                              <div class="input-group-addon">
-                             *<b>NIT</b>
+                             *<b>APELLIDOS</b>
                              </div>
-                             <input type="text" class="form-control" name="nit" id="nit"  placeholder="Escribe el nit del Contribuyente " required> 
+                             <input type="text" class="form-control" name="apellidos" id="apellidos"  placeholder="Escribe los apellidos del Contribuyente " required> 
+                             </div>
+
+                          </div>
+                          
+
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                             <label>telefono principal:</label>
+                             <div class="input-group">
+                             <div class="input-group-addon">
+                             *<b>Tel:</b>
+                             </div>
+                             <input type="text" class="form-control" name="telefono_principal" id="telefono_principal"  placeholder="Escribe el telefono_principal del Contribuyente " required> 
                              </div>
 
                           </div>
 
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                             <label>telefono secundario:</label>
+                             <div class="input-group">
+                             <div class="input-group-addon">
+                             *<b>Tel:</b>
+                             </div>
+                             <input type="text" class="form-control" name="telefono_secundario" id="telefono_secundario"  placeholder="Escribe el telefono_secundario del Contribuyente " required> 
+                             </div>
 
-
+                          </div>
                           
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                             <label>codigo_cta:</label>
+                             <input type="text" class="form-control" name="codigo_cta" id="codigo_cta"  placeholder="Escribe el codigo_cta del Contribuyente " required> 
+                          </div>
 
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                             <label>direccion del contribuyente:</label>
+                             <textarea class="form-control" name="direccion" id="direccion"  placeholder="Escribe el direccion del Contribuyente " required></textarea>
+                          </div>
 
+                          </div>
+                </div>
+                <div class="tab-pane fade " id="puestos" role="tabpanel" aria-labelledby="puestos-tab">
+                  <h3>Datos del puesto asignado o por asignar</h3>
 
-                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-por">
-                           <label for="institucion_id_fk" >Institucion ala que pertenece</label>
-                           <select name="institucion_id_fk" id="institucion_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
-                        </div>
-
-                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-por">
-                           <label for="municipio_id_fk" >Municipio al que pertenece</label>
-                           <select name="municipio_id_fk" id="municipio_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
-                        </div>
-
-                        
-
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                     <label for="idsector" >sector al que pertenece</label>
+                     <select name="idsector" id="idsector"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
                   </div>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <h3>Menu 1</h3>
-                  <p>Some content here.</p>
-                </div>
-                <div class="tab-pane fade " id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                  <h3>Menu 2</h3>
-                  <p>Some content here.</p>
+
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                     <label for="puesto" >Puesto a agregar</label>
+                     <select name="puesto" id="puesto"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+                  </div>
+
+                  <div class=" col-md-12 text-center">
+                    <h2>Datos del puesto</h2>
+                    <div id="informacion_puesto">
+                      
+                    </div>
+                  </div>
+
+
                 </div>
               </div>
+
+
     
                 
 

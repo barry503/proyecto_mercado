@@ -102,7 +102,7 @@ INNER JOIN sectores s INNER JOIN instituciones i ON
  //inplementar un metodo para desactivar grado
 public function desactivar($idpuesto)
 {
-  $sql = "UPDATE puestos SET estado='0' WHERE id='$idpuesto'";
+  $sql = "UPDATE puestos SET estado='DISPONIBLE' WHERE id='$idpuesto'";
     return ejecutarConsulta($sql);
 
 }
@@ -111,7 +111,7 @@ public function desactivar($idpuesto)
 //inplementar un metodo para activar grado
 public function activar($idpuesto)
 {
-  $sql = "UPDATE puestos SET estado='1' WHERE id='$idpuesto'";
+  $sql = "UPDATE puestos SET estado='OCUPADO' WHERE id='$idpuesto'";
     return ejecutarConsulta($sql);
 
 }

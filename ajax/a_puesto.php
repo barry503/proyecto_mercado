@@ -45,7 +45,7 @@ switch($_GET["op"]){
 
             case 'desactivar':
                      $respuesta=$puestoS->desactivar($idpuesto);
-                       echo $respuesta ? "puesto Desactivado" : "puesto no se pudo desactivar";
+                       echo $respuesta ? "puesto disponible" : "puesto no se pudo desactivar";
 
             break;
 
@@ -54,7 +54,7 @@ switch($_GET["op"]){
             case 'activar':
 
                  $respuesta=$puestoS->activar($idpuesto);
-                       echo $respuesta ? "puesto disponible" : "puesto no se pudo activar";
+                       echo $respuesta ? "puesto Ocupado" : "puesto no se pudo activar";
 
               break;
 
@@ -91,7 +91,7 @@ switch($_GET["op"]){
                          "2" =>$reg->medida_frente,
                          "3" =>$reg->medida_fondo,
                          "4" =>$reg->medida_calificacion,
-                         "5" =>($reg->estado)?'<span class="label badge badge-success">disponible<span>': '<span class="label badge badge-danger">inactivo<span>',
+                         "5" =>($reg->estado=="DISPONIBLE")?'<span class="label badge badge-success">'.$reg->estado.'<span>': '<span class="label badge badge-danger">'.$reg->estado.'<span>',
                          "6" =>$reg->medida_compensa,
                          "7" =>$reg->name_institucion,
                          "8" =>$reg->name_sector,
