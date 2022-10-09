@@ -122,6 +122,9 @@ if(!isset($_SESSION["usuario"])){
                 <li class="nav-item">
                   <a class="nav-link" id="puestos-tab" data-toggle="tab" href="#puestos" role="tab" aria-controls="puestos" aria-selected="true">Datos Puesto</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="giros-tab" data-toggle="tab" href="#giros" role="tab" aria-controls="giros" aria-selected="true">Datos Giros y Tarifa</a>
+                </li>
               </ul>
               <div class="tab-content pl-3 p-1" id="myTabContent">
                 <div class="tab-pane fade active show" id="datos" role="tabpanel" aria-labelledby="datos-tab">
@@ -250,9 +253,35 @@ if(!isset($_SESSION["usuario"])){
                       
                     </div>
                   </div>
+                </div>
+                <div class="tab-pane fade " id="giros" role="tabpanel" aria-labelledby="giros-tab">
+                  <h3>Giros y Tarifa</h3>
+
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                     <label for="idgiros" >Selecciona el giro</label>
+                     <select name="idgiros" id="idgiros"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+                  </div>
+
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                     <label for="idtarifa" >Selecciona la tarifa</label>
+                     <select name="idtarifa" id="idtarifa"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+                     
+                  </div>
+
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                     <label for="fecha_ingreso" >Selecciona la fecha de ingreso </label>
+                     <input type="date" name="fecha_ingreso" id="fecha_ingreso"  class="form-control">
+                  </div>
+
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                     <label for="observaciones" >Escribe alguna observacion </label>
+                     <textarea name="observaciones" id="observaciones"  class="form-control" ></textarea>
+                  </div>
 
 
                 </div>
+
+
               </div>
 
 

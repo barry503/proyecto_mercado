@@ -37,9 +37,23 @@ Primary use:  Open Source                                       *
 
           $.post("../ajax/a_puesto.php?op=selectSector&inst="+inst, function(r){
                      $("#idsector").html(r);
-                     // $("#idsector2").html(r);
                      // $("#idsector").selectpicker('refresh');
           });
+
+
+          $.post("../ajax/a_contribuyente.php?op=selectGiros&inst="+inst, function(r){
+                     $("#idgiros").html(r);
+                     // $("#idgiros").selectpicker('refresh');
+          });
+
+
+          $.post("../ajax/a_contribuyente.php?op=selectTarifa&inst="+inst, function(r){
+                     $("#idtarifa").html(r);
+                     // $("#idtarifa").selectpicker('refresh');
+          });
+
+          
+          
       })
 
 
@@ -68,6 +82,9 @@ Primary use:  Open Source                                       *
             })
 
           
+          
+
+
 
 
  }

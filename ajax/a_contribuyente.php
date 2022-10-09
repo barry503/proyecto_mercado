@@ -16,6 +16,7 @@ $dui =isset($_POST["dui"])? limpiarCadena($_POST["dui"]):"";
 $nit =isset($_POST["nit"])? limpiarCadena($_POST["nit"]):"";
 $apellidos =isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
 $codigo_cta =isset($_POST["codigo_cta"])? limpiarCadena($_POST["codigo_cta"]):"";
+
 $direccion =isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
 $nombres =isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
 $telefono_principal =isset($_POST["telefono_principal"])? limpiarCadena($_POST["telefono_principal"]):"";
@@ -23,7 +24,13 @@ $telefono_secundario =isset($_POST["telefono_secundario"])? limpiarCadena($_POST
 $institucion_id_fk =isset($_POST["institucion_id_fk"])? limpiarCadena($_POST["institucion_id_fk"]):"";
 $municipio_id_fk =isset($_POST["municipio_id_fk"])? limpiarCadena($_POST["municipio_id_fk"]):"";
 
+$idgiros =isset($_POST['idgiros'])? limpiarCadena($_POST['idgiros']):"";
+$idtarifa =isset($_POST['idtarifa'])? limpiarCadena($_POST['idtarifa']):"";#contiene el codigo_presup  codigo prsupuestario
 
+$fecha_ingreso =isset($_POST["fecha_ingreso"])? limpiarCadena($_POST["fecha_ingreso"]):"";
+$observaciones =isset($_POST["observaciones"])? limpiarCadena($_POST["observaciones"]):"";
+ 
+$puesto =isset($_POST["puesto"])? limpiarCadena($_POST["puesto"]):"";#contiene el idpuesto
 
 switch($_GET["op"]){
 
@@ -32,8 +39,28 @@ switch($_GET["op"]){
        if(empty($id)){
 
           // echo "consultas exitosas";
-            $respuesta=$obj_contri->insertar($dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk,$municipio_id_fk);
-            echo $respuesta ? "<i class='fas fa  fa-smile-o text-success t-100 '></i><br><h1>Contribuyente registrado</h1>" : "El Contribuyentes no se pudo registrar";      
+            $contrib_id_fk=$obj_contri->insertar($dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk,$municipio_id_fk);
+
+            // echo $contrib_id_fk;
+            if ($contrib_id_fk) {
+
+              echo $contrib_id_fk ? "<i class='fas fa  fa-smile-o text-success t-100 '></i><br><h1>Se registro el Contribuyente</h1>" : "El Contribuyentes no se pudo registrar";
+              $codigo_presup= $idtarifa;
+              $fecha_egreso="0000-00-00";
+              $fecha_ingreso="0000-00-00";
+              $ultimo_pago="0000-00-00";
+              $giro_id_fk= $idgiros;
+              $puesto_egreso_fk = $puesto;
+              $licencia=0;
+              $codigo_licencia=0;
+              
+              $puesto_id_fk = $puesto;
+
+            $respuesta=$obj_contri->insertarAsignacion($codigo_presup,$contrib_id_fk,$fecha_egreso,$fecha_ingreso,$ultimo_pago,$institucion_id_fk,$puesto_id_fk,$observaciones,$giro_id_fk,$puesto_egreso_fk,$licencia,$codigo_licencia);
+            echo $respuesta ? "<br><h4>Se relizo una asignacion</h4>" : "no se pudo registrar la asignacion"; 
+            }
+            
+
         
        }else {
                $respuesta=$obj_contri->editar($id,$dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk,$municipio_id_fk);
@@ -67,7 +94,7 @@ case 'eliminar':
 
        while($reg=$respuesta->fetch_object()){
            $data[]=array(
-               "0" =>$reg->id,
+               "0" =>$reg->idcontribuyente,
                "1" =>$reg->dui,
                "2" =>$reg->nit,
                "3" =>$reg->apellidos,
@@ -78,7 +105,7 @@ case 'eliminar':
                "8" =>$reg->telefono_secundario,
                "9" =>$reg->name_institucion,
                "10" =>$reg->name_municipio,
-               "11" =>'<button title="Editar el Contribuyente" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->id.')"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-sm m-1 btn-danger" title="Eliminar el Contribuyente por completo" onclick="eliminar('.$reg->id.')"><i class="fas fa-trash"></i></button>'
+               "11" =>'<button title="Editar el Contribuyente" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idcontribuyente.')"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-sm m-1 btn-danger" title="Eliminar el Contribuyente por completo" onclick="eliminar('.$reg->idcontribuyente.')"><i class="fas fa-trash"></i></button>'
               );
 
        }
@@ -100,7 +127,7 @@ case 'eliminar':
 
        while($reg=$respuesta->fetch_object()){
            $data[]=array(
-            "0" =>$reg->id,
+            "0" =>$reg->idcontribuyente,
             "1" =>$reg->dui,
             "2" =>$reg->nit,
             "3" =>$reg->apellidos,
@@ -147,9 +174,10 @@ case 'eliminar':
         break;
 
         case "informacion_puesto":
-        $id = $_GET['id'];
-          $respuesta = $obj_contri->informacion_puesto($id);
+        $resp = $_GET['id'];
+          $respuesta = $obj_contri->informacion_puesto($resp);
          while($reg = $respuesta->fetch_object()){
+           // echo '<input type"hidden" value="'.$reg->id.'" name="idpuuesto">'; bug asimilado sin inportancia
           echo '<div class"text-center"><h4><b>ID:</b>'.$reg->id.'</h4> ';
           echo '<h4><b>Modulo:</b>'.$reg->modulo.'</h4> ';
           echo '<h4><b>Medida Frente:</b>'.$reg->medida_frente.'</h4> ';
@@ -159,6 +187,31 @@ case 'eliminar':
 
           break;
 
+
+          
+          
+
+          case "selectGiros":
+
+            $respuesta = $obj_contri->selectGiros($_GET['inst']);
+           while($reg = $respuesta->fetch_object()){
+
+            echo '<option value="' . $reg->id .'">'.$reg->nombre.'</option>';
+
+           }
+
+            break; 
+
+            case "selectTarifa":
+
+              $respuesta = $obj_contri->selectTarifa($_GET['inst']);
+             while($reg = $respuesta->fetch_object()){
+
+              echo '<option value="' . $reg->codigo_presup .'">'.$reg->codigo_presup.'-$'.$reg->precio_unitario.'</option>';
+
+             }
+
+              break; 
 // end switch -------------------------------------------------------------------------->>>>>>>>>>>>>>>>>>
 
 }

@@ -21,15 +21,24 @@ class Contribuyente
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk,$municipio_id_fk)
   {
          $sql = "INSERT INTO contribuyentes (dui,nit,apellidos,codigo_cta,direccion,nombres,telefono_principal,telefono_secundario,institucion_id_fk,municipio_id_fk)
          VALUES('$dui','$nit','$apellidos','$codigo_cta','$direccion','$nombres','$telefono_principal','$telefono_secundario','$institucion_id_fk','$municipio_id_fk')";
-             return ejecutarConsulta($sql);
+             return ejecutarConsulta_retornarID($sql);
 
   }
 
+  //inplementar un metodo para insertar
+   public function insertarAsignacion($codigo_presup,$contrib_id_fk,$fecha_egreso,$fecha_ingreso,$ultimo_pago,$institucion_id_fk,$puesto_id_fk,$observaciones,$giro_id_fk,$puesto_egreso_fk,$licencia,$codigo_licencia)
+   {
+          $sql = "INSERT INTO asignaciones (codigo_presup,contrib_id_fk,fecha_egreso,fecha_ingreso,ultimo_pago,institucion_id_fk,puesto_id_fk,observaciones,giro_id_fk,puesto_egreso_fk,licencia,codigo_licencia)
+          VALUES('$codigo_presup','$contrib_id_fk','$fecha_egreso','$fecha_ingreso','$ultimo_pago','$institucion_id_fk','$puesto_id_fk','$observaciones','$giro_id_fk','$puesto_egreso_fk','$licencia','$codigo_licencia')";
+
+              return ejecutarConsulta($sql);
+
+   }
 
 
    //inplementar un metodo para editar registros
@@ -61,7 +70,7 @@ public function mostrar($id)
 	return ejecutarConsultaSimpleFila($sql);
 }
 
-
+//select municipios
 public function selectMunicipio(){
   $sql="SELECT * FROM municipios ";
   return ejecutarConsulta($sql);
@@ -73,6 +82,7 @@ public function listar()
 {
 	$sql="SELECT
     c.*,
+    c.id as idcontribuyente,
     m.municipio_departamento AS name_municipio,
     m.id,
     i.id,
@@ -101,6 +111,22 @@ public function informacion_puesto($id)
     $sql= "SELECT * FROM puestos WHERE  id='$id'";
     return ejecutarConsulta($sql);
 }
+
+
+
+public function selectGiros($id)
+{
+    $sql= "SELECT * FROM giros WHERE  institucion_id_fk='$id'";
+    return ejecutarConsulta($sql);
+}
+
+
+public function selectTarifa($id)
+{
+    $sql= "SELECT DISTINCT  codigo_presup, precio_unitario FROM tarifas WHERE  institucion_id_fk='$id'";
+    return ejecutarConsulta($sql);
+}
+
 
 
 
