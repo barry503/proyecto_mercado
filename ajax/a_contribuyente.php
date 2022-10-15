@@ -178,11 +178,11 @@ case 'eliminar':
           $respuesta = $obj_contri->informacion_puesto($resp);
          while($reg = $respuesta->fetch_object()){
            // echo '<input type"hidden" value="'.$reg->id.'" name="idpuuesto">'; bug asimilado sin inportancia
-          echo '<div class"text-center"><h4><b>ID:</b>'.$reg->id.'</h4> ';
+          echo '<h4><b>ID:</b>'.$reg->id.'</h4> ';
           echo '<h4><b>Modulo:</b>'.$reg->modulo.'</h4> ';
           echo '<h4><b>Medida Frente:</b>'.$reg->medida_frente.'</h4> ';
           echo '<h4><b>Medida Fondo:</b>'.$reg->medida_fondo.'</h4> ';
-          echo '<h4><b>Medida Calificacion:</b>'.$reg->medida_calificacion.'</h4> </div>';
+          echo '<h4><b>Medida Calificacion:</b>'.$reg->medida_calificacion.'</h4>';
          }
 
           break;

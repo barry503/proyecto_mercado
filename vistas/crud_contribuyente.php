@@ -113,11 +113,11 @@ if(!isset($_SESSION["usuario"])){
             <form name="formulario" id="formulario" method="POST">
 
               <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
+<!--                 <li class="nav-item">
                   <a class="nav-link active show" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="false">Datos Generales</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                  <a class="nav-link" id="generales-tab" data-toggle="tab" href="#generales" role="tab" aria-controls="generales" aria-selected="false">Datos Personales</a>
+                  <a class="nav-link active show" id="generales-tab" data-toggle="tab" href="#generales" role="tab" aria-controls="generales" aria-selected="false">Datos Personales</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="puestos-tab" data-toggle="tab" href="#puestos" role="tab" aria-controls="puestos" aria-selected="true">Datos Puesto</a>
@@ -127,32 +127,30 @@ if(!isset($_SESSION["usuario"])){
                 </li>
               </ul>
               <div class="tab-content pl-3 p-1" id="myTabContent">
-                <div class="tab-pane fade active show" id="datos" role="tabpanel" aria-labelledby="datos-tab">
+<!--                 <div class="tab-pane fade active show" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                   
+
+
+
+
+                </div> -->
+                <div class="tab-pane fade active show" id="generales" role="tabpanel" aria-labelledby="generales-tab">
                   <h3>Datos Generales</h3>
                   <div class="row mb-2">
-                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                   <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                      <label for="institucion_id_fk" >Institucion ala que pertenece</label>
                      <select name="institucion_id_fk" id="institucion_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
                   </div>
 
-                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                     <label for="municipio_id_fk" >Municipio al que pertenece</label>
-                     <select name="municipio_id_fk" id="municipio_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
-                  </div>
+                   
 
                   </div>
-
-
-
-                </div>
-                <div class="tab-pane fade" id="generales" role="tabpanel" aria-labelledby="generales-tab">
                   
                   <h3>Datos Personales del Contribuyente</h3>
                   <div class="row mb-2">
 
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Documento de identificacion personal:</label>
+                           <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                             <label title="Documento de identificacion personal">Documento:</label>
                                   <!-- para trabajar con el id -->
                              <input type="hidden" name="id" id="id">
 
@@ -160,10 +158,32 @@ if(!isset($_SESSION["usuario"])){
                              <div class="input-group-addon">
                              *<b>DUI</b>
                              </div>
-                             <input type="text" class="form-control" name="dui" id="dui"  placeholder="Escribe el dui del Contribuyente " required>
+                             <input type="text" class="form-control" name="dui" id="dui"  placeholder="Escribe el dui " required>
                              </div>
                           
                              
+                          </div>
+
+                           <div class="form-group col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                             <label>telefono principal:</label>
+                             <div class="input-group">
+                             <div class="input-group-addon">
+                             *<b>Tel:</b>
+                             </div>
+                             <input type="text" class="form-control" name="telefono_principal" id="telefono_principal"  placeholder="Escribe telefono principal" required> 
+                             </div>
+
+                          </div>
+
+                           <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                             <label>telefono secundario:</label>
+                             <div class="input-group">
+                             <div class="input-group-addon">
+                             *<b>Tel:</b>
+                             </div>
+                             <input type="text" class="form-control" name="telefono_secundario" id="telefono_secundario"  placeholder="Escribe telefono secundario " required> 
+                             </div>
+
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -176,14 +196,13 @@ if(!isset($_SESSION["usuario"])){
                              </div>
 
                           </div>
-
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Nombres del contribuyente:</label>
+                             <label>Nombres del contribuyente: </label>
                              <div class="input-group">
                              <div class="input-group-addon">
                              *<b>NOMBRES</b>
                              </div>
-                             <input type="text" class="form-control" name="nombres" id="nombres"  placeholder="Escribe los nombres del Contribuyente " required> 
+                             <input type="text" class="form-control" name="nombres" id="nombres"  placeholder="Escribe los nombres " required> 
                              </div>
 
                           </div>
@@ -194,43 +213,27 @@ if(!isset($_SESSION["usuario"])){
                              <div class="input-group-addon">
                              *<b>APELLIDOS</b>
                              </div>
-                             <input type="text" class="form-control" name="apellidos" id="apellidos"  placeholder="Escribe los apellidos del Contribuyente " required> 
-                             </div>
-
-                          </div>
-                          
-
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>telefono principal:</label>
-                             <div class="input-group">
-                             <div class="input-group-addon">
-                             *<b>Tel:</b>
-                             </div>
-                             <input type="text" class="form-control" name="telefono_principal" id="telefono_principal"  placeholder="Escribe el telefono_principal del Contribuyente " required> 
+                             <input type="text" class="form-control" name="apellidos" id="apellidos"  placeholder="Escribe los apellidos " required> 
                              </div>
 
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>telefono secundario:</label>
-                             <div class="input-group">
-                             <div class="input-group-addon">
-                             *<b>Tel:</b>
-                             </div>
-                             <input type="text" class="form-control" name="telefono_secundario" id="telefono_secundario"  placeholder="Escribe el telefono_secundario del Contribuyente " required> 
-                             </div>
-
+                             <label>direccion del contribuyente:</label>
+                             <textarea class="form-control" name="direccion" id="direccion"  placeholder="Escribe la direccion del   " required></textarea>
                           </div>
-                          
+
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                              <label>codigo_cta:</label>
                              <input type="text" class="form-control" name="codigo_cta" id="codigo_cta"  placeholder="Escribe el codigo_cta del Contribuyente " required> 
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>direccion del contribuyente:</label>
-                             <textarea class="form-control" name="direccion" id="direccion"  placeholder="Escribe el direccion del Contribuyente " required></textarea>
+                             <label for="municipio_id_fk" >Municipio al que pertenece</label>
+                             <select name="municipio_id_fk" id="municipio_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
                           </div>
+
+
 
                           </div>
                 </div>
@@ -249,8 +252,12 @@ if(!isset($_SESSION["usuario"])){
 
                   <div class=" col-md-12 text-center">
                     <h2>Datos del puesto</h2>
-                    <div id="informacion_puesto">
-                      
+                    <div class="row">
+                        <div class="col-md-4">
+                          <img src="https://img.freepik.com/vector-premium/ilustracion-vector-plano-mercado-agricola-exterior-edificio-tienda-alimentos-fachada-tienda-verduras-letrero-aislado-sobre-fondo-blanco-quiosco-verduras-frescas-tienda-comestibles-maiz-escaparate_198278-5854.jpg">
+                        </div>
+                        <div class="col-md-4 text-left"><br><br><div id="informacion_puesto"><!-- aqui va la informacion del puesto --></div></div>
+
                     </div>
                   </div>
                 </div>
