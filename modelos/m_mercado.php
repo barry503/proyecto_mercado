@@ -30,7 +30,7 @@ public function selectSector(){
   return ejecutarConsulta($sql);
 }
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertarSectores($nombre,$idinstitucion)
   {
          $sql = "INSERT INTO sectores (nombre,institucion_id_fk)
@@ -79,7 +79,7 @@ public function listarSectores()
 // editarPuesto
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar 
   public function insertarPuesto($medida_calificacion,$medida_compensa,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector)
   {
          $sql = "INSERT INTO puestos (medida_calificacion,medida_compensa,medida_fondo,medida_frente,modulo,institucion_id_fk,sector_id_fk)

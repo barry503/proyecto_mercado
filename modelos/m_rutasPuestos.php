@@ -21,7 +21,7 @@ class RutasPuestos
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($ruta_id,$puestos_id){
     foreach ($puestos_id as $key) {
         // code...

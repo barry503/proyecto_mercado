@@ -47,7 +47,7 @@ switch($_GET["op"]){
               echo $contrib_id_fk ? "<i class='fas fa  fa-smile-o text-success t-100 '></i><br><h1>Se registro el Contribuyente</h1>" : "El Contribuyentes no se pudo registrar";
               $codigo_presup= $idtarifa;
               $fecha_egreso="0000-00-00";
-              $fecha_ingreso="0000-00-00";
+              // $fecha_ingreso="0000-00-00";
               $ultimo_pago="0000-00-00";
               $giro_id_fk= $idgiros;
               $puesto_egreso_fk = $puesto;
@@ -55,6 +55,9 @@ switch($_GET["op"]){
               $codigo_licencia=0;
               
               $puesto_id_fk = $puesto;
+
+              $respuesta=$obj_contri->Arrendar($puesto_id_fk);
+              echo $respuesta ? "puesto arrendado <br>" : "no"; 
 
             $respuesta=$obj_contri->insertarAsignacion($codigo_presup,$contrib_id_fk,$fecha_egreso,$fecha_ingreso,$ultimo_pago,$institucion_id_fk,$puesto_id_fk,$observaciones,$giro_id_fk,$puesto_egreso_fk,$licencia,$codigo_licencia);
             echo $respuesta ? "<br><h4>Se relizo una asignacion</h4>" : "no se pudo registrar la asignacion"; 
@@ -73,6 +76,9 @@ switch($_GET["op"]){
 case 'eliminar':
            $respuesta=$obj_contri->eliminar($id);
              echo $respuesta ? "Contribuyente eliminado" : "el Contribuyente no se pudo eliminar";
+             $respuesta=$obj_contri->Disponible($puesto_id_fk);
+             echo $respuesta ? "el puesto volvio a estar Disponible<br>" : "no"; 
+
   break;
 
 

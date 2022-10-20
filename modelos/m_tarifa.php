@@ -21,7 +21,7 @@ class Tarifa
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion)
   {
          $sql = "INSERT INTO tarifas(

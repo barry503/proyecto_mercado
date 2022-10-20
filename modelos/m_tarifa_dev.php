@@ -21,7 +21,7 @@ class TarifaDev
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($codigo_presup,$descripcion,$precio_unitario,$aplicafiestas,$aplicamulta,$aplicaintereses,$referencia,$vigencia,$idinstitucion)
   {
     #aplicamos formato de 2 decimales para el precio

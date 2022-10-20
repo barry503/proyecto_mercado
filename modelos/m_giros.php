@@ -21,7 +21,7 @@ class Giros
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($nombre,$idinstitucion)
   {
          $sql = "INSERT INTO giros (nombre,institucion_id_fk)

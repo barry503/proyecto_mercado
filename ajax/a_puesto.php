@@ -95,9 +95,7 @@ switch($_GET["op"]){
                          "6" =>$reg->medida_compensa,
                          "7" =>$reg->name_institucion,
                          "8" =>$reg->name_sector,
-                         "9" =>($reg->estado)?'<button title="Editar el puesto" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idpuesto.')"><i class="fas fa-pencil-alt"></i></button>    '.
-             '<button title="desactivar el puesto" class="btn btn-sm m-1 btn-danger " onclick="desactivar('.$reg->idpuesto.')"><i class="fas fa-times"></i></button><br>' :'<button title="Editar el puesto inactivo" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idpuesto.')"><i class="fa fa-edit"></i></button>    '.
-             '<button title="Activar el puesto" class="btn btn-sm m-1  btn-info " onclick="activar('.$reg->idpuesto.')"><i class="fas fa-check"></i></button>'.'    <button class="btn btn-sm m-1 btn-danger" title="Eliminar el puesto por completo" onclick="eliminar('.$reg->idpuesto.')"><i class="fas fa-trash"></i></button>'
+                         "9" =>'<button title="Editar el puesto" class="btn btn-sm m-1 btn-warning " onclick="mostrar('.$reg->idpuesto.')"><i class="fa fa-edit"></i></button>'.'<button class="btn btn-sm m-1 btn-danger" title="Eliminar el puesto por completo" onclick="eliminar('.$reg->idpuesto.')"><i class="fas fa-trash"></i></button>'
                         );
 
                  }
@@ -186,6 +184,7 @@ switch($_GET["op"]){
                   $prefijo_modulo = $_POST['prefijo_modulo'];
                   $rango_inicial = $_POST['rango_inicial'];
                   $rango_final = $_POST['rango_final'];
+                  $tps = 0;#total puestos
 
                   foreach( range($rango_inicial, $rango_final) as $numero ) {
                        // echo "<li>Número: ". $numero ."</li>";
@@ -193,10 +192,9 @@ switch($_GET["op"]){
                        $modulo= $prefijo_modulo.$numero;
 
                     $respuesta=$puestoS->saveVariosP($medida_calificacion,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector);
+                    $tps = $tps + 1; 
                   }
-                    
-            
-                  echo $respuesta ? "se registraron los puestos desde:".$rango_inicial." hasta:".$rango_final."<br>" : "No se pueden registrar";
+                  echo $respuesta ? "se registraron ".$tps." puestos <br> desde:".$rango_inicial." hasta:".$rango_final."<br>" : "No se pueden  ";
                   break;                  
 
 

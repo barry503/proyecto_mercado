@@ -21,7 +21,7 @@ class UserAndroid
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function nuevo($email,$nombre,$password,$idinstitucion,$device_prefix,$alcance)
   {
          $sql = "INSERT INTO usuarios (email,nombre,password,institucion_id_fk,device_prefix,alcance)

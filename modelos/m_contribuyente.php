@@ -30,6 +30,21 @@ class Contribuyente
 
   }
 
+
+ //inplementar un metodo para desactivar grado
+public function Arrendar($idpuesto)
+{
+  $sql = "UPDATE puestos SET estado='ARRENDADO' WHERE id='$idpuesto'";
+    return ejecutarConsulta($sql);
+
+}
+public function Disponible($idpuesto)
+{
+  $sql = "UPDATE puestos SET estado='DISPONIBLE' WHERE id='$idpuesto'";
+    return ejecutarConsulta($sql);
+}
+
+
   //inplementar un metodo para insertar
    public function insertarAsignacion($codigo_presup,$contrib_id_fk,$fecha_egreso,$fecha_ingreso,$ultimo_pago,$institucion_id_fk,$puesto_id_fk,$observaciones,$giro_id_fk,$puesto_egreso_fk,$licencia,$codigo_licencia)
    {

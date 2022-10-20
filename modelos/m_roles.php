@@ -23,7 +23,7 @@ class Roles
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($nombre,$permisos)
   {
          $sql = "INSERT INTO pm_roles (nombre)

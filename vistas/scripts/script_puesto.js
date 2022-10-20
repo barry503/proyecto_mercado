@@ -39,11 +39,24 @@ $.post("../ajax/a_puesto.php?op=selectSectorAll", function(r){
 
           $.post("../ajax/a_puesto.php?op=selectSector&inst="+inst, function(r){
                      $("#idsector").html(r);
-                     $("#idsector2").html(r);
+                    
                      // $("#idsector").selectpicker('refresh');
           });
           
       });
+
+   //evento click para select de periodo
+      $('#idinstitucion2').on('click', function(e) {
+          var inst = $("#idinstitucion2").val();
+
+          $.post("../ajax/a_puesto.php?op=selectSector&inst="+inst, function(r){
+                     $("#idsector2").html(r);
+                    
+                     // $("#idsector").selectpicker('refresh');
+          });
+          
+      });
+       
 
 
 

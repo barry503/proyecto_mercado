@@ -21,7 +21,7 @@ class Permiso
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($nombre)
   {
          $sql = "INSERT INTO pm_permiso (nombre)

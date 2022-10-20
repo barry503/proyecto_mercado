@@ -21,7 +21,7 @@ class Rutas
 
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($descripcion,$nombre,$idinstitucion,$correo_usuario)
   {
     if ($correo_usuario=="NULL") {

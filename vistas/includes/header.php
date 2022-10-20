@@ -57,6 +57,9 @@ include '../config/fun_info.php';#para info de la empresa
     <!-- libreria para campos de fecha modernos -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> -->
     <link rel="stylesheet" href="../public/lib_fecha/flatpickr.min.css">
+    <!-- tema oscuro -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css"> -->
+    <link rel="stylesheet" type="text/css" href="../public/lib_fecha/theme.dark.css">
 
 </head>
 

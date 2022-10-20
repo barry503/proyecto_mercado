@@ -43,11 +43,11 @@ public function selectSectorAll(){
 // editarPuesto
 
 
- //inplementar un metodo para insertar una materia
+ //inplementar un metodo para insertar
   public function insertar($medida_calificacion,$medida_compensa,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector)
   {
-         $sql = "INSERT INTO puestos (medida_calificacion,medida_compensa,medida_fondo,medida_frente,modulo,institucion_id_fk,sector_id_fk)
-         VALUES('$medida_calificacion','$medida_compensa','$medida_fondo','$medida_frente','$modulo','$idinstitucion','$idsector')";
+         $sql = "INSERT INTO puestos (medida_calificacion,medida_compensa,medida_fondo,medida_frente,modulo,institucion_id_fk,sector_id_fk,estado)
+         VALUES('$medida_calificacion','$medida_compensa','$medida_fondo','$medida_frente','$modulo','$idinstitucion','$idsector','DISPONIBLE')";
              return ejecutarConsulta($sql);
   }  
 
@@ -56,8 +56,8 @@ public function selectSectorAll(){
   public function saveVariosP($medida_calificacion,$medida_fondo,$medida_frente,$modulo,$idinstitucion,$idsector)
   {
     $medida_compensa = '0';
-         $sql = "INSERT INTO puestos (medida_calificacion,medida_compensa,medida_fondo,medida_frente,modulo,institucion_id_fk,sector_id_fk)
-         VALUES('$medida_calificacion','$medida_compensa','$medida_fondo','$medida_frente','$modulo','$idinstitucion','$idsector')";
+         $sql = "INSERT INTO puestos (medida_calificacion,medida_compensa,medida_fondo,medida_frente,modulo,institucion_id_fk,sector_id_fk,estado)
+         VALUES('$medida_calificacion','$medida_compensa','$medida_fondo','$medida_frente','$modulo','$idinstitucion','$idsector','DISPONIBLE')";
              return ejecutarConsulta($sql);
   }  
 
@@ -111,7 +111,7 @@ public function desactivar($idpuesto)
 //inplementar un metodo para activar grado
 public function activar($idpuesto)
 {
-  $sql = "UPDATE puestos SET estado='OCUPADO' WHERE id='$idpuesto'";
+  $sql = "UPDATE puestos SET estado='ARRENDADO' WHERE id='$idpuesto'";
     return ejecutarConsulta($sql);
 
 }
