@@ -54,6 +54,9 @@ include '../config/fun_info.php';#para info de la empresa
 
     <!-- para usar el select con datos live -->
     <link rel="stylesheet" type="text/css" href="../public/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- libreria para campos de fecha modernos -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> -->
+    <link rel="stylesheet" href="../public/lib_fecha/flatpickr.min.css">
 
 </head>
 

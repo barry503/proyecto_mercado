@@ -180,7 +180,7 @@ if(!isset($_SESSION["usuario"])){
            </div>
            <div class="form-group col-md-6 col-xs-12">
              <label for="vigencia">vigencia</label>
-               <input type="date" name="vigencia" id="vigencia" class="form-control" min="<?php echo date('Y-m-d') ?>" max="2050-06-01" required>
+               <input type="date" name="vigencia" id="vigencia" class="form-control campo_fecha" min="<?php echo date('Y-m-d') ?>" max="2050-06-01" required>
            </div>
 
             <div class="form-group col-md-6 col-xs-12">

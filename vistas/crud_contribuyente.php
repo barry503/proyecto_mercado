@@ -277,7 +277,7 @@ if(!isset($_SESSION["usuario"])){
 
                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
                      <label for="fecha_ingreso" >Selecciona la fecha de ingreso </label>
-                     <input type="date" name="fecha_ingreso" id="fecha_ingreso"  class="form-control">
+                     <input type="date" name="fecha_ingreso" id="fecha_ingreso"  class="form-control campo_fecha">
                   </div>
 
                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">

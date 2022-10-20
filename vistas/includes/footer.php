@@ -82,6 +82,16 @@
 
     <script src="scripts/salir_session.js"></script>
 
+    <!-- libreria para campos de fecha modernos -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> -->
+        <script src="../public/lib_fecha/flatpickr.min.js"></script>
+    <script>
+        $(".campo_fecha").flatpickr({
+    // enableTime: true, /*para activar hora*/
+    // dateFormat: "Y-m-d H:i" /*para formato de fecha*/
+});
+    </script>
+
 </body>
 
 </html>
