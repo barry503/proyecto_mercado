@@ -48,10 +48,40 @@ public function Disponible($idpuesto)
   //inplementar un metodo para insertar
    public function insertarAsignacion($codigo_presup,$contrib_id_fk,$fecha_egreso,$fecha_ingreso,$ultimo_pago,$institucion_id_fk,$puesto_id_fk,$observaciones,$giro_id_fk,$puesto_egreso_fk,$licencia,$codigo_licencia)
    {
-          $sql = "INSERT INTO asignaciones (codigo_presup,contrib_id_fk,fecha_egreso,fecha_ingreso,ultimo_pago,institucion_id_fk,puesto_id_fk,observaciones,giro_id_fk,puesto_egreso_fk,licencia,codigo_licencia)
-          VALUES('$codigo_presup','$contrib_id_fk','$fecha_egreso','$fecha_ingreso','$ultimo_pago','$institucion_id_fk','$puesto_id_fk','$observaciones','$giro_id_fk','$puesto_egreso_fk','$licencia','$codigo_licencia')";
+          $sql = "
+          INSERT INTO asignaciones(
+              codigo_presup,
+              contrib_id_fk,
+              fecha_egreso,
+              fecha_ingreso,
+              ultimo_pago,
+              institucion_id_fk,
+              puesto_id_fk,
+              observaciones,
+              giro_id_fk,
+              puesto_egreso_fk,
+              licencia,
+              codigo_licencia
+          )
+          VALUES(
+              '$codigo_presup',
+              '$contrib_id_fk',
+              NULL,
+              '$fecha_ingreso',
+              DATE_ADD('$ultimo_pago', INTERVAL -1 DAY),
+              '$institucion_id_fk',
+              '$puesto_id_fk',
+              '$observaciones',
+              '$giro_id_fk',
+              NULL,
+              '$licencia',
+              '$codigo_licencia'
+          )";
 
               return ejecutarConsulta($sql);
+
+              //consulta que sirve para restar una fecha a valores de en una bd
+              // SELECT DATE_ADD(ultimo_pago, INTERVAL -1 DAY) FROM asignaciones WHERE id = 6; 
 
    }
 

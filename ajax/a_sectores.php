@@ -133,6 +133,7 @@ case 'eliminar':
     case "selectInstituciones":
 
       $respuesta = $obj_secto->selectInstituciones();
+      echo '<option value=""></option>';
      while($reg = $respuesta->fetch_object()){
 
       echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';
@@ -146,6 +147,7 @@ case 'eliminar':
     case "selectSector":
 
       $respuesta = $obj_secto->selectSector();
+      echo '<option value=""></option>';
      while($reg = $respuesta->fetch_object()){
 
       echo '<option value="' . $reg->id .'">'.$reg->nombre.'</option>';

@@ -144,6 +144,7 @@ switch($_GET["op"]){
               case "selectInstituciones":
 
                 $respuesta = $puestoS->selectInstituciones();
+                echo '<option value=""></option>';
                while($reg = $respuesta->fetch_object()){
 
                 echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';
@@ -158,6 +159,7 @@ switch($_GET["op"]){
                 $param = $_GET['inst'];
 
                   $respuesta = $puestoS->selectSector($param);
+                  echo '<option value=""></option>';
                  while($reg = $respuesta->fetch_object()){
 
                   echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';
@@ -171,6 +173,7 @@ switch($_GET["op"]){
                   
 
                     $respuesta = $puestoS->selectSectorAll();
+                    echo '<option value=""></option>';
                    while($reg = $respuesta->fetch_object()){
 
                     echo '<option value="' . $reg->id .'">'. $reg->nombre.'</option>';

@@ -32,6 +32,10 @@ $observaciones =isset($_POST["observaciones"])? limpiarCadena($_POST["observacio
  
 $puesto =isset($_POST["puesto"])? limpiarCadena($_POST["puesto"]):"";#contiene el idpuesto
 
+$institucion_id_fk1 =isset($_POST["institucion_id_fk1"])? limpiarCadena($_POST["institucion_id_fk1"]):"";
+
+
+
 switch($_GET["op"]){
 
 // case de switch-------------------------------------------------------------------------->>>>>>>>>>>>>>>>>>
@@ -40,17 +44,16 @@ switch($_GET["op"]){
 
           // echo "consultas exitosas";
             $contrib_id_fk=$obj_contri->insertar($dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk,$municipio_id_fk);
-
             // echo $contrib_id_fk;
             if ($contrib_id_fk) {
 
               echo $contrib_id_fk ? "<i class='fas fa  fa-smile-o text-success t-100 '></i><br><h1>Se registro el Contribuyente</h1>" : "El Contribuyentes no se pudo registrar";
               $codigo_presup= $idtarifa;
-              $fecha_egreso="0000-00-00";
+              $fecha_egreso=NULL;//null solo por referencia
               // $fecha_ingreso="0000-00-00";
-              $ultimo_pago="0000-00-00";
+              $ultimo_pago=$fecha_ingreso;
               $giro_id_fk= $idgiros;
-              $puesto_egreso_fk = $puesto;
+              $puesto_egreso_fk = NULL;//null solo por referencia
               $licencia=0;
               $codigo_licencia=0;
               
@@ -66,7 +69,7 @@ switch($_GET["op"]){
 
         
        }else {
-               $respuesta=$obj_contri->editar($id,$dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk,$municipio_id_fk);
+               $respuesta=$obj_contri->editar($id,$dui,$nit,$apellidos,$codigo_cta,$direccion,$nombres,$telefono_principal,$telefono_secundario,$institucion_id_fk1,$municipio_id_fk);
              echo $respuesta ? "<i class='fas fa  fa-repeat text-success t-100 '></i><br><h1>Contribuyente actualizado</h1>" : "Contribuyente no se pudo actualizar";
 
          }
@@ -160,6 +163,7 @@ case 'eliminar':
     case "selectMunicipio":
 
       $respuesta = $obj_contri->selectMunicipio();
+      echo '<option value=""></option>';
      while($reg = $respuesta->fetch_object()){
 
       echo '<option value="' . $reg->id .'">'.$reg->municipio_departamento.'</option>';
@@ -171,6 +175,7 @@ case 'eliminar':
       case "selectPuesto":
       $sect = $_GET['sect'];
         $respuesta = $obj_contri->selectPuestoXsector($sect);
+        echo '<option value=""></option>';
        while($reg = $respuesta->fetch_object()){
 
         echo '<option  value="' . $reg->id .'">'.$reg->modulo.'</option>';
@@ -200,6 +205,7 @@ case 'eliminar':
           case "selectGiros":
 
             $respuesta = $obj_contri->selectGiros($_GET['inst']);
+            echo '<option value=""></option>';
            while($reg = $respuesta->fetch_object()){
 
             echo '<option value="' . $reg->id .'">'.$reg->nombre.'</option>';
@@ -211,6 +217,7 @@ case 'eliminar':
             case "selectTarifa":
 
               $respuesta = $obj_contri->selectTarifa($_GET['inst']);
+              echo '<option value=""></option>';
              while($reg = $respuesta->fetch_object()){
 
               echo '<option value="' . $reg->codigo_presup .'">'.$reg->codigo_presup.'-$'.$reg->precio_unitario.'</option>';

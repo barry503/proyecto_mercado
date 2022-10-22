@@ -119,10 +119,10 @@ if(!isset($_SESSION["usuario"])){
                 <li class="nav-item">
                   <a class="nav-link active show" id="generales-tab" data-toggle="tab" href="#generales" role="tab" aria-controls="generales" aria-selected="false">Datos Personales</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item hover_edit">
                   <a class="nav-link" id="puestos-tab" data-toggle="tab" href="#puestos" role="tab" aria-controls="puestos" aria-selected="true">Datos Puesto</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item hover_edit">
                   <a class="nav-link" id="giros-tab" data-toggle="tab" href="#giros" role="tab" aria-controls="giros" aria-selected="true">Datos Giros y Tarifa</a>
                 </li>
               </ul>
@@ -139,7 +139,13 @@ if(!isset($_SESSION["usuario"])){
                   <div class="row mb-2">
                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                      <label for="institucion_id_fk" >Institucion ala que pertenece</label>
-                     <select name="institucion_id_fk" id="institucion_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
+                      <!-- <input type="hidden" name="idcontribuyente" id="idcontribuyente" > ya esta agregado  -->
+                     <select name="institucion_id_fk" id="institucion_id_fk"  class="form-control  " data-live-search="true" required><!-- selectpicker --></select>
+                     <input type="hidden" name="institucion_id_fk1" id="institucion_id_fk1" >
+                  </div>
+                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                     <label>codigo de cuenta:</label>
+                     <input type="text" class="form-control " name="codigo_cta" id="codigo_cta"  placeholder="Escribe el codigo_cta del Contribuyente " required> 
                   </div>
 
                    
@@ -148,89 +154,89 @@ if(!isset($_SESSION["usuario"])){
                   
                   <h3>Datos Personales del Contribuyente</h3>
                   <div class="row mb-2">
+                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                       <label>Nombres del contribuyente: </label>
+                       <div class="input-group">
+                       <div class="input-group-addon">
+                       *<b>NOMBRES</b>
+                       </div>
+                       <input type="text" class="form-control " name="nombres" id="nombres"  placeholder="Escribe los nombres " required> 
+                       </div>
+
+                    </div>
+
+                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                       <label>apellidos del contribuyente:</label>
+                       <div class="input-group">
+                       <div class="input-group-addon">
+                       *<b>APELLIDOS</b>
+                       </div>
+                       <input type="text" class="form-control " name="apellidos" id="apellidos"  placeholder="Escribe los apellidos " required> 
+                       </div>
+
+                    </div>
+
 
                            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                              <label title="Documento de identificacion personal">Documento:</label>
                                   <!-- para trabajar con el id -->
-                             <input type="hidden" name="id" id="id">
+                             <input type="hidden" name="id" id="id" value="0">
 
                              <div class="input-group">
                              <div class="input-group-addon">
                              *<b>DUI</b>
                              </div>
-                             <input type="text" class="form-control" name="dui" id="dui"  placeholder="Escribe el dui " required>
+                             <input type="text" class="form-control " name="dui" id="dui"  placeholder="Escribe el dui " required>
                              </div>
                           
                              
                           </div>
 
-                           <div class="form-group col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                           <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                             <label>Documento tributario:</label>
+                             <div class="input-group">
+                             <div class="input-group-addon">
+                             *<b>NIT</b>
+                             </div>
+                             <input type="text" class="form-control " name="nit" id="nit"  placeholder="Escribe el nit del Contribuyente " required> 
+                             </div>
+
+                          </div>
+
+                           <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                              <label>telefono principal:</label>
                              <div class="input-group">
                              <div class="input-group-addon">
                              *<b>Tel:</b>
                              </div>
-                             <input type="text" class="form-control" name="telefono_principal" id="telefono_principal"  placeholder="Escribe telefono principal" required> 
+                             <input type="text" class="form-control " name="telefono_principal" id="telefono_principal"  placeholder="Escribe telefono principal" required> 
                              </div>
 
                           </div>
 
-                           <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                           <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                              <label>telefono secundario:</label>
                              <div class="input-group">
                              <div class="input-group-addon">
                              *<b>Tel:</b>
                              </div>
-                             <input type="text" class="form-control" name="telefono_secundario" id="telefono_secundario"  placeholder="Escribe telefono secundario " required> 
+                             <input type="text" class="form-control " name="telefono_secundario" id="telefono_secundario"  placeholder="Escribe telefono secundario " required> 
                              </div>
 
                           </div>
 
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Documento de identificacion tributaria:</label>
-                             <div class="input-group">
-                             <div class="input-group-addon">
-                             *<b>NIT</b>
-                             </div>
-                             <input type="text" class="form-control" name="nit" id="nit"  placeholder="Escribe el nit del Contribuyente " required> 
-                             </div>
 
-                          </div>
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Nombres del contribuyente: </label>
-                             <div class="input-group">
-                             <div class="input-group-addon">
-                             *<b>NOMBRES</b>
-                             </div>
-                             <input type="text" class="form-control" name="nombres" id="nombres"  placeholder="Escribe los nombres " required> 
-                             </div>
 
-                          </div>
-
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>apellidos del contribuyente:</label>
-                             <div class="input-group">
-                             <div class="input-group-addon">
-                             *<b>APELLIDOS</b>
-                             </div>
-                             <input type="text" class="form-control" name="apellidos" id="apellidos"  placeholder="Escribe los apellidos " required> 
-                             </div>
-
-                          </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                              <label>direccion del contribuyente:</label>
-                             <textarea class="form-control" name="direccion" id="direccion"  placeholder="Escribe la direccion del   " required></textarea>
+                             <input type="text" class="form-control " name="direccion" id="direccion"  placeholder="Escribe la direccion" required>
                           </div>
 
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>codigo_cta:</label>
-                             <input type="text" class="form-control" name="codigo_cta" id="codigo_cta"  placeholder="Escribe el codigo_cta del Contribuyente " required> 
-                          </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                              <label for="municipio_id_fk" >Municipio al que pertenece</label>
-                             <select name="municipio_id_fk" id="municipio_id_fk"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
+                             <select name="municipio_id_fk" id="municipio_id_fk"  class="form-control  " data-live-search="true" required><!-- selectpicker --></select>
                           </div>
 
 
@@ -242,12 +248,12 @@ if(!isset($_SESSION["usuario"])){
 
                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
                      <label for="idsector" >sector al que pertenece</label>
-                     <select name="idsector" id="idsector"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+                     <select name="idsector" id="idsector"  class="form-control  " data-live-search="true" required><!-- selectpicker --></select>
                   </div>
 
                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
                      <label for="puesto" >Puesto a agregar</label>
-                     <select name="puesto" id="puesto"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+                     <select name="puesto" id="puesto"  class="form-control  " data-live-search="true" required><!-- selectpicker --></select>
                   </div>
 
                   <div class=" col-md-12 text-center">
@@ -264,25 +270,27 @@ if(!isset($_SESSION["usuario"])){
                 <div class="tab-pane fade " id="giros" role="tabpanel" aria-labelledby="giros-tab">
                   <h3>Giros y Tarifa</h3>
 
-                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
-                     <label for="idgiros" >Selecciona el giro</label>
-                     <select name="idgiros" id="idgiros"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
-                  </div>
+                  <div class="row mb-2">
+                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                       <label for="idgiros" >Selecciona el giro</label>
+                       <select name="idgiros" id="idgiros"  class="form-control  " data-live-search="true" required><!-- selectpicker --></select>
+                    </div>
 
-                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
-                     <label for="idtarifa" >Selecciona la tarifa</label>
-                     <select name="idtarifa" id="idtarifa"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
-                     
-                  </div>
+                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                       <label for="idtarifa" >Selecciona la tarifa</label>
+                       <select name="idtarifa" id="idtarifa"  class="form-control  " data-live-search="true" required><!-- selectpicker --></select>
+                       
+                    </div>
 
-                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
-                     <label for="fecha_ingreso" >Selecciona la fecha de ingreso </label>
-                     <input type="date" name="fecha_ingreso" id="fecha_ingreso"  class="form-control campo_fecha">
-                  </div>
+                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                       <label for="fecha_ingreso" >Selecciona la fecha de ingreso </label>
+                       <input type="date" name="fecha_ingreso" id="fecha_ingreso"  class="form-control  campo_fecha" required>
+                    </div>
 
-                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
-                     <label for="observaciones" >Escribe alguna observacion </label>
-                     <textarea name="observaciones" id="observaciones"  class="form-control" ></textarea>
+                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
+                       <label for="observaciones" >Escribe alguna observacion </label>
+                       <input type="text"  name="observaciones" id="observaciones"  class="form-control " required>
+                    </div>
                   </div>
 
 

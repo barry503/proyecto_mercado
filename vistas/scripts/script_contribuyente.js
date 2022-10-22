@@ -13,11 +13,32 @@ Primary use:  Open Source                                       *
      mostrarform(false);
      listar(); 
 
-     $("#formulario").on("submit",function(e)
-     {
-          guardaryeditar(e);
-       
-     })
+     //evento click para select de periodo
+    
+        $('#btnGuardar').on('click', function(e) {
+            $("#institucion_id_fk1").attr("disabled","true");
+
+            var IDcontry = $("#id").val();
+            if (IDcontry >= 1) {
+                 // alert("el id es = "+IDcontry)
+                 guardaryeditar(e); 
+
+             }else{
+            // alert("no hay id")
+              var respuesta = validacionFormulario();
+              if (respuesta==true) {
+                // $("#formulario").on("submit",function(e){   
+                guardaryeditar(e);
+                // })
+              }
+             }
+        })
+
+
+
+
+
+
      $.post("../ajax/a_sectores.php?op=selectInstituciones", function(r){
 
                 $("#institucion_id_fk").html(r);
@@ -105,6 +126,17 @@ function limpiar(){
    // $("#idinstitucion").selectpicker('refresh');
    $("#municipio_id_fk").val("");
    // $("#municipio_id_fk").selectpicker('refresh');
+   $("#idgiros").val("");
+   $("#idtarifa").val("");
+   $("#idsector").val("");
+   $("#puesto").val("");
+   $("#observaciones").val("");
+   $("#fecha_ingreso").val("");
+
+   $("#institucion_id_fk1").removeAttr("disabled",false);
+
+   $("#institucion_id_fk1").val("");
+
    
 
 }
@@ -125,6 +157,10 @@ function mostrarform(condi)
      $("#listadoregistros").show();
      $("#formularioregistros").hide();
      $("#btnagregar").show();
+     $(".hover_edit").show();
+
+     $("#institucion_id_fk1").val("");
+     $("#institucion_id_fk").removeAttr("disabled",false);
 
   }
 
@@ -226,7 +262,7 @@ function mostrar(id)
        data = JSON.parse(data);
        mostrarform(true);
 
-
+       $(".hover_edit").hide();//para esconder las dos secciones
 
 $("#id").val(data.id);
 $("#dui").val(data.dui);
@@ -241,9 +277,11 @@ $("#institucion_id_fk").val(data.institucion_id_fk);
 // $("#idinstitucion").selectpicker('refresh');
 $("#municipio_id_fk").val(data.municipio_id_fk);
 // $("#municipio_id_fk").selectpicker('refresh');
+
+$("#institucion_id_fk").attr("disabled","true");
+$("#institucion_id_fk1").val(data.institucion_id_fk);
    })
 } 
-
 
 
 
@@ -277,5 +315,124 @@ Swal.fire({
 
 }
 
+
+
+
+
+function validacionFormulario() {
+ 
+
+
+
+//datos generales
+     if ($("#institucion_id_fk").val() =="") { alertaErr("porfavor ingresa la institucion"); dSection(1); }
+else if ($("#codigo_cta").val() =="") { alertaErr("porfavor ingresa el codigo de cuenta"); dSection(1); }
+//datos personales
+else if ($("#nombres").val() =="") { alertaErr("porfavor ingresa el nombres"); dSection(1); }
+else if ($("#apellidos").val() =="") { alertaErr("porfavor ingresa el apellidos"); dSection(1); }
+else if ($("#dui").val() =="") { alertaErr("porfavor ingresa el dui"); dSection(1); }
+else if ($("#nit").val() =="") { alertaErr("porfavor ingresa el nit"); dSection(1); }
+else if ($("#telefono_principal").val() =="") { alertaErr("porfavor ingresa el telefono_principal"); dSection(1); }
+else if ($("#telefono_secundario").val() =="") { alertaErr("porfavor ingresa el telefono_secundario"); dSection(1); }
+else if ($("#direccion").val() =="") { alertaErr("porfavor ingresa el direccion"); dSection(1); }
+else if ($("#municipio_id_fk").val() =="") { alertaErr("porfavor ingresa el municipio_id_fk"); dSection(1); }
+
+// datos puestos
+else if ($("#idsector").val() =="") { alertaErr("porfavor ingresa el idsector"); dSection(2); }
+else if ($("#puesto").val() =="") { alertaErr("porfavor ingresa el puesto"); dSection(2); }
+
+// datos giro y tarifa
+else if ($("#idgiros").val() =="") { alertaErr("porfavor ingresa el idgiros"); dSection(3); }
+else if ($("#idtarifa").val() =="") { alertaErr("porfavor ingresa el idtarifa"); dSection(3); }
+else if ($("#fecha_ingreso").val() =="") { alertaErr("porfavor ingresa el fecha_ingreso"); dSection(3); }
+else if ($("#observaciones").val() =="") { alertaErr("porfavor ingresa el observaciones"); dSection(3); }else{
+
+          return true; 
+          // alert("ejecutando funcion");
+}
+
+}
+
+
+function alertaErr(text) {
+    // body...
+    Swal.fire({html: "<i class='fa fa- fa-warning text-dark  bg-warning'></i><br><h3>"+text+"</h3>",
+        position: "top-end",
+        toast: true,
+        showConfirmButton: false,
+        timer: 8500,
+        width:600,
+        background: '#ffc107' });
+}
+
+ 
+
+function dSection(numeroSeccion) {
+    // body...
+    if (numeroSeccion == 1) {
+        removeClases();//borro las clases
+        $("#generales").addClass("active");//agrego clase a data
+        $("#generales").addClass("show");//agrego clase a data
+
+        $("#generales-tab").addClass("active");//agrego clase a tab
+        $("#generales-tab").addClass("show");//agrego clase a tab
+    }else if(numeroSeccion == 2){
+        removeClases();//borro las clases
+        $("#puestos").addClass("active");//agrego clase a data
+        $("#puestos").addClass("show");//agrego clase a data
+
+        $("#puestos-tab").addClass("active");//agrego clase a tab
+        $("#puestos-tab").addClass("show");//agrego clase a tab
+
+
+    }else if(numeroSeccion == 3){
+        removeClases();//borro las clases
+        $("#giros").addClass("active");//agrego clase a data
+        $("#giros").addClass("show");//agrego clase a data
+
+        $("#giros-tab").addClass("active");//agrego clase a tab
+        $("#giros-tab").addClass("show");//agrego clase a tab
+    }
+}
+
+function removeClases() {
+    // remuevo las clases active de todas las secciones
+    $("#generales").removeClass("active");
+    $("#puestos").removeClass("active");
+    $("#giros").removeClass("active");
+
+    $("#generales-tab").removeClass("active");
+    $("#puestos-tab").removeClass("active");
+    $("#giros-tab").removeClass("active");
+
+    // remuevo las clases show de todas las secciones
+    $("#generales").removeClass("show");
+    $("#puestos").removeClass("show");
+    $("#giros").removeClass("show");
+
+    $("#generales-tab").removeClass("show");
+    $("#puestos-tab").removeClass("show");
+    $("#giros-tab").removeClass("show");
+}
+
+
+      
+        
+/*
+
+#generales-tab 1
+#puestos-tab   2
+#giros-tab     3
+
+
+#generales 1
+#puestos   2
+#giros     3
+
+clases para el contenido
+active show
+
+
+*/
 
  inicial();
