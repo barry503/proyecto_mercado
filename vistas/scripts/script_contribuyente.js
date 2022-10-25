@@ -16,19 +16,21 @@ Primary use:  Open Source                                       *
      //evento click para select de periodo
     
         $('#btnGuardar').on('click', function(e) {
-            $("#institucion_id_fk1").attr("disabled","true");
 
             var IDcontry = $("#id").val();
             if (IDcontry >= 1) {
                  // alert("el id es = "+IDcontry)
                  guardaryeditar(e); 
+                 console.log("estoy editando");
 
              }else{
+            $("#institucion_id_fk1").attr("disabled","true");
             // alert("no hay id")
               var respuesta = validacionFormulario();
               if (respuesta==true) {
                 // $("#formulario").on("submit",function(e){   
                 guardaryeditar(e);
+                console.log("estoy registrando nuevo");
                 // })
               }
              }
