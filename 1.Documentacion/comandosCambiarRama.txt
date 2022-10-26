@@ -1,0 +1,6 @@
+comado para ver ramas "  git branch  " o "  git show-branch  " para ver commits de cada rama
+
+comandos para cambiar de rama  "  git checkout main  " o "  git checkout pm_adminLTE  "
+
+comando para subir la rama pm_adminLTE
+"  git push -u origin pm_adminLTE  "
