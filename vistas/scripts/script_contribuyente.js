@@ -358,7 +358,7 @@ else if ($("#observaciones").val() =="") { alertaErr("porfavor ingresa el observ
 
 function alertaErr(text) {
     // body...
-    Swal.fire({html: "<i class='fa fa- fa-warning text-dark  bg-warning'></i><br><h3>"+text+"</h3>",
+    Swal.fire({html: "<i class='fas fa fa-info  t-100 text-dark'></i><br><h3>"+text+"</h3>",
         position: "top-end",
         toast: true,
         showConfirmButton: false,

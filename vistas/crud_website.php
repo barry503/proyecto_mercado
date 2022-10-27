@@ -45,11 +45,11 @@ if(!isset($_SESSION["usuario"])){
 <section class="content">
  <div class="container bg-light" >
   <div class="row">
-    <div class="col text-center mt-5">
+    <div class="col-md-4 text-center ">
       <!-- poner imagen de su perfil -->
       <div id="cargando_img"><img class="imgILogo" width="250px" style="border-radius: 50px;" src="../files/logo/<?php echo dataImgUrl("logo"); ?>"></div>
         <div class="row form-group">
-            <div class="col-12 ">
+            <div class="col-md-12 ">
               <label for="imagefile" class=" form-control-label">Cambiar logo de la Empresa </label>
               <!-- <input type="file" id="file-input" name="imagefile" id="imagefile" onchange="actualizar_image();" class="btn btn-lg btn-outline-secondary form-control-file text-center"> -->
 
@@ -58,11 +58,11 @@ if(!isset($_SESSION["usuario"])){
             </div>
         </div>
     </div>
-    <div class="col text-center mt-5">
+    <div class="col-md-4 text-center ">
       <!-- poner imagen de su perfil -->
-      <div id="cargando_background"><img class="imgILogo" width="" style="border-radius: 50px;" src="../files/logo/<?php echo dataImgUrl("background"); ?>"></div>
+      <div id="cargando_background"><img class="imgILogo" width="250px" style="border-radius: 50px;" src="../files/logo/<?php echo dataImgUrl("background"); ?>"></div>
         <div class="row form-group">
-            <div class="col-12 ">
+            <div class="col-md-12 ">
               <label for="imagefilea" class=" form-control-label">Cambiar background de la Empresa </label>
               <!-- <input type="file" id="file-input" name="imagefilea" id="imagefilea" onchange="actualizar_image();" class="btn btn-lg btn-outline-secondary form-control-file text-center"> -->
 
@@ -72,11 +72,11 @@ if(!isset($_SESSION["usuario"])){
         </div>
     </div>
 
-        <div class="col text-center mt-5">
+        <div class="col-md-4 text-center ">
       <!-- poner imagen de su perfil -->
-      <div id="cargando_historia"><img class="imgILogo" width="" style="border-radius: 50px;" src="../files/logo/<?php echo dataImgUrl("historia"); ?>"></div>
+      <div id="cargando_historia"><img class="imgILogo" width="250px" style="border-radius: 50px;" src="../files/logo/<?php echo dataImgUrl("historia"); ?>"></div>
         <div class="row form-group">
-            <div class="col-12 ">
+            <div class="col-md-12 ">
               <label for="imagefilee" class=" form-control-label">Cambiar imagen de reseña historica de la Empresa </label>
               <!-- <input type="file" id="file-input" name="imagefile" id="imagefile" onchange="actualizar_image();" class="btn btn-lg btn-outline-secondary form-control-file text-center"> -->
 

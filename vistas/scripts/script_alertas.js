@@ -3,7 +3,7 @@
 function Alerts(param,e){
     if (param=='sinCambios') {
     Swal.fire({
-        html: '<i class="fa fa-question text-warning t-100 bg-dark"></i><br><h1>No se realizaron cambios</h1>',
+        html: '<i class="fa fa-question text-dark t-100 bg-warning"></i><br><h1>No se realizaron cambios</h1>',
         footer: ' no se activo <i class="fa  fa-spinner text-dark"></i>',
         showConfirmButton: false,
         timer: 3500,

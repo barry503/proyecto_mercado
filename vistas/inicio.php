@@ -14,178 +14,289 @@ if(!isset($_SESSION["usuario"])){
 <?php $nom_section= nom_section("Inicio "); ?>
 <?php require'includes/header.php'; ?>
 
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
 
 
-<!-- STATISTIC -->
-<section class="statistic statistic2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="statistic__item statistic__item--green">
-                    <h2 class="number">10,368</h2>
-                    <span class="desc">members online</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-account-o"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="statistic__item statistic__item--orange">
-                    <h2 class="number">388,688</h2>
-                    <span class="desc">items sold</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="statistic__item statistic__item--blue">
-                    <h2 class="number">1,086</h2>
-                    <span class="desc">this week</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-calendar-note"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="statistic__item statistic__item--red">
-                    <h2 class="number">$1,060,386</h2>
-                    <span class="desc">total earnings</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-money"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div>
-        
-    </div>
-</section>
-<!-- END STATISTIC -->
 
-<!-- STATIC CHART -->
-<section class="statistic-chart">
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="title-5 m-b-35">statistics</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-lg-4">
-            <!-- CHART-->
-            <div class="statistic-chart-1">
-                <h3 class="title-3 m-b-30">chart</h3>
-                <div class="chart-wrap"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                    <canvas id="widgetChart5" style="display: block; width: 330px; height: 242px;" class="chartjs-render-monitor" width="330" height="242"></canvas>
-                </div>
-                <div class="statistic-chart-1-note">
-                    <span class="big">10,368</span>
-                    <span>/ 16220 items sold</span>
-                </div>
+      
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>New Orders</p>
             </div>
-            <!-- END CHART-->
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <!-- TOP CAMPAIGN-->
-            <div class="top-campaign">
-                <h3 class="title-3 m-b-30">top campaigns</h3>
-                <div class="table-responsive">
-                    <table class="table table-top-campaign">
-                        <tbody>
-                            <tr>
-                                <td>1. Australia</td>
-                                <td>$70,261.65</td>
-                            </tr>
-                            <tr>
-                                <td>2. United Kingdom</td>
-                                <td>$46,399.22</td>
-                            </tr>
-                            <tr>
-                                <td>3. Turkey</td>
-                                <td>$35,364.90</td>
-                            </tr>
-                            <tr>
-                                <td>4. Germany</td>
-                                <td>$20,366.96</td>
-                            </tr>
-                            <tr>
-                                <td>5. France</td>
-                                <td>$10,366.96</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
             </div>
-            <!-- END TOP CAMPAIGN-->
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-4">
-            <!-- CHART PERCENT-->
-            <div class="chart-percent-2">
-                <h3 class="title-3 m-b-30">chart by %</h3>
-                <div class="chart-wrap"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                    <canvas id="percent-chart2" style="display: block; width: 330px; height: 209px;" class="chartjs-render-monitor" width="330" height="209"></canvas>
-                    <div id="chartjs-tooltip">
-                        <table></table>
-                    </div>
-                </div>
-                <div class="chart-info">
-                    <div class="chart-note">
-                        <span class="dot dot--blue"></span>
-                        <span>products</span>
-                    </div>
-                    <div class="chart-note">
-                        <span class="dot dot--red"></span>
-                        <span>Services</span>
-                    </div>
-                </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
             </div>
-            <!-- END CHART PERCENT-->
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
         </div>
-    </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+
+
+
+
+
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-chart-pie mr-1"></i>
+                Sales
+              </h3>
+              <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                  </li>
+                </ul>
+              </div>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="revenue-chart"
+                     style="position: relative; height: 300px;">
+                    <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                 </div>
+                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                  <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                </div>
+              </div>
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+
+          <!-- Map card -->
+          <div class="card bg-gradient-primary">
+            <div class="card-header border-0">
+              <h3 class="card-title">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                Visitors
+              </h3>
+              <!-- card tools -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
+                  <i class="far fa-calendar-alt"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <div class="card-body">
+              <div id="world-map" style="height: 250px; width: 100%;"></div>
+            </div>
+            <!-- /.card-body-->
+            <div class="card-footer bg-transparent">
+              <div class="row">
+                <div class="col-4 text-center">
+                  <div id="sparkline-1"></div>
+                  <div class="text-white">Visitors</div>
+                </div>
+                <!-- ./col -->
+                <div class="col-4 text-center">
+                  <div id="sparkline-2"></div>
+                  <div class="text-white">Online</div>
+                </div>
+                <!-- ./col -->
+                <div class="col-4 text-center">
+                  <div id="sparkline-3"></div>
+                  <div class="text-white">Sales</div>
+                </div>
+                <!-- ./col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.card -->
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+          <!-- Calendar -->
+          <div class="card bg-gradient-success">
+            <div class="card-header border-0">
+
+              <h3 class="card-title">
+                <i class="far fa-calendar-alt"></i>
+                Calendar
+              </h3>
+              <!-- tools card -->
+              <div class="card-tools">
+                <!-- button with a dropdown -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                    <i class="fas fa-bars"></i>
+                  </button>
+                  <div class="dropdown-menu" role="menu">
+                    <a href="#" class="dropdown-item">Add new event</a>
+                    <a href="#" class="dropdown-item">Clear events</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">View calendar</a>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pt-0">
+              <!--The calendar -->
+              <div id="calendar" style="width: 100%"></div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          <!-- solid sales graph -->
+          <div class="card bg-gradient-info">
+            <div class="card-header border-0">
+              <h3 class="card-title">
+                <i class="fas fa-th mr-1"></i>
+                Sales Graph
+              </h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer bg-transparent">
+              <div class="row">
+                <div class="col-4 text-center">
+                  <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
+                         data-fgColor="#39CCCC">
+
+                  <div class="text-white">Mail-Orders</div>
+                </div>
+                <!-- ./col -->
+                <div class="col-4 text-center">
+                  <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
+                         data-fgColor="#39CCCC">
+
+                  <div class="text-white">Online</div>
+                </div>
+                <!-- ./col -->
+                <div class="col-4 text-center">
+                  <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
+                         data-fgColor="#39CCCC">
+
+                  <div class="text-white">In-Store</div>
+                </div>
+                <!-- ./col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          <!-- /.card -->
+        </section>
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+
+
+
+
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
 </div>
-</section>
-<!-- END STATIC CHART -->
-<!-- RECENT REPORT 2              -->
-<div class="recent-report2">
-                                    <h3 class="title-3">recent reports</h3>
-                                    <div class="chart-info">
-                                        <div class="chart-info__left">
-                                            <div class="chart-note">
-                                                <span class="dot dot--blue"></span>
-                                                <span>products</span>
-                                            </div>
-                                            <div class="chart-note">
-                                                <span class="dot dot--green"></span>
-                                                <span>Services</span>
-                                            </div>
-                                        </div>
-                                        <div class="chart-info-right">
-                                            <div class="rs-select2--dark rs-select2--md m-r-10">
-                                                <select class="js-select2 select2-hidden-accessible" name="property" tabindex="-1" aria-hidden="true">
-                                                    <option selected="selected">All Properties</option>
-                                                    <option value="">Products</option>
-                                                    <option value="">Services</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 114.017px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-property-hh-container"><span class="select2-selection__rendered" id="select2-property-hh-container" title="All Properties">All Properties</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                <div class="dropDownSelect2"></div>
-                                            </div>
-                                            <div class="rs-select2--dark rs-select2--sm">
-                                                <select class="js-select2 au-select-dark select2-hidden-accessible" name="time" tabindex="-1" aria-hidden="true">
-                                                    <option selected="selected">All Time</option>
-                                                    <option value="">By Month</option>
-                                                    <option value="">By Day</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 89.0167px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-time-gt-container"><span class="select2-selection__rendered" id="select2-time-gt-container" title="All Time">All Time</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                <div class="dropDownSelect2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="recent-report__chart"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                                        <canvas id="recent-rep2-chart" style="display: block; width: 544px; height: 230px;" class="chartjs-render-monitor" width="544" height="230"></canvas>
-                                    </div>
-                                </div>
-
-<!-- END RECENT REPORT 2              -->
 
 <?php require'includes/footer.php'; ?>
 
