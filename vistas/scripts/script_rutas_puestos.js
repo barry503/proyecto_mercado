@@ -29,30 +29,43 @@ Primary use:  Open Source                                       *
                 // r.preventDefault();
             });
      
-     //evento click para select de periodo
-      $('#idinstitucion').on('click', function(e) {
-          var inst = $("#idinstitucion").val();
-          
-          $.post("../ajax/a_rutasPuestos.php?op=selectRuta&inst="+inst, function(r){
-
-                     $("#ruta_id").html(r);
-                     // $("#ruta_id").selectpicker('refresh');
-                     // r.preventDefault();
-                 });
 
 
-          //post para los puestos
-          $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&inst="+inst,function(r){
-                   $("#puestos_id").html(r);
-          });
-          
-      });
+
+  SeleccionYpuestos();
 
 
 
  }
 
 
+function SeleccionYpuestos() {
+    //evento click para select de periodo
+    var valiinst = $("#idinstitucion").val();
+    // para  borrar los puestos de la pantalla 
+    $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&inst="+valiinst, function(r){ $("#puestos_id").html(r);  });
+
+    //instruccion cuando se da click a idinstitucion
+     $('#idinstitucion').on('click', function(e) {
+         var inst = $("#idinstitucion").val();
+
+            $.post("../ajax/a_rutasPuestos.php?op=selectRuta&inst="+inst, function(r){
+
+                       $("#ruta_id").html(r);
+                       // $("#ruta_id").selectpicker('refresh');
+                       // r.preventDefault();
+                   });
+            $.post("../ajax/a_rutasPuestos.php?op=selectPuesto&inst="+inst, function(r){
+
+                           $("#puestos_id").html(r);
+                           // $("#puestos_id").selectpicker('refresh');
+                           // r.preventDefault();
+                       });
+         
+         
+     });
+
+}
 
 //Funcion limpiar
 function limpiar()
@@ -67,6 +80,7 @@ function limpiar()
    // $("#puestos_id").selectpicker('refresh');
    
    // $(".cam-po a").attr("href", "#");
+    SeleccionYpuestos();
 
 }
 
@@ -82,12 +96,14 @@ function mostrarform(condi)
      $("#btnGuardar").prop("disabled",false);
      $("#btnagregar").hide();
      // opcionPuesto();
+
   }
   else 
   {
      $("#listadoregistros").show();
      $("#formularioregistros").hide();
      $("#btnagregar").show();
+
 
   }
 
@@ -213,10 +229,12 @@ function eliminar(id)
 {
    
 Swal.fire({
-            html: '<h1 class="text-white">Eliminar la ruta</h1><p class="text-white">¿Esta segur@ de eliminar la ruta ?</p>',
-            icon: 'error',
-            background: '#dc3545d6',
+            html: '<h1 class="text-dark">¿ Esta segur@ de eliminar el puesto de la ruta ?</h1>',
+            icon: 'question',
+            iconColor: '#c82333',
+            background: '#fff',
             showCancelButton: true,
+            confirmButtonColor: "#c82333",
             confirmButtonText: "Eliminar",
             cancelButtonText: "Cancelar",
         })

@@ -122,7 +122,7 @@ if(!isset($_SESSION["usuario"])){
 
        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po text-center">
          <label for="puestos_id" >Elige la institucion</label>
-         <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+         <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
          
       </div>
             <!-- <div class="col-md-6 text-muted"> -->
@@ -131,12 +131,10 @@ if(!isset($_SESSION["usuario"])){
                      <!-- para trabajar con el id -->
                 <input type="hidden" name="id" id="id">
              
-                <select name="ruta_id" id="ruta_id"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+                <select name="ruta_id" id="ruta_id"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
              </div>
 
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 cam-po text-center">
-              <label for="puestos_id" >Elige los puestos</label>
-
               <!-- <select name="puestos_id" id="puestos_id"  class="form-control " data-live-search="true" >selectpicker</select> -->
               
                  <div class="container">

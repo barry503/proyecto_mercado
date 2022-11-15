@@ -21,11 +21,11 @@ switch($_GET["op"]){
   case 'guardaryeditar':
        if(empty($idrutas)){
              $respuesta=$objRuta->insertar($descripcion,$nombre,$idinstitucion,$correo_usuario);
-             echo $respuesta ? "ruta registrado" : "El ruta no se pudo registrar";
+             echo $respuesta ? "ruta registrada" : "La ruta no se pudo registrar";
        }
          else {
                $respuesta=$objRuta->editar($idrutas,$descripcion,$nombre,$idinstitucion,$correo_usuario);
-             echo $respuesta ? "ruta actualizado" : "ruta no se pudo actualizar";
+             echo $respuesta ? "ruta actualizada" : "ruta no se pudo actualizar";
 
          }
   break;
@@ -33,7 +33,7 @@ switch($_GET["op"]){
 
 case 'eliminar':
            $respuesta=$objRuta->eliminar($idrutas);
-             echo $respuesta ? "ruta eliminado" : "ruta no se pudo eliminar";
+             echo $respuesta ? "ruta eliminada" : "la ruta no se pudo eliminar";
 
   break;
 
@@ -119,7 +119,7 @@ case 'DesasignarUsuario':
     $inst = $_GET['inst'];
 
       $respuesta = $objRuta->selectAndroid($inst);
-      echo '<option title="sin usuario" value="NULL">sin usuario</option>';
+      echo '<option title="sin usuario" >seleccione el usuario</option>';
      while($reg = $respuesta->fetch_object()){
 
       echo '<option title="' . $reg->email .'" value="' . $reg->email .'">'. $reg->email.' , '.$reg->nombre.'</option>';

@@ -32,7 +32,7 @@ switch($_GET["op"]){
 
 case 'eliminar':
            $respuesta=$objRutaP->eliminar($id);
-             echo $respuesta ? " eliminado" : " no se pudo eliminar";
+             echo $respuesta ? " Se elimino el pueto de la ruta" : " no se pudo eliminar";
 
   break;
 
@@ -98,7 +98,8 @@ case 'eliminar':
 
 
     case "selectRuta":
-    $param = $_GET['inst'];
+    $param = $_GET['inst'];//parametro de la institucion
+    // echo '<option  value=""></option>';
       $respuesta = $objRutaP->selectRuta($param);
      while($reg = $respuesta->fetch_object()){
 
@@ -111,32 +112,36 @@ case 'eliminar':
       case "selectPuesto":
       $param = $_GET['inst'];
       require ("../config/pdo.php");#conexion
+      $valorDePuestos=1;//si hay puestos disponibles
 
-        $respuesta = $objRutaP->selectPuesto($param);
-       while($reg = $respuesta->fetch_object()){
+        if ($param!="") {
+           $respuesta = $objRutaP->selectPuesto($param);
+                      echo '<div class="col-md-12"><h3 class="display-5"><b>Selecciona los los puestos</b></h3></div>';
 
-        $sql= $conexionPdo->query("SELECT * FROM rutas_puestos WHERE   puestos_id='$reg->id'")->fetchAll(PDO::  FETCH_OBJ);
+          while($reg = $respuesta->fetch_object()){
+           $sql= $conexionPdo->query("SELECT * FROM rutas_puestos WHERE   puestos_id='$reg->id'")->fetchAll(PDO::  FETCH_OBJ);
+           
+                    foreach ($sql  as $c){$dataPuestos_id = $c->puestos_id;  }#ciclo de $Consql
+                    if(isset($dataPuestos_id) == ""){ $dataPuestos_id = "0"; }
+                    if ($reg->id == $dataPuestos_id) {
+                      // code...
+                     // echo 'existen en rutas puestos';
+                      $valorDePuestos=0;//todos los puestos estan asignados
+                    }else{
+                      $valorDePuestos=1;//si hay puestos disponibles
+                     // echo '<option  value="' . $reg->id .'">'. $reg->id.' , '.$reg->modulo.'</option>';
+                     // $sw= in_array($reg->idpermiso,$valores)?'checked':'';
+                           // echo '<li><label> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></li>';
+                           echo '<div class"col-lg-4 p-5 mr-5"><label class="btn btn-outline-dark"> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></div><p class="text-white">__</p>';
 
-                 foreach ($sql  as $c){$dataPuestos_id = $c->puestos_id;  }#ciclo de $Consql
-                 if(isset($dataPuestos_id) == ""){ $dataPuestos_id = "0"; }
-                 if ($reg->id == $dataPuestos_id) {
-                   // code...
-                  // echo 'existen en rutas puestos';
-                 }else{
-                  // echo '<option  value="' . $reg->id .'">'. $reg->id.' , '.$reg->modulo.'</option>';
+                           // echo '<hr class="bg-dark">'; 
+                    }
 
-                  // $sw= in_array($reg->idpermiso,$valores)?'checked':'';
-
-                        // echo '<li><label> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></li>';
-                        echo '<div class"col-lg-4 p-5 mr-5"><label class="btn btn-outline-dark"> <input type="checkbox" '/*.$sw.*/.' name="puestos_id[]" value="'.$reg->id.'">'.$reg->modulo.'</label></div>';
-
-                        // echo '<hr class="bg-dark">'; 
-                 }
-
-
-       }
-
-
+          }
+        }/*else{
+          // echo "este el es para verificar que aqui no hay nada XDXD";
+        }*/
+        if ($valorDePuestos==0): echo '<div class="alert alert-warning col-lg-12"><i class="fa   fa-times text-dark "></i> No Hay Puestos Disponibles</div>'; endif;
 
         break;    
 

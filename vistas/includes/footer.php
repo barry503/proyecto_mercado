@@ -111,6 +111,7 @@
         <!-- libs para alertas de scripts -->
     <script src="../public/libs_alerts/bootbox/bootbox.min.js"></script>
     <script src="../public/libs_alerts/sweetalert2/sweetalert2@9.js"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <!-- alertas para cruds -->
     <script src="scripts/script_alertas.js"></script>
 

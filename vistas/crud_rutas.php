@@ -141,12 +141,12 @@ if(!isset($_SESSION["usuario"])){
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
               <label for="idinstitucion" >Institucion a la que pertenece</label>
-              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+              <select name="idinstitucion" id="idinstitucion"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
            </div>
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 cam-po">
               <label for="correo_usuario" >Usuario a la que pertenece</label>
-              <select name="correo_usuario" id="correo_usuario"  class="form-control " data-live-search="true" ><!-- selectpicker --></select>
+              <select name="correo_usuario" id="correo_usuario"  class="form-control " data-live-search="true" required><!-- selectpicker --></select>
            </div>
      </div>
 

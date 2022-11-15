@@ -116,7 +116,7 @@ include '../config/fun_info.php';#para info de la empresa
           <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['nombre']; ?> - <?php echo $_SESSION['apellido']; ?></a>
+          <a href="#" class="d-block"><?php echo $_SESSION['usuario']; ?></a>
         </div>
       </div>
 

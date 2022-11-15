@@ -18,7 +18,7 @@ function Alerts(param,e){
         timerProgressBar: true
     });
     }else if (param=='datosEliminados') {
-        Swal.fire({html: '<i class="fa fa-trash text-danger t-100 bg-dark"></i>',
+        Swal.fire({html: '<i class="fas fa-trash t-100  alert-dark text-danger"></i>',
          title: e,
          footer: "Los datos se eliminaron satisfactoriamente",
          showConfirmButton: false,
